@@ -129,10 +129,18 @@ def category_summaries(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def write_csv(path: pathlib.Path, rows: list[dict[str, Any]]) -> None:
+    def stable(value: Any) -> Any:
+        # x86_64 and arm64 can differ in the final floating-point summation bits.
+        # Twelve significant digits preserve benchmark precision while making
+        # published CSV regeneration deterministic across those architectures.
+        return format(value, ".12g") if isinstance(value, float) else value
+
     with path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
-        writer.writerows(rows)
+        writer.writerows(
+            {key: stable(value) for key, value in row.items()} for row in rows
+        )
 
 
 def pc(value: float) -> str:

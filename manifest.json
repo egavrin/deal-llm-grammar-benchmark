@@ -40,8 +40,8 @@
     "grammar/deal-v1.2.gbnf": "3b7a47c2079ccfc0d772091080c6410fbb17a7f0913ee5e122cdcfc109b78ecb",
     "prompts/deal-v1.2.txt": "78eeb503b3c26efd8b9ab702e9acfc2ebf45a049ea9448448542ebc4ae2834e1",
     "results/raw-results.jsonl": "f993ee897753e7a58d8f1d74ea9b96b80f67f25c91ad2c852062e22eea4c4795",
-    "results/summary.csv": "4063c30156700b048ef604f299f341bfc85860137a8149aeb442ac1cfa822be4",
-    "results/category-summary.csv": "927d539b4c26d9fa7df3ade9b1d82e6402fec5513fd10a7584b3c53c1531a586",
+    "results/summary.csv": "c8e9ae84964fef5e9101c1cbce2e9b226b311cbd9b2d827564d1480382e88529",
+    "results/category-summary.csv": "e090ea7ec885134ddf063993f2a756c04896bf1348796fd5001520e6a12b9fb7",
     "results/report.md": "70feb98ceb735bc33769aa139cab18317b36915d77ac0337bfc9e8f32cca8203",
     "results/validator-throughput.csv": "0dacd1fca1f571bdb2cf81ad6ac2fe7384f738f598d15935dfbdd0565a8b0f70"
   },
