@@ -1,0 +1,12 @@
+[
+  {
+    "id": "qwen2.5-coder-0.5b-instruct-control-q4_k_m",
+    "family": "Qwen2.5-Coder-Instruct-conversion-control",
+    "parameters_b": 0.63017,
+    "repo": "Qwen/Qwen2.5-Coder-0.5B-Instruct",
+    "revision": "ea3f2471cf1b1f0db85067f1ef93848e38e88c25",
+    "file": "models/qwen2.5-coder-0.5b-instruct-control-q4_k_m.gguf",
+    "sha256": "5231325088f468169793028bd680f714548fe36977f89f0fc64fbdffeb519220",
+    "quantization": "Q4_K_M"
+  }
+]

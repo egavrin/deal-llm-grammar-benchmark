@@ -1,0 +1,10 @@
+.DS_Store
+.deps/
+.venv*/
+__pycache__/
+*.pyc
+models/*.gguf
+results/server-*.log
+results/reproduced-results.jsonl
+results/reproduced/
+tools/gbnf-throughput

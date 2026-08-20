@@ -1,0 +1,2 @@
+profile,validator,corpus_programs,rounds,programs,failures,seconds,programs_per_second,mib_per_second
+deal-v1.2-supplied,llama.cpp-gbnf-in-process,800,10,8000,0,27.3606,292.392,0.0401769

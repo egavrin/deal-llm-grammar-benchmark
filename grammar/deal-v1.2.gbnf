@@ -1,0 +1,212 @@
+root ::= "// @deal-version 1.2" | version-directive ws program | program
+program ::= ws import-declaration* top-level-declaration* ws
+
+version-directive ::= "// @deal-version 1.2" line-ending
+jsonable-directive ::= "// @jsonable" line-ending
+line-ending ::= "\n" | "\r\n" | "\r"
+
+top-level-declaration ::= function-declaration | class-declaration | export-function-declaration | export-class-declaration | jsonable-export-class-declaration
+
+import-declaration ::= "import" sp "*" ws "as" sp identifier sp "from" sp string-literal ws ";" ws
+export-function-declaration ::= "export" sp function-declaration
+export-class-declaration ::= "export" sp class-declaration
+jsonable-export-class-declaration ::= jsonable-directive ws "export" sp class-declaration
+
+class-declaration ::= "class" sp identifier ws "{" ws class-field* "}" ws
+class-field ::= required-class-field | optional-class-field
+required-class-field ::= identifier ws ":" ws type ws "=" ws expression ws ";" ws
+optional-class-field ::= identifier ws "?" ws ":" ws type ws ";" ws
+
+function-declaration ::= async-marker? "function" sp identifier ws "(" ws parameter-list? ")" ws ":" ws type ws block
+async-marker ::= "async" sp
+parameter-list ::= parameter (ws "," ws parameter)*
+parameter ::= identifier ws ":" ws type
+
+block ::= "{" ws statement* "}" ws
+statement ::= class-declaration | function-declaration | variable-declaration | return-statement | if-statement | while-statement | for-statement | for-of-statement | break-statement | continue-statement | delete-statement | try-statement | throw-statement | block | expression-statement
+variable-declaration ::= "let" sp identifier (ws ":" ws type)? ws "=" ws expression ws ";" ws
+return-statement ::= "return" (sp expression)? ws ";" ws
+if-statement ::= "if" ws "(" ws expression ws ")" ws block ("else" ws (if-statement | block))?
+while-statement ::= "while" ws "(" ws expression ws ")" ws block
+for-statement ::= "for" ws "(" ws for-init? ws ";" ws expression? ws ";" ws for-update? ws ")" ws block
+for-of-statement ::= "for" ws "(" ws "let" sp identifier ws ":" ws type sp "of" sp expression ws ")" ws block
+for-init ::= "let" sp identifier (ws ":" ws type)? ws "=" ws expression | for-update
+for-update ::= left-hand-side ws "=" ws assignment-expression
+break-statement ::= "break" ws ";" ws
+continue-statement ::= "continue" ws ";" ws
+delete-statement ::= "delete" sp delete-target ws ";" ws
+delete-target ::= postfix-expression (member-part | index-part)
+try-statement ::= "try" ws block "catch" ws "(" ws identifier ws ")" ws block
+throw-statement ::= "throw" sp expression ws ";" ws
+expression-statement ::= expression ws ";" ws
+
+type ::= "null" | non-null-type (sp "|" sp "null")?
+non-null-type ::= function-type | array-type
+function-type ::= async-marker? "(" ws function-type-parameter-list? ")" ws "=>" ws type
+function-type-parameter-list ::= function-type-parameter (ws "," ws function-type-parameter)*
+function-type-parameter ::= identifier ws ":" ws type
+array-type ::= primary-type (ws "[" ws "]")*
+primary-type ::= builtin-type | qualified-type | "(" ws type ws ")"
+builtin-type ::= "boolean" | "int" | "number" | "string" | "bytes" | "table" | "Error"
+qualified-type ::= identifier ("." identifier)*
+
+expression ::= assignment-expression
+assignment-expression ::= left-hand-side ws "=" ws assignment-expression | logical-or-expression
+logical-or-expression ::= logical-and-expression (ws "||" ws logical-and-expression)*
+logical-and-expression ::= equality-expression (ws "&&" ws equality-expression)*
+equality-expression ::= relational-expression (ws equality-operator ws relational-expression)?
+equality-operator ::= "===" | "!=="
+relational-expression ::= additive-expression (ws relational-operator ws additive-expression)?
+relational-operator ::= "<=" | ">=" | "<" | ">"
+additive-expression ::= multiplicative-expression (ws additive-operator ws multiplicative-expression)*
+additive-operator ::= "+" | "-"
+multiplicative-expression ::= exponentiation-expression (ws multiplicative-operator ws exponentiation-expression)*
+multiplicative-operator ::= "*" | "/" | "%"
+exponentiation-expression ::= unary-expression (ws "**" ws exponentiation-expression)?
+unary-expression ::= "-" ws "2147483648" | unary-operator ws unary-expression | await-expression | postfix-expression
+unary-operator ::= "!" | "-"
+await-expression ::= "await" sp postfix-expression
+
+left-hand-side ::= identifier | generated-reference | postfix-expression (member-part | generated-member-part | index-part)
+postfix-expression ::= primary-expression postfix-part*
+postfix-part ::= member-part | generated-member-part | index-part | arguments
+member-part ::= ws "." ws identifier
+generated-member-part ::= ws "." ws generated-reference
+index-part ::= ws "[" ws expression ws "]"
+arguments ::= ws "(" ws argument-list? ")"
+argument-list ::= expression (ws "," ws expression)*
+
+primary-expression ::= null-literal | boolean-literal | number-literal | string-literal | template-literal | identifier | generated-reference | parenthesized-expression | array-literal | object-literal | function-expression | has-expression
+parenthesized-expression ::= "(" ws expression ws ")"
+null-literal ::= "null"
+boolean-literal ::= "true" | "false"
+number-literal ::= decimal-number | exponent-number | int-literal
+int-literal ::= "0"+ int-nonzero? | int-nonzero
+int-nonzero ::= [1-9] | [1-9] [0-9]{1,8} | "1" [0-9]{9} | "20" [0-9]{8} | "21" [0-3] [0-9]{7} | "214" [0-6] [0-9]{6} | "2147" [0-3] [0-9]{5} | "21474" [0-7] [0-9]{4} | "214748" [0-2] [0-9]{3} | "2147483" [0-5] [0-9]{2} | "21474836" [0-3] [0-9] | "214748364" [0-7]
+decimal-number ::= ([0-9]* "." [0-9]+) exponent-part?
+exponent-number ::= [0-9]+ exponent-part
+exponent-part ::= [eE] [+-]? [0-9]+
+string-literal ::= "\"" string-character* "\""
+string-character ::= [^"\\\r\n] | "\\" [nt\\"']
+
+template-literal ::= "`" template-body
+template-body ::= "`" | template-character template-body | "${" ws expression ws "}" template-body | "$" template-after-dollar
+template-after-dollar ::= "`" | template-character template-body | "$" template-after-dollar
+template-character ::= [^`$\\\r\n] | "\\" [nt\\"'`$]
+
+array-literal ::= "[" ws element-list? ws "]"
+element-list ::= expression (ws "," ws expression)*
+object-literal ::= "{" ws property-list? ws "}"
+property-list ::= property (ws "," ws property)*
+property ::= identifier ws ":" ws expression
+function-expression ::= async-marker? "function" ws "(" ws parameter-list? ")" ws ":" ws type ws block
+has-expression ::= "has" ws "(" ws postfix-expression member-part ws ")"
+
+generated-reference ::= identifier "$fromJson" | identifier "$toJson"
+
+identifier ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZgjkmpqsuvxyz_] identifier-rest* | "a" identifier-a | "b" identifier-b | "c" identifier-c | "d" identifier-d | "e" identifier-e | "f" identifier-f | "h" identifier-h | "i" identifier-i | "l" identifier-l | "n" identifier-n | "o" identifier-o | "r" identifier-r | "t" identifier-t | "w" identifier-w
+identifier-rest ::= [A-Za-z0-9_]
+identifier-a ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrtuvxyz0123456789_] identifier-rest* | "s" identifier-a-s | "w" identifier-a-w
+identifier-a-s ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxz0123456789_] identifier-rest* | "y" identifier-a-s-y
+identifier-a-s-y ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmopqrstuvwxyz0123456789_] identifier-rest* | "n" identifier-a-s-y-n
+identifier-a-s-y-n ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabdefghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "c" identifier-a-s-y-n-c
+identifier-a-s-y-n-c ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-a-w ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZbcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "a" identifier-a-w-a
+identifier-a-w-a ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghjklmnopqrstuvwxyz0123456789_] identifier-rest* | "i" identifier-a-w-a-i
+identifier-a-w-a-i ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsuvwxyz0123456789_] identifier-rest* | "t" identifier-a-w-a-i-t
+identifier-a-w-a-i-t ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-b ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqstuvwxyz0123456789_] identifier-rest* | "r" identifier-b-r
+identifier-b-r ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdfghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "e" identifier-b-r-e
+identifier-b-r-e ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZbcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "a" identifier-b-r-e-a
+identifier-b-r-e-a ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijlmnopqrstuvwxyz0123456789_] identifier-rest* | "k" identifier-b-r-e-a-k
+identifier-b-r-e-a-k ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-c ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZbcdefghijkmnpqrstuvwxyz0123456789_] identifier-rest* | "a" identifier-c-a | "l" identifier-c-l | "o" identifier-c-o
+identifier-c-a ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsuvwxyz0123456789_] identifier-rest* | "t" identifier-c-a-t
+identifier-c-a-t ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabdefghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "c" identifier-c-a-t-c
+identifier-c-a-t-c ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgijklmnopqrstuvwxyz0123456789_] identifier-rest* | "h" identifier-c-a-t-c-h
+identifier-c-a-t-c-h ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-c-l ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZbcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "a" identifier-c-l-a
+identifier-c-l-a ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrtuvwxyz0123456789_] identifier-rest* | "s" identifier-c-l-a-s
+identifier-c-l-a-s ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrtuvwxyz0123456789_] identifier-rest* | "s" identifier-c-l-a-s-s
+identifier-c-l-a-s-s ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-c-o ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmopqrstuvwxyz0123456789_] identifier-rest* | "n" identifier-c-o-n
+identifier-c-o-n ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsuvwxyz0123456789_] identifier-rest* | "t" identifier-c-o-n-t
+identifier-c-o-n-t ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghjklmnopqrstuvwxyz0123456789_] identifier-rest* | "i" identifier-c-o-n-t-i
+identifier-c-o-n-t-i ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmopqrstuvwxyz0123456789_] identifier-rest* | "n" identifier-c-o-n-t-i-n
+identifier-c-o-n-t-i-n ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvwxyz0123456789_] identifier-rest* | "u" identifier-c-o-n-t-i-n-u
+identifier-c-o-n-t-i-n-u ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdfghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "e" identifier-c-o-n-t-i-n-u-e
+identifier-c-o-n-t-i-n-u-e ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-d ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdfghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "e" identifier-d-e
+identifier-d-e ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789_] identifier-rest* | "l" identifier-d-e-l
+identifier-d-e-l ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdfghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "e" identifier-d-e-l-e
+identifier-d-e-l-e ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsuvwxyz0123456789_] identifier-rest* | "t" identifier-d-e-l-e-t
+identifier-d-e-l-e-t ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdfghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "e" identifier-d-e-l-e-t-e
+identifier-d-e-l-e-t-e ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-e ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwyz0123456789_] identifier-rest* | "l" identifier-e-l | "x" identifier-e-x
+identifier-e-l ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrtuvwxyz0123456789_] identifier-rest* | "s" identifier-e-l-s
+identifier-e-l-s ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdfghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "e" identifier-e-l-s-e
+identifier-e-l-s-e ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-e-x ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnoqrstuvwxyz0123456789_] identifier-rest* | "p" identifier-e-x-p
+identifier-e-x-p ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnpqrstuvwxyz0123456789_] identifier-rest* | "o" identifier-e-x-p-o
+identifier-e-x-p-o ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqstuvwxyz0123456789_] identifier-rest* | "r" identifier-e-x-p-o-r
+identifier-e-x-p-o-r ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsuvwxyz0123456789_] identifier-rest* | "t" identifier-e-x-p-o-r-t
+identifier-e-x-p-o-r-t ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-f ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZbcdefghijklmnpqstvwxyz0123456789_] identifier-rest* | "a" identifier-f-a | "o" identifier-f-o | "r" identifier-f-r | "u" identifier-f-u
+identifier-f-a ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789_] identifier-rest* | "l" identifier-f-a-l
+identifier-f-a-l ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrtuvwxyz0123456789_] identifier-rest* | "s" identifier-f-a-l-s
+identifier-f-a-l-s ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdfghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "e" identifier-f-a-l-s-e
+identifier-f-a-l-s-e ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-f-o ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqstuvwxyz0123456789_] identifier-rest* | "r" identifier-f-o-r
+identifier-f-o-r ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-f-r ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnpqrstuvwxyz0123456789_] identifier-rest* | "o" identifier-f-r-o
+identifier-f-r-o ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklnopqrstuvwxyz0123456789_] identifier-rest* | "m" identifier-f-r-o-m
+identifier-f-r-o-m ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-f-u ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmopqrstuvwxyz0123456789_] identifier-rest* | "n" identifier-f-u-n
+identifier-f-u-n ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabdefghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "c" identifier-f-u-n-c
+identifier-f-u-n-c ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsuvwxyz0123456789_] identifier-rest* | "t" identifier-f-u-n-c-t
+identifier-f-u-n-c-t ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghjklmnopqrstuvwxyz0123456789_] identifier-rest* | "i" identifier-f-u-n-c-t-i
+identifier-f-u-n-c-t-i ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnpqrstuvwxyz0123456789_] identifier-rest* | "o" identifier-f-u-n-c-t-i-o
+identifier-f-u-n-c-t-i-o ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmopqrstuvwxyz0123456789_] identifier-rest* | "n" identifier-f-u-n-c-t-i-o-n
+identifier-f-u-n-c-t-i-o-n ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-h ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZbcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "a" identifier-h-a
+identifier-h-a ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrtuvwxyz0123456789_] identifier-rest* | "s" identifier-h-a-s
+identifier-h-a-s ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-i ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdeghijklnopqrstuvwxyz0123456789_] identifier-rest* | "f" identifier-i-f | "m" identifier-i-m
+identifier-i-f ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-i-m ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnoqrstuvwxyz0123456789_] identifier-rest* | "p" identifier-i-m-p
+identifier-i-m-p ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnpqrstuvwxyz0123456789_] identifier-rest* | "o" identifier-i-m-p-o
+identifier-i-m-p-o ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqstuvwxyz0123456789_] identifier-rest* | "r" identifier-i-m-p-o-r
+identifier-i-m-p-o-r ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsuvwxyz0123456789_] identifier-rest* | "t" identifier-i-m-p-o-r-t
+identifier-i-m-p-o-r-t ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-l ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdfghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "e" identifier-l-e
+identifier-l-e ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsuvwxyz0123456789_] identifier-rest* | "t" identifier-l-e-t
+identifier-l-e-t ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-n ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvwxyz0123456789_] identifier-rest* | "u" identifier-n-u
+identifier-n-u ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789_] identifier-rest* | "l" identifier-n-u-l
+identifier-n-u-l ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789_] identifier-rest* | "l" identifier-n-u-l-l
+identifier-n-u-l-l ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-o ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdeghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "f" identifier-o-f
+identifier-o-f ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-r ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdfghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "e" identifier-r-e
+identifier-r-e ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsuvwxyz0123456789_] identifier-rest* | "t" identifier-r-e-t
+identifier-r-e-t ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvwxyz0123456789_] identifier-rest* | "u" identifier-r-e-t-u
+identifier-r-e-t-u ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqstuvwxyz0123456789_] identifier-rest* | "r" identifier-r-e-t-u-r
+identifier-r-e-t-u-r ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmopqrstuvwxyz0123456789_] identifier-rest* | "n" identifier-r-e-t-u-r-n
+identifier-r-e-t-u-r-n ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-t ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgijklmnopqstuvwxyz0123456789_] identifier-rest* | "h" identifier-t-h | "r" identifier-t-r
+identifier-t-h ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqstuvwxyz0123456789_] identifier-rest* | "r" identifier-t-h-r
+identifier-t-h-r ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnpqrstuvwxyz0123456789_] identifier-rest* | "o" identifier-t-h-r-o
+identifier-t-h-r-o ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvxyz0123456789_] identifier-rest* | "w" identifier-t-h-r-o-w
+identifier-t-h-r-o-w ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-t-r ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvwxz0123456789_] identifier-rest* | "u" identifier-t-r-u | "y" identifier-t-r-y
+identifier-t-r-u ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdfghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "e" identifier-t-r-u-e
+identifier-t-r-u-e ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-t-r-y ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+identifier-w ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgijklmnopqrstuvwxyz0123456789_] identifier-rest* | "h" identifier-w-h
+identifier-w-h ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghjklmnopqrstuvwxyz0123456789_] identifier-rest* | "i" identifier-w-h-i
+identifier-w-h-i ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789_] identifier-rest* | "l" identifier-w-h-i-l
+identifier-w-h-i-l ::= "" | [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdfghijklmnopqrstuvwxyz0123456789_] identifier-rest* | "e" identifier-w-h-i-l-e
+identifier-w-h-i-l-e ::= [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_] identifier-rest*
+
+sp ::= [ \t\r\n]+
+ws ::= [ \t\r\n]*

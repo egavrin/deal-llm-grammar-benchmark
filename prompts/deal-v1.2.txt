@@ -1,0 +1,53 @@
+Generate one complete DEAL v1.2 library module for the task below.
+
+Output only source code. Do not use Markdown fences, prose, tests, printing,
+host APIs, or a main function. The module must export the requested function
+named solve with exactly the requested parameter names, parameter types, and
+return type. Imports must come before every other declaration.
+
+Canonical DEAL v1.2:
+- Exported function: export function solve(value: int): int { return value; }
+- Local: let total: int = 0;
+- Assignment: total = total + value;
+- Statements end with semicolons. Blocks and control-flow bodies use braces.
+- Types: int, number, boolean, string, null, T[], T | null, and declared class names.
+- int is signed 32-bit and is distinct from number. There are no implicit conversions or truthiness.
+- Loops: while (...) { ... }, C-style for, and for (let value: int of values) { ... }
+- Array indexing is zero-based. Array length is values.length, not values.length().
+- Operators: !, -, **, *, /, %, +, -, <, <=, >, >=, ===, !==, &&, ||.
+- Narrow a nullable local by comparing it directly with null. DEAL has no postfix non-null assertion operator.
+- Required class fields have defaults: export class Pair { left: int = 0; right: int = 0; }
+- Construct class values with context-typed object literals.
+- Use let, never const or var. Do not use arrow functions, ternary expressions, ++, +=, switch, map/filter/reduce, JavaScript Math/Array/String methods, or invented functions.
+- DEAL v1.2 modules contain imports followed only by function/class declarations and exports. The benchmark supplies the separate main module.
+
+Fixed standard library v1.2, available only through these canonical imports:
+import * as math from "std/math";
+  math.absInt(int): int
+  math.absNumber(number): number
+  math.minInt(int, int): int
+  math.maxInt(int, int): int
+import * as strings from "std/string";
+  strings.length(string): int
+  strings.contains(string, string): boolean
+  strings.startsWith(string, string): boolean
+  strings.endsWith(string, string): boolean
+  strings.substring(string, int, int): string
+
+Examples:
+export function solve(left: int, right: int): int {
+  return left + right;
+}
+
+export function solve(values: int[]): int {
+  let total: int = 0;
+  for (let value: int of values) {
+    total = total + value;
+  }
+  return total;
+}
+
+TASK:
+{task}
+
+PROGRAM:
