@@ -1,0 +1,31 @@
+import * as tables from "std/table";
+
+export function makeCache(): table {
+  let cache: table = { hits: 0, misses: 0 };
+  return cache;
+}
+
+export function store(cache: table, key: string, value: int): null {
+  cache[key] = value;
+  return null;
+}
+
+export function evict(cache: table, key: string): null {
+  delete cache[key];
+  return null;
+}
+
+export function sizeOf(cache: table): int {
+  let names: string[] = tables.keys(cache);
+  return names.length;
+}
+
+export function hitRatioPercent(cache: table): int {
+  let hits: int = cache.hits;
+  let misses: int = cache.misses;
+  let total: int = hits + misses;
+  if (total === 0) {
+    return 0;
+  }
+  return hits * 100 / total;
+}

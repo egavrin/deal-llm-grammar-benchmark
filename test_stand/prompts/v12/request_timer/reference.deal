@@ -1,0 +1,28 @@
+import * as time from "std/time";
+import * as math from "std/math";
+
+export function nowOrZero(enabled: boolean): int {
+  if (enabled) {
+    return time.nowMillis();
+  }
+  return 0;
+}
+
+export function elapsed(startMillis: int, endMillis: int): int {
+  return math.absInt(endMillis - startMillis);
+}
+
+export function isSlow(durationMillis: int, budgetMillis: int): boolean {
+  return durationMillis > budgetMillis || budgetMillis === 0;
+}
+
+export function slowCount(durations: int[], budgetMillis: int): int {
+  let slow: int = 0;
+  let index: int = 0;
+  for (index = 0; index < durations.length; index = index + 1) {
+    if (isSlow(durations[index], budgetMillis)) {
+      slow = slow + 1;
+    }
+  }
+  return slow;
+}

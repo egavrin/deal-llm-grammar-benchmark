@@ -1,0 +1,48 @@
+// Class values compare by reference, so returned objects are compared field by
+// field rather than with !==.
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function line(sku: string, price: int, qty: int): candidate.LineItem {
+  let item: candidate.LineItem = { sku: sku, unitPrice: price, quantity: qty };
+  return item;
+}
+
+function mirror(sku: string, price: int, qty: int): oracle.LineItem {
+  let item: oracle.LineItem = { sku: sku, unitPrice: price, quantity: qty };
+  return item;
+}
+
+function checkOne(sku: string, price: int, qty: int): null {
+  if (candidate.subtotal(line(sku, price, qty))
+      !== oracle.subtotal(mirror(sku, price, qty))) {
+    throw { code: "DIFF", message: "subtotal" };
+  }
+  return null;
+}
+
+export function main(): null {
+  checkOne("PEN", 150, 3);
+  checkOne("PAD", 420, 1);
+  checkOne("FREE", 0, 9);
+  checkOne("NONE", 250, 0);
+
+  let mine: candidate.LineItem[] = [line("A", 100, 2), line("B", 5, 7)];
+  let theirs: oracle.LineItem[] = [mirror("A", 100, 2), mirror("B", 5, 7)];
+  if (candidate.orderTotal(mine) !== oracle.orderTotal(theirs)) {
+    throw { code: "DIFF", message: "orderTotal" };
+  }
+  let noneMine: candidate.LineItem[] = [];
+  let noneTheirs: oracle.LineItem[] = [];
+  if (candidate.orderTotal(noneMine) !== oracle.orderTotal(noneTheirs)) {
+    throw { code: "DIFF", message: "orderTotal on an empty order" };
+  }
+
+  let sample: candidate.LineItem[] = candidate.sampleOrder();
+  if (sample.length !== 2) {
+    throw { code: "DIFF", message: "sampleOrder must hold two lines" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

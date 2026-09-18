@@ -1,0 +1,31 @@
+import * as console from "std/console";
+
+export function headline(service: string, healthy: boolean): string {
+  if (healthy) {
+    return `${service}: healthy`;
+  }
+  return `${service}: DEGRADED`;
+}
+
+export function severity(failed: int): string {
+  if (failed === 0) {
+    return "info";
+  }
+  if (failed < 5) {
+    return "warning";
+  }
+  return "critical";
+}
+
+export function summary(service: string, failed: int): string {
+  let level: string = severity(failed);
+  return `[${level}] ${service} -- ${headline(service, failed === 0)}`;
+}
+
+export function publish(service: string, failed: int): null {
+  console.log(summary(service, failed));
+  if (failed > 0) {
+    console.error(headline(service, false));
+  }
+  return null;
+}

@@ -1,0 +1,9 @@
+export function runningTotals(values: int[]): int[] {
+  let totals: int[] = [];
+  let sofar: int = 0;
+  for (let value: int of values) {
+    sofar = sofar + value;
+    totals[totals.length] = sofar;
+  }
+  return totals;
+}

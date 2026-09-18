@@ -1,0 +1,38 @@
+export function filled(size: int, value: int): bytes {
+  let data: bytes = bytes(size);
+  for (let i: int = 0; i < size; i = i + 1) {
+    data[i] = value;
+  }
+  return data;
+}
+
+export function byteSum(data: bytes): int {
+  let total: int = 0;
+  for (let i: int = 0; i < data.length; i = i + 1) {
+    total = total + data[i];
+  }
+  return total;
+}
+
+export function checksum(data: bytes): int {
+  return byteSum(data) % 256;
+}
+
+export function countByte(data: bytes, value: int): int {
+  let count: int = 0;
+  for (let i: int = 0; i < data.length; i = i + 1) {
+    if (data[i] === value) {
+      count = count + 1;
+    }
+  }
+  return count;
+}
+
+export function isZero(data: bytes): boolean {
+  for (let i: int = 0; i < data.length; i = i + 1) {
+    if (data[i] !== 0) {
+      return false;
+    }
+  }
+  return true;
+}

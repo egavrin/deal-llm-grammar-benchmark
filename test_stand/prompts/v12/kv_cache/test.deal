@@ -1,0 +1,38 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let mine: table = candidate.makeCache();
+  let theirs: table = oracle.makeCache();
+  if (candidate.sizeOf(mine) !== oracle.sizeOf(theirs)) {
+    throw { code: "DIFF", message: "sizeOf of a fresh cache" };
+  }
+  if (candidate.hitRatioPercent(mine) !== oracle.hitRatioPercent(theirs)) {
+    throw { code: "DIFF", message: "hitRatioPercent with no traffic" };
+  }
+
+  candidate.store(mine, "a", 1);
+  oracle.store(theirs, "a", 1);
+  candidate.store(mine, "b", 2);
+  oracle.store(theirs, "b", 2);
+  if (candidate.sizeOf(mine) !== oracle.sizeOf(theirs)) {
+    throw { code: "DIFF", message: "sizeOf after two writes" };
+  }
+
+  candidate.evict(mine, "a");
+  oracle.evict(theirs, "a");
+  if (candidate.sizeOf(mine) !== oracle.sizeOf(theirs)) {
+    throw { code: "DIFF", message: "sizeOf after evicting a key" };
+  }
+
+  candidate.store(mine, "hits", 3);
+  oracle.store(theirs, "hits", 3);
+  candidate.store(mine, "misses", 1);
+  oracle.store(theirs, "misses", 1);
+  if (candidate.hitRatioPercent(mine) !== oracle.hitRatioPercent(theirs)) {
+    throw { code: "DIFF", message: "hitRatioPercent" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

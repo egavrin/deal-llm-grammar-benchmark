@@ -1,0 +1,44 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function sameMaybe(a: int | null, b: int | null, what: string): null {
+  if (a === null || b === null) {
+    if (a !== null || b !== null) {
+      throw { code: "DIFF", message: what };
+    }
+    return null;
+  }
+  if (a !== b) {
+    throw { code: "DIFF", message: what };
+  }
+  return null;
+}
+
+function check(values: int[]): null {
+  let mine: candidate.Node | null = candidate.fromArray(values);
+  let theirs: oracle.Node | null = oracle.fromArray(values);
+  if ((mine === null) !== (theirs === null)) {
+    throw { code: "DIFF", message: "fromArray on empty" };
+  }
+  if (candidate.count(mine) !== oracle.count(theirs)) {
+    throw { code: "DIFF", message: "count" };
+  }
+  if (candidate.sum(mine) !== oracle.sum(theirs)) {
+    throw { code: "DIFF", message: "sum" };
+  }
+  for (let index: int of [-1, 0, 1, 2, 5]) {
+    sameMaybe(candidate.nth(mine, index), oracle.nth(theirs, index), "nth");
+  }
+  return null;
+}
+
+export function main(): null {
+  let none: int[] = [];
+  check(none);
+  check([7]);
+  check([1, 2, 3]);
+  check([5, -5, 10, 20, 30]);
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

@@ -1,0 +1,12 @@
+export function largestOf(values: int[]): int | null {
+  if (values.length === 0) {
+    return null;
+  }
+  let best: int = values[0];
+  for (let value: int of values) {
+    if (value > best) {
+      best = value;
+    }
+  }
+  return best;
+}

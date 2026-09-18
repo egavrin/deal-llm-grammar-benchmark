@@ -1,0 +1,26 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function sameMaybe(a: int | null, b: int | null, what: string): null {
+  if (a === null || b === null) {
+    if (a !== null || b !== null) {
+      throw { code: "DIFF", message: what };
+    }
+    return null;
+  }
+  if (a !== b) {
+    throw { code: "DIFF", message: what };
+  }
+  return null;
+}
+
+export function main(): null {
+  let none: int[] = [];
+  let inputs: int[][] = [none, [3], [1, 9, 4], [-5, -2, -9]];
+  for (let values: int[] of inputs) {
+    sameMaybe(candidate.largestOf(values), oracle.largestOf(values), "largestOf");
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

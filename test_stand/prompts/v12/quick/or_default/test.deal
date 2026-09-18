@@ -1,0 +1,16 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let missing: int | null = null;
+  let present: int | null = 7;
+  if (candidate.orDefault(missing, 3) !== oracle.orDefault(missing, 3)) {
+    throw { code: "DIFF", message: "orDefault null" };
+  }
+  if (candidate.orDefault(present, 3) !== oracle.orDefault(present, 3)) {
+    throw { code: "DIFF", message: "orDefault present" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

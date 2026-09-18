@@ -1,0 +1,44 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function sameList(a: string[], b: string[], what: string): null {
+  if (a.length !== b.length) {
+    throw { code: "DIFF", message: what };
+  }
+  for (let i: int = 0; i < a.length; i = i + 1) {
+    if (a[i] !== b[i]) {
+      throw { code: "DIFF", message: what };
+    }
+  }
+  return null;
+}
+
+function check(text: string): null {
+  for (let width: int of [1, 5, 10, 80]) {
+    sameList(candidate.wrap(text, width), oracle.wrap(text, width), "wrap");
+    if (candidate.lineCount(text, width) !== oracle.lineCount(text, width)) {
+      throw { code: "DIFF", message: "lineCount" };
+    }
+  }
+  if (candidate.longestWord(text) !== oracle.longestWord(text)) {
+    throw { code: "DIFF", message: "longestWord" };
+  }
+  for (let ch: string of ["a", " ", "z"]) {
+    if (candidate.countChar(text, ch) !== oracle.countChar(text, ch)) {
+      throw { code: "DIFF", message: "countChar" };
+    }
+  }
+  return null;
+}
+
+export function main(): null {
+  check("");
+  check("   ");
+  check("deal");
+  check("the quick brown fox jumps over the lazy dog");
+  check("a bb ccc dddd eeeee");
+  check("extraordinarily long words wrap alone");
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

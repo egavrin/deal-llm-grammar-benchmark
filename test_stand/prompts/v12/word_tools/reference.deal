@@ -1,0 +1,34 @@
+import * as strings from "std/string";
+
+export function wordCount(text: string): int {
+  let trimmed: string = strings.trim(text);
+  if (trimmed === "") {
+    return 0;
+  }
+  let parts: string[] = strings.split(trimmed, " ");
+  return parts.length;
+}
+
+export function repeatText(part: string, times: int): string {
+  let result: string = "";
+  let remaining: int = times;
+  while (remaining > 0) {
+    result = result + part;
+    remaining = remaining - 1;
+  }
+  return result;
+}
+
+export function reversed(text: string): string {
+  let result: string = "";
+  let index: int = strings.length(text);
+  while (index > 0) {
+    result = result + strings.substring(text, index - 1, index);
+    index = index - 1;
+  }
+  return result;
+}
+
+export function isPalindrome(text: string): boolean {
+  return reversed(text) === text;
+}

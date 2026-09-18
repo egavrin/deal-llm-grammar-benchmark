@@ -1,0 +1,80 @@
+export class Game {
+  cells: string[] = [];
+  turn: string = "X";
+}
+
+export function newGame(): Game {
+  let board: string[] = [];
+  let index: int = 0;
+  while (index < 9) {
+    board[board.length] = " ";
+    index = index + 1;
+  }
+  let game: Game = { cells: board, turn: "X" };
+  return game;
+}
+
+export function place(game: Game, index: int): boolean {
+  if (index < 0 || index > 8) {
+    return false;
+  }
+  if (game.cells[index] !== " ") {
+    return false;
+  }
+  game.cells[index] = game.turn;
+  if (game.turn === "X") {
+    game.turn = "O";
+  } else {
+    game.turn = "X";
+  }
+  return true;
+}
+
+export function lineWinner(game: Game, a: int, b: int, c: int): string | null {
+  let first: string = game.cells[a];
+  if (first === " ") {
+    return null;
+  }
+  if (first === game.cells[b] && first === game.cells[c]) {
+    return first;
+  }
+  return null;
+}
+
+export function winnerOf(game: Game): string | null {
+  let lines: int[][] = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]
+  ];
+  for (let line: int[] of lines) {
+    let found: string | null = lineWinner(game, line[0], line[1], line[2]);
+    if (found !== null) {
+      return found;
+    }
+  }
+  return null;
+}
+
+export function isDraw(game: Game): boolean {
+  if (winnerOf(game) !== null) {
+    return false;
+  }
+  for (let cell: string of game.cells) {
+    if (cell === " ") {
+      return false;
+    }
+  }
+  return true;
+}
+
+export function render(game: Game): string {
+  let rows: string[] = [];
+  let start: int = 0;
+  while (start < 9) {
+    let row: string = `${game.cells[start]}|${game.cells[start + 1]}|${game.cells[start + 2]}`;
+    rows[rows.length] = row;
+    start = start + 3;
+  }
+  return `${rows[0]}\n${rows[1]}\n${rows[2]}`;
+}

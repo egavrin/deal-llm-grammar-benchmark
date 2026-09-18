@@ -1,0 +1,13 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let value: string of ["", "deal", "rhythm", "aeiou", "Audio"]) {
+    if (candidate.vowelCount(value) !== oracle.vowelCount(value)) {
+      throw { code: "DIFF", message: "vowelCount" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

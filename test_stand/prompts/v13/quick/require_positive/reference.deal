@@ -1,0 +1,6 @@
+export function requirePositive(n: int): int {
+  if (n <= 0) {
+    throw { code: "E_NOT_POSITIVE", message: "expected a positive number" };
+  }
+  return n;
+}

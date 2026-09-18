@@ -1,0 +1,56 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function mine(balance: int): candidate.Account {
+  let account: candidate.Account = { owner: "Ada", balance: balance };
+  return account;
+}
+
+function theirs(balance: int): oracle.Account {
+  let account: oracle.Account = { owner: "Ada", balance: balance };
+  return account;
+}
+
+function checkFailure(balance: int, amount: int): null {
+  if (candidate.failureCode(mine(balance), amount) !== oracle.failureCode(theirs(balance), amount)) {
+    throw { code: "DIFF", message: "failureCode" };
+  }
+  return null;
+}
+
+function checkTransfer(sourceBalance: int, targetBalance: int, amount: int): null {
+  let a: candidate.Account = mine(sourceBalance);
+  let b: candidate.Account = mine(targetBalance);
+  let c: oracle.Account = theirs(sourceBalance);
+  let d: oracle.Account = theirs(targetBalance);
+  if (candidate.transfer(a, b, amount) !== oracle.transfer(c, d, amount)) {
+    throw { code: "DIFF", message: "transfer result" };
+  }
+  if (a.balance !== c.balance || b.balance !== d.balance) {
+    throw { code: "DIFF", message: "balances after transfer" };
+  }
+  return null;
+}
+
+export function main(): null {
+  let a: candidate.Account = mine(10);
+  let c: oracle.Account = theirs(10);
+  candidate.deposit(a, 5);
+  oracle.deposit(c, 5);
+  candidate.withdraw(a, 3);
+  oracle.withdraw(c, 3);
+  if (a.balance !== c.balance) {
+    throw { code: "DIFF", message: "deposit and withdraw" };
+  }
+  checkFailure(10, 3);
+  checkFailure(10, 10);
+  checkFailure(10, 11);
+  checkFailure(10, 0);
+  checkFailure(10, -4);
+  checkTransfer(20, 5, 15);
+  checkTransfer(20, 5, 25);
+  checkTransfer(20, 5, 0);
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

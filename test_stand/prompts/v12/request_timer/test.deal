@@ -1,0 +1,35 @@
+// nowOrZero(true) reads the clock and cannot be compared against the reference;
+// only its disabled branch is checked. Everything else is differential.
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function check(start: int, finish: int, budget: int): null {
+  if (candidate.elapsed(start, finish) !== oracle.elapsed(start, finish)) {
+    throw { code: "DIFF", message: "elapsed" };
+  }
+  if (candidate.isSlow(finish - start, budget) !== oracle.isSlow(finish - start, budget)) {
+    throw { code: "DIFF", message: "isSlow" };
+  }
+  return null;
+}
+
+export function main(): null {
+  if (candidate.nowOrZero(false) !== 0) {
+    throw { code: "DIFF", message: "nowOrZero(false) must be 0" };
+  }
+  check(0, 0, 10);
+  check(100, 250, 100);
+  check(250, 100, 100);
+  check(5, 5, 0);
+  let durations: int[] = [10, 200, 50, 400];
+  if (candidate.slowCount(durations, 100) !== oracle.slowCount(durations, 100)) {
+    throw { code: "DIFF", message: "slowCount" };
+  }
+  let none: int[] = [];
+  if (candidate.slowCount(none, 100) !== oracle.slowCount(none, 100)) {
+    throw { code: "DIFF", message: "slowCount empty" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

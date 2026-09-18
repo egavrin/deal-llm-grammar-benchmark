@@ -1,0 +1,54 @@
+// Game is a class and compares by reference, so both boards are driven through
+// the same moves and their observable state is compared.
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function move(mine: candidate.Game, theirs: oracle.Game, index: int): null {
+  if (candidate.place(mine, index) !== oracle.place(theirs, index)) {
+    throw { code: "DIFF", message: "place" };
+  }
+  return null;
+}
+
+function agree(mine: candidate.Game, theirs: oracle.Game, where: string): null {
+  let mineWinner: string | null = candidate.winnerOf(mine);
+  let theirsWinner: string | null = oracle.winnerOf(theirs);
+  if (mineWinner === null) {
+    if (theirsWinner !== null) { throw { code: "DIFF", message: where }; }
+  } else {
+    if (theirsWinner === null) { throw { code: "DIFF", message: where }; }
+    else { if (mineWinner !== theirsWinner) { throw { code: "DIFF", message: where }; } }
+  }
+  if (candidate.isDraw(mine) !== oracle.isDraw(theirs)) {
+    throw { code: "DIFF", message: "isDraw" };
+  }
+  if (candidate.render(mine) !== oracle.render(theirs)) {
+    throw { code: "DIFF", message: "render" };
+  }
+  return null;
+}
+
+export function main(): null {
+  let mine: candidate.Game = candidate.newGame();
+  let theirs: oracle.Game = oracle.newGame();
+  agree(mine, theirs, "fresh board");
+
+  // X takes the top row, O answers in the middle row.
+  let moves: int[] = [0, 3, 1, 4, 2];
+  for (let index: int of moves) {
+    move(mine, theirs, index);
+    agree(mine, theirs, "after a move");
+  }
+  // An occupied cell and an out-of-range index must both be refused.
+  move(mine, theirs, 0);
+  move(mine, theirs, 99);
+  move(mine, theirs, -1);
+  agree(mine, theirs, "final board");
+
+  if (candidate.lineWinner(mine, 0, 1, 2) === null) {
+    throw { code: "DIFF", message: "lineWinner must see the winning row" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

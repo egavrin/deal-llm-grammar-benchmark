@@ -1,0 +1,17 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let data: bytes = bytes(3);
+  data[0] = 10;
+  data[1] = 200;
+  data[2] = 0;
+  for (let index: int of [-1, 0, 1, 2, 3, 10]) {
+    if (candidate.byteAt(data, index) !== oracle.byteAt(data, index)) {
+      throw { code: "DIFF", message: "byteAt" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

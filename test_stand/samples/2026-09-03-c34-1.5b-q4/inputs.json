@@ -1,0 +1,16 @@
+{
+  "fingerprint": {
+    "grammar_sha256": "dcbaec3561e8cedda9951ae0ff10c3dbbbea64377d33e3766f2eff5ea5e6fb8b",
+    "primer_sha256": "7cdd999aaaada7fe545419b8017d9d118d8b227c1d0f3a0e9c1cdc9e230878c2",
+    "example_sha256": "68b788fde30608541a06f2bd491b16e2d264953adff1dd584b20b32f28c180c7",
+    "system_sha256": "69c25697e031e24e80ff228cc7413bd1f34c708529ba0e67138583baa657b95f",
+    "prompts_sha256": "7745907ac1358532836186fa731a5d44910f49af08bfe02858e7c75e6e3d3e41",
+    "compiler_commit": "73b93e60ebe9c197e98e43f268ae0f7f1ba84ad0",
+    "model_sha256": "1ff39f0807727295e79879773765a43d7c235c1fedc547514c197a74d157a436",
+    "backend": "luajit",
+    "seed": 42,
+    "max_tokens": 1024
+  },
+  "model_provenance": null,
+  "written": "2026-09-03T19:12:36"
+}

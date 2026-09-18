@@ -1,0 +1,50 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function checkFind(lines: string[], key: string): null {
+  let got: string | null = candidate.findValue(lines, key);
+  let want: string | null = oracle.findValue(lines, key);
+  if (got === null) {
+    if (want !== null) { throw { code: "DIFF", message: "findValue: null for a hit" }; }
+  } else {
+    if (want === null) { throw { code: "DIFF", message: "findValue: hit for a miss" }; }
+    else { if (got !== want) { throw { code: "DIFF", message: "findValue value" }; } }
+  }
+  return null;
+}
+
+function checkLine(line: string): null {
+  if (candidate.normalize(line) !== oracle.normalize(line)) {
+    throw { code: "DIFF", message: "normalize" };
+  }
+  if (candidate.fieldCount(line, ",") !== oracle.fieldCount(line, ",")) {
+    throw { code: "DIFF", message: "fieldCount" };
+  }
+  return null;
+}
+
+function checkSection(text: string, name: string): null {
+  if (candidate.hasSection(text, name) !== oracle.hasSection(text, name)) {
+    throw { code: "DIFF", message: "hasSection" };
+  }
+  return null;
+}
+
+export function main(): null {
+  let lines: string[] = ["  host = localhost  ", "port = 8080", "debug=true"];
+  checkFind(lines, "host");
+  checkFind(lines, "port");
+  checkFind(lines, "debug");
+  checkFind(lines, "missing");
+  let empty: string[] = [];
+  checkFind(empty, "host");
+  checkLine("  a, b ,c  ");
+  checkLine("single");
+  checkLine("");
+  checkSection("[server]", "server");
+  checkSection("[server]", "client");
+  checkSection("server", "server");
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

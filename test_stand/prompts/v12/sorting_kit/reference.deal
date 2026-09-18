@@ -1,0 +1,41 @@
+export function sortedCopy(values: int[]): int[] {
+  let copy: int[] = [];
+  for (let value: int of values) {
+    copy[copy.length] = value;
+  }
+  for (let i: int = 1; i < copy.length; i = i + 1) {
+    let current: int = copy[i];
+    let j: int = i - 1;
+    while (j >= 0 && copy[j] > current) {
+      copy[j + 1] = copy[j];
+      j = j - 1;
+    }
+    copy[j + 1] = current;
+  }
+  return copy;
+}
+
+export function isSorted(values: int[]): boolean {
+  for (let i: int = 1; i < values.length; i = i + 1) {
+    if (values[i - 1] > values[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+export function median(values: int[]): int {
+  if (values.length === 0) {
+    return 0;
+  }
+  let ordered: int[] = sortedCopy(values);
+  return ordered[(ordered.length - 1) / 2];
+}
+
+export function kthSmallest(values: int[], k: int): int | null {
+  if (k < 1 || k > values.length) {
+    return null;
+  }
+  let ordered: int[] = sortedCopy(values);
+  return ordered[k - 1];
+}

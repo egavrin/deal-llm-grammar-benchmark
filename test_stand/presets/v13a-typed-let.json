@@ -1,0 +1,9 @@
+{
+  "description": "DEAL v1.3 candidate, step 1: `let` requires a type annotation (VERA-L direction). Grammar deal-v1.3a on the unchanged v12 prompt set, so the only input that differs from v12-baseline is the grammar.",
+  "prompts": "prompts/v12",
+  "primer": "prompts/v12/primer.txt",
+  "grammar": "grammars/deal-v1.3a-typed-let.gbnf",
+  "compiler": "${DEAL_COMPILER}",
+  "model": "qwen2.5-coder-0.5b",
+  "backend": "luajit"
+}

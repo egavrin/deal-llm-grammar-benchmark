@@ -1,0 +1,25 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function sameList(a: int[], b: int[], what: string): null {
+  if (a.length !== b.length) {
+    throw { code: "DIFF", message: what };
+  }
+  for (let i: int = 0; i < a.length; i = i + 1) {
+    if (a[i] !== b[i]) {
+      throw { code: "DIFF", message: what };
+    }
+  }
+  return null;
+}
+
+export function main(): null {
+  let none: int[] = [];
+  let inputs: int[][] = [none, [1], [1, 2, 3], [4, 4, 5]];
+  for (let values: int[] of inputs) {
+    sameList(candidate.reversedInts(values), oracle.reversedInts(values), "reversedInts");
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

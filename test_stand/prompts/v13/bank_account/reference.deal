@@ -1,0 +1,43 @@
+export class Account {
+  owner: string = "";
+  balance: int = 0;
+}
+
+export function deposit(account: Account, amount: int): null {
+  if (amount <= 0) {
+    throw { code: "E_AMOUNT", message: "deposit must be positive" };
+  }
+  account.balance = account.balance + amount;
+  return null;
+}
+
+export function withdraw(account: Account, amount: int): null {
+  if (amount <= 0) {
+    throw { code: "E_AMOUNT", message: "withdrawal must be positive" };
+  }
+  if (amount > account.balance) {
+    throw { code: "E_FUNDS", message: "insufficient funds" };
+  }
+  account.balance = account.balance - amount;
+  return null;
+}
+
+export function transfer(source: Account, target: Account, amount: int): boolean {
+  try {
+    withdraw(source, amount);
+  } catch (e) {
+    return false;
+  }
+  deposit(target, amount);
+  return true;
+}
+
+export function failureCode(account: Account, amount: int): string {
+  try {
+    withdraw(account, amount);
+  } catch (e) {
+    let failure: Error = e;
+    return failure.code;
+  }
+  return "ok";
+}

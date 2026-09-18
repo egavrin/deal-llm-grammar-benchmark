@@ -1,0 +1,14 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let values: int[] = [5, 3, 8, 3, 1];
+  for (let target: int of [5, 3, 1, 9]) {
+    if (candidate.firstIndexOf(values, target) !== oracle.firstIndexOf(values, target)) {
+      throw { code: "DIFF", message: "firstIndexOf" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

@@ -1,0 +1,9 @@
+export function flattenPairs(rows: int[][]): int[] {
+  let flat: int[] = [];
+  for (let row: int[] of rows) {
+    for (let value: int of row) {
+      flat[flat.length] = value;
+    }
+  }
+  return flat;
+}

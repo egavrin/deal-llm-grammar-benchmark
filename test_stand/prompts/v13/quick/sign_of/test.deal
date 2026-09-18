@@ -1,0 +1,13 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let value: int of [-5, -1, 0, 1, 42]) {
+    if (candidate.signOf(value) !== oracle.signOf(value)) {
+      throw { code: "DIFF", message: "signOf" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

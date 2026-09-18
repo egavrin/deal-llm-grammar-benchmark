@@ -1,0 +1,3485 @@
+{
+  "schema": 1,
+  "inputs": {
+    "fingerprint": {
+      "grammar_sha256": "dcbaec3561e8cedda9951ae0ff10c3dbbbea64377d33e3766f2eff5ea5e6fb8b",
+      "primer_sha256": "7cdd999aaaada7fe545419b8017d9d118d8b227c1d0f3a0e9c1cdc9e230878c2",
+      "example_sha256": "68b788fde30608541a06f2bd491b16e2d264953adff1dd584b20b32f28c180c7",
+      "system_sha256": "69c25697e031e24e80ff228cc7413bd1f34c708529ba0e67138583baa657b95f",
+      "prompts_sha256": "7745907ac1358532836186fa731a5d44910f49af08bfe02858e7c75e6e3d3e41",
+      "compiler_commit": "73b93e60ebe9c197e98e43f268ae0f7f1ba84ad0",
+      "model_sha256": "1ff39f0807727295e79879773765a43d7c235c1fedc547514c197a74d157a436",
+      "backend": "luajit",
+      "seed": 42,
+      "max_tokens": 1024
+    },
+    "model_provenance": null,
+    "written": "2026-09-03T19:12:36"
+  },
+  "tasks": [
+    "bank_account",
+    "binary_search",
+    "byte_checksum",
+    "chain_list",
+    "circle_geometry",
+    "config_lookup",
+    "counter_factory",
+    "dice_lcg",
+    "event_filter",
+    "fetch_pipeline",
+    "grade_book",
+    "histogram",
+    "interval_merge",
+    "inventory",
+    "kv_cache",
+    "matrix_ops",
+    "order_total",
+    "packet_buffer",
+    "path_tools",
+    "polynomial",
+    "profile_json",
+    "queue_ring",
+    "request_timer",
+    "rle_codec",
+    "sample_stats",
+    "shape_area",
+    "signup_validation",
+    "sorting_kit",
+    "status_report",
+    "temperature_log",
+    "text_wrap",
+    "tic_tac_toe",
+    "traffic_light",
+    "word_tools"
+  ],
+  "tiers": {
+    "modules": {
+      "tasks": [
+        "bank_account",
+        "binary_search",
+        "byte_checksum",
+        "chain_list",
+        "circle_geometry",
+        "config_lookup",
+        "counter_factory",
+        "dice_lcg",
+        "event_filter",
+        "fetch_pipeline",
+        "grade_book",
+        "histogram",
+        "interval_merge",
+        "inventory",
+        "kv_cache",
+        "matrix_ops",
+        "order_total",
+        "packet_buffer",
+        "path_tools",
+        "polynomial",
+        "profile_json",
+        "queue_ring",
+        "request_timer",
+        "rle_codec",
+        "sample_stats",
+        "shape_area",
+        "signup_validation",
+        "sorting_kit",
+        "status_report",
+        "temperature_log",
+        "text_wrap",
+        "tic_tac_toe",
+        "traffic_light",
+        "word_tools"
+      ],
+      "profiles": {
+        "raw": {
+          "n": 34,
+          "no_fence": 0,
+          "grammar_valid": 0,
+          "grammar_valid_normalized": 7,
+          "syntax": 8,
+          "compiles": 1,
+          "interface": 1,
+          "runs": 1,
+          "passes": 1,
+          "hit_cap": 0,
+          "echoes_example": [
+            "binary_search",
+            "byte_checksum",
+            "counter_factory",
+            "histogram",
+            "rle_codec",
+            "sorting_kit",
+            "text_wrap"
+          ],
+          "diagnostics": {
+            "E1037": 23,
+            "E1041": 18,
+            "E1049": 17,
+            "E1013": 12,
+            "E1010": 5,
+            "E1006": 4,
+            "E1007": 4,
+            "E1008": 4,
+            "E2004": 3,
+            "E2001": 3,
+            "E2003": 2,
+            "E1005": 2,
+            "E1015": 2,
+            "E1011": 1,
+            "E1012": 1,
+            "E1017": 1,
+            "E1018": 1,
+            "E3009": 1,
+            "E5001": 1,
+            "E5003": 1,
+            "E3007": 1
+          },
+          "layers": {
+            "E1": {
+              "tasks": 26,
+              "codes": {
+                "E1037": 23,
+                "E1041": 18,
+                "E1049": 17,
+                "E1013": 12,
+                "E1010": 5,
+                "E1006": 4,
+                "E1008": 4,
+                "E1007": 4,
+                "E1005": 2,
+                "E1015": 2,
+                "E1011": 1,
+                "E1017": 1,
+                "E1018": 1,
+                "E1012": 1
+              }
+            },
+            "E2": {
+              "tasks": 7,
+              "codes": {
+                "E2004": 3,
+                "E2001": 3,
+                "E2003": 2
+              }
+            },
+            "E3": {
+              "tasks": 2,
+              "codes": {
+                "E3009": 1,
+                "E3007": 1
+              }
+            },
+            "E5": {
+              "tasks": 1,
+              "codes": {
+                "E5003": 1,
+                "E5001": 1
+              }
+            }
+          },
+          "foreign": {
+            "++ / --": 13,
+            "+= / -=": 14,
+            "const / var": 4,
+            "=== absent": 0
+          },
+          "undeclared": {
+            "Math": 3,
+            "state": 3,
+            "const": 2,
+            "width": 2,
+            "height": 2
+          },
+          "coverage": {
+            "compiled": [
+              "directive:JSONABLE",
+              "import:std/json",
+              "literal:BooleanLiteral",
+              "literal:IntLiteral",
+              "literal:StringLiteral",
+              "modifier:field-default",
+              "modifier:field-required",
+              "node:CallExpr",
+              "node:ClassDeclaration",
+              "node:ExportDeclaration",
+              "node:FunctionDeclaration",
+              "node:IdentifierExpr",
+              "node:ImportDeclaration",
+              "node:LiteralExpr",
+              "node:MemberAccessExpr",
+              "node:NamedType",
+              "node:ObjectLiteralExpr",
+              "node:ReturnStatement",
+              "node:VariableDeclaration",
+              "stdlib:json.parse",
+              "stdlib:json.stringify",
+              "type:boolean",
+              "type:int",
+              "type:string",
+              "type:table"
+            ],
+            "parsed": [
+              "binop:ADD",
+              "binop:AND",
+              "binop:DIV",
+              "binop:EQ",
+              "binop:GT",
+              "binop:GTE",
+              "binop:LT",
+              "binop:LTE",
+              "binop:MOD",
+              "binop:MUL",
+              "binop:OR",
+              "binop:SUB",
+              "directive:JSONABLE",
+              "forinit:VarDecl",
+              "import:local",
+              "import:std/console",
+              "import:std/json",
+              "import:std/math",
+              "import:std/string",
+              "literal:BooleanLiteral",
+              "literal:IntLiteral",
+              "literal:NullLiteral",
+              "literal:NumberLiteral",
+              "literal:StringLiteral",
+              "modifier:field-default",
+              "modifier:field-optional",
+              "modifier:field-required",
+              "node:ArrayLiteralExpr",
+              "node:ArrayType",
+              "node:AssignmentExpr",
+              "node:BinaryExpr",
+              "node:CallExpr",
+              "node:ClassDeclaration",
+              "node:ExportDeclaration",
+              "node:ExpressionStatement",
+              "node:ForOfStatement",
+              "node:ForStatement",
+              "node:FunctionDeclaration",
+              "node:HasExpr",
+              "node:IdentifierExpr",
+              "node:IfStatement",
+              "node:ImportDeclaration",
+              "node:IndexExpr",
+              "node:LiteralExpr",
+              "node:MemberAccessExpr",
+              "node:NamedType",
+              "node:NullableType",
+              "node:ObjectLiteralExpr",
+              "node:QualifiedType",
+              "node:ReturnStatement",
+              "node:TemplateLiteralExpr",
+              "node:ThrowStatement",
+              "node:TryStatement",
+              "node:UnaryExpr",
+              "node:VariableDeclaration",
+              "node:WhileStatement",
+              "stdlib:console.log",
+              "stdlib:json.parse",
+              "stdlib:json.stringify",
+              "stdlib:math.ceil",
+              "stdlib:math.floor",
+              "stdlib:math.sqrt",
+              "stdlib:string.split",
+              "stdlib:string.substring",
+              "stdlib:string.trim",
+              "type:boolean",
+              "type:bytes",
+              "type:int",
+              "type:null",
+              "type:number",
+              "type:string",
+              "type:table",
+              "unop:NEG",
+              "unop:NOT"
+            ],
+            "missed": {
+              "binop": [
+                "ADD",
+                "AND",
+                "DIV",
+                "EQ",
+                "GT",
+                "GTE",
+                "LT",
+                "LTE",
+                "MOD",
+                "MUL",
+                "NEQ",
+                "OR",
+                "POW",
+                "SUB"
+              ],
+              "structure": [
+                "AssignExpr",
+                "VarDecl"
+              ],
+              "import": [
+                "local",
+                "std/console",
+                "std/math",
+                "std/string",
+                "std/table",
+                "std/time"
+              ],
+              "literal": [
+                "NullLiteral",
+                "NumberLiteral"
+              ],
+              "modifier": [
+                "async",
+                "field-optional"
+              ],
+              "node": [
+                "ArrayLiteralExpr",
+                "ArrayType",
+                "AssignmentExpr",
+                "AwaitExpression",
+                "BinaryExpr",
+                "BreakStatement",
+                "ContinueStatement",
+                "DeleteStatement",
+                "ExpressionStatement",
+                "ForOfStatement",
+                "ForStatement",
+                "FunctionExpr",
+                "FunctionType",
+                "HasExpr",
+                "IfStatement",
+                "IndexExpr",
+                "NullableType",
+                "QualifiedType",
+                "TemplateLiteralExpr",
+                "ThrowStatement",
+                "TryStatement",
+                "UnaryExpr",
+                "WhileStatement"
+              ],
+              "stdlib": [
+                "console.error",
+                "console.log",
+                "math.absInt",
+                "math.absNumber",
+                "math.ceil",
+                "math.floor",
+                "math.maxInt",
+                "math.minInt",
+                "math.sqrt",
+                "string.contains",
+                "string.endsWith",
+                "string.length",
+                "string.replace",
+                "string.split",
+                "string.startsWith",
+                "string.substring",
+                "string.trim",
+                "table.keys",
+                "time.nowMillis"
+              ],
+              "type": [
+                "Error",
+                "bytes",
+                "null",
+                "number"
+              ],
+              "unop": [
+                "NEG",
+                "NOT"
+              ]
+            }
+          },
+          "cost": {
+            "n": 34,
+            "prompt_tokens_mean": 1485.9705882352941,
+            "output_tokens_mean": 304.7647058823529,
+            "output_tokens_total": 10362,
+            "generation_ms_p50": 11039.074,
+            "generation_ms_p95": 36150.536,
+            "generation_ms_max": 45779.563,
+            "aggregate_tokens_per_second": 20.43692174280199,
+            "server_ms_total": 907472.9429999999,
+            "server_ms_per_compiled": 907472.9429999999,
+            "server_ms_per_pass": 907472.9429999999,
+            "passes_per_server_minute": 0.0661176737695859,
+            "atoms_reproduced": 25,
+            "server_ms_per_atom": 36298.91772,
+            "hit_token_limit": 0,
+            "argmax_rejection_rate": 0.0
+          },
+          "per_task": {
+            "bank_account": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1037"
+              ],
+              "tokens": 286,
+              "generation_ms": 13448.347,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "binary_search": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1037"
+              ],
+              "tokens": 615,
+              "generation_ms": 28488.599,
+              "hit_cap": false,
+              "echoes_example": true,
+              "failed_check": null
+            },
+            "byte_checksum": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1037",
+                "E2003"
+              ],
+              "tokens": 613,
+              "generation_ms": 36150.536,
+              "hit_cap": false,
+              "echoes_example": true,
+              "failed_check": null
+            },
+            "chain_list": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1013",
+                "E1037",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 349,
+              "generation_ms": 14177.584,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "circle_geometry": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2004"
+              ],
+              "tokens": 126,
+              "generation_ms": 4936.285,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "config_lookup": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1013",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 190,
+              "generation_ms": 7353.745,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "counter_factory": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1011",
+                "E1037",
+                "E1041"
+              ],
+              "tokens": 461,
+              "generation_ms": 18617.009,
+              "hit_cap": false,
+              "echoes_example": true,
+              "failed_check": null
+            },
+            "dice_lcg": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1037"
+              ],
+              "tokens": 190,
+              "generation_ms": 7538.508,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "event_filter": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1010",
+                "E1013",
+                "E1037",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 206,
+              "generation_ms": 8270.176,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "fetch_pipeline": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1005",
+                "E1012",
+                "E1015",
+                "E1017",
+                "E1018",
+                "E1037",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 183,
+              "generation_ms": 7186.565,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "grade_book": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1005",
+                "E1013",
+                "E1037",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 292,
+              "generation_ms": 11636.584,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "histogram": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1013",
+                "E1037",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 681,
+              "generation_ms": 30271.744,
+              "hit_cap": false,
+              "echoes_example": true,
+              "failed_check": null
+            },
+            "interval_merge": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1013",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 191,
+              "generation_ms": 8129.059,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "inventory": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1013",
+                "E1037",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 261,
+              "generation_ms": 10330.462,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "kv_cache": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1037"
+              ],
+              "tokens": 207,
+              "generation_ms": 8090.411,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "matrix_ops": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1037"
+              ],
+              "tokens": 442,
+              "generation_ms": 17766.592,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "order_total": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1013",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 172,
+              "generation_ms": 7419.488,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "packet_buffer": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2003"
+              ],
+              "tokens": 109,
+              "generation_ms": 4229.597,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "path_tools": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2004",
+                "E3009",
+                "E5001",
+                "E5003"
+              ],
+              "tokens": 143,
+              "generation_ms": 5625.566,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "polynomial": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1006",
+                "E1007",
+                "E1008",
+                "E1010",
+                "E1015",
+                "E1037",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 319,
+              "generation_ms": 15875.975,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "profile_json": {
+              "rung": 5,
+              "rung_label": "passes",
+              "diagnostics": [],
+              "tokens": 104,
+              "generation_ms": 5239.702,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "queue_ring": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1006",
+                "E1007",
+                "E1008",
+                "E1037",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 214,
+              "generation_ms": 10733.061,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "request_timer": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1013",
+                "E1037",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 194,
+              "generation_ms": 9714.199,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "rle_codec": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1013",
+                "E1037",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 587,
+              "generation_ms": 31032.157,
+              "hit_cap": false,
+              "echoes_example": true,
+              "failed_check": null
+            },
+            "sample_stats": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1037"
+              ],
+              "tokens": 327,
+              "generation_ms": 19539.378,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "shape_area": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2001"
+              ],
+              "tokens": 161,
+              "generation_ms": 7841.542,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "signup_validation": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E3007"
+              ],
+              "tokens": 228,
+              "generation_ms": 11039.074,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "sorting_kit": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2001"
+              ],
+              "tokens": 653,
+              "generation_ms": 45779.563,
+              "hit_cap": false,
+              "echoes_example": true,
+              "failed_check": null
+            },
+            "status_report": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1006",
+                "E1007",
+                "E1008",
+                "E1010",
+                "E1037",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 216,
+              "generation_ms": 13310.339,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "temperature_log": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1013",
+                "E1037",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 265,
+              "generation_ms": 13135.078,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "text_wrap": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1013",
+                "E1037",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 540,
+              "generation_ms": 28462.397,
+              "hit_cap": false,
+              "echoes_example": true,
+              "failed_check": null
+            },
+            "tic_tac_toe": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1010",
+                "E1037"
+              ],
+              "tokens": 422,
+              "generation_ms": 22821.575,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "traffic_light": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2001",
+                "E2004"
+              ],
+              "tokens": 307,
+              "generation_ms": 17165.057,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "word_tools": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1006",
+                "E1007",
+                "E1008",
+                "E1010",
+                "E1037",
+                "E1041",
+                "E1049"
+              ],
+              "tokens": 108,
+              "generation_ms": 5667.566,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            }
+          }
+        },
+        "constrained": {
+          "n": 34,
+          "no_fence": 34,
+          "grammar_valid": 28,
+          "grammar_valid_normalized": 28,
+          "syntax": 28,
+          "compiles": 6,
+          "interface": 6,
+          "runs": 5,
+          "passes": 2,
+          "hit_cap": 6,
+          "echoes_example": [
+            "binary_search",
+            "byte_checksum",
+            "counter_factory",
+            "histogram",
+            "rle_codec",
+            "sorting_kit",
+            "text_wrap"
+          ],
+          "diagnostics": {
+            "E2001": 10,
+            "E2004": 7,
+            "E3003": 6,
+            "E1006": 5,
+            "E3007": 3,
+            "E3009": 2,
+            "E2003": 2,
+            "E1037": 2,
+            "E3001": 2,
+            "E5003": 2,
+            "E3006": 2,
+            "E3015": 2,
+            "E3004": 1,
+            "E3018": 1,
+            "E1008": 1,
+            "E5001": 1,
+            "E3010": 1,
+            "E1003": 1,
+            "E4007": 1
+          },
+          "layers": {
+            "E1": {
+              "tasks": 6,
+              "codes": {
+                "E1006": 5,
+                "E1037": 2,
+                "E1008": 1,
+                "E1003": 1
+              }
+            },
+            "E2": {
+              "tasks": 17,
+              "codes": {
+                "E2001": 10,
+                "E2004": 7,
+                "E2003": 2
+              }
+            },
+            "E3": {
+              "tasks": 13,
+              "codes": {
+                "E3003": 6,
+                "E3007": 3,
+                "E3009": 2,
+                "E3001": 2,
+                "E3006": 2,
+                "E3015": 2,
+                "E3004": 1,
+                "E3018": 1,
+                "E3010": 1
+              }
+            },
+            "E4": {
+              "tasks": 1,
+              "codes": {
+                "E4007": 1
+              }
+            },
+            "E5": {
+              "tasks": 2,
+              "codes": {
+                "E5003": 2,
+                "E5001": 1
+              }
+            }
+          },
+          "foreign": {
+            "++ / --": 2,
+            "+= / -=": 0,
+            "const / var": 0,
+            "=== absent": 0
+          },
+          "undeclared": {
+            "Math": 15,
+            "event": 12,
+            "prevEvent": 2,
+            "undefined": 2,
+            "counts": 1,
+            "item": 1,
+            "console": 1
+          },
+          "coverage": {
+            "compiled": [
+              "binop:ADD",
+              "binop:DIV",
+              "binop:EQ",
+              "binop:GT",
+              "binop:LT",
+              "binop:LTE",
+              "binop:MOD",
+              "binop:MUL",
+              "binop:OR",
+              "binop:SUB",
+              "directive:JSONABLE",
+              "forinit:VarDecl",
+              "import:std/console",
+              "import:std/json",
+              "import:std/math",
+              "import:std/string",
+              "import:std/time",
+              "literal:BooleanLiteral",
+              "literal:IntLiteral",
+              "literal:NullLiteral",
+              "literal:StringLiteral",
+              "modifier:field-default",
+              "modifier:field-optional",
+              "modifier:field-required",
+              "node:ArrayLiteralExpr",
+              "node:ArrayType",
+              "node:AssignmentExpr",
+              "node:BinaryExpr",
+              "node:CallExpr",
+              "node:ClassDeclaration",
+              "node:ExportDeclaration",
+              "node:ExpressionStatement",
+              "node:ForOfStatement",
+              "node:ForStatement",
+              "node:FunctionDeclaration",
+              "node:FunctionExpr",
+              "node:FunctionType",
+              "node:HasExpr",
+              "node:IdentifierExpr",
+              "node:IfStatement",
+              "node:ImportDeclaration",
+              "node:IndexExpr",
+              "node:LiteralExpr",
+              "node:MemberAccessExpr",
+              "node:NamedType",
+              "node:NullableType",
+              "node:ObjectLiteralExpr",
+              "node:ReturnStatement",
+              "node:TemplateLiteralExpr",
+              "node:ThrowStatement",
+              "node:TryStatement",
+              "node:VariableDeclaration",
+              "node:WhileStatement",
+              "stdlib:console.error",
+              "stdlib:console.log",
+              "stdlib:json.parse",
+              "stdlib:json.stringify",
+              "stdlib:math.absInt",
+              "stdlib:string.trim",
+              "stdlib:time.nowMillis",
+              "type:boolean",
+              "type:int",
+              "type:null",
+              "type:string",
+              "type:table"
+            ],
+            "parsed": [
+              "binop:ADD",
+              "binop:AND",
+              "binop:DIV",
+              "binop:EQ",
+              "binop:GT",
+              "binop:GTE",
+              "binop:LT",
+              "binop:LTE",
+              "binop:MOD",
+              "binop:MUL",
+              "binop:NEQ",
+              "binop:OR",
+              "binop:SUB",
+              "directive:JSONABLE",
+              "forinit:VarDecl",
+              "import:local",
+              "import:std/console",
+              "import:std/json",
+              "import:std/math",
+              "import:std/string",
+              "import:std/table",
+              "import:std/time",
+              "literal:BooleanLiteral",
+              "literal:IntLiteral",
+              "literal:NullLiteral",
+              "literal:NumberLiteral",
+              "literal:StringLiteral",
+              "modifier:async",
+              "modifier:field-default",
+              "modifier:field-optional",
+              "modifier:field-required",
+              "node:ArrayLiteralExpr",
+              "node:ArrayType",
+              "node:AssignmentExpr",
+              "node:AwaitExpression",
+              "node:BinaryExpr",
+              "node:CallExpr",
+              "node:ClassDeclaration",
+              "node:DeleteStatement",
+              "node:ExportDeclaration",
+              "node:ExpressionStatement",
+              "node:ForOfStatement",
+              "node:ForStatement",
+              "node:FunctionDeclaration",
+              "node:FunctionExpr",
+              "node:FunctionType",
+              "node:HasExpr",
+              "node:IdentifierExpr",
+              "node:IfStatement",
+              "node:ImportDeclaration",
+              "node:IndexExpr",
+              "node:LiteralExpr",
+              "node:MemberAccessExpr",
+              "node:NamedType",
+              "node:NullableType",
+              "node:ObjectLiteralExpr",
+              "node:QualifiedType",
+              "node:ReturnStatement",
+              "node:TemplateLiteralExpr",
+              "node:ThrowStatement",
+              "node:TryStatement",
+              "node:UnaryExpr",
+              "node:VariableDeclaration",
+              "node:WhileStatement",
+              "stdlib:console.error",
+              "stdlib:console.log",
+              "stdlib:json.parse",
+              "stdlib:json.stringify",
+              "stdlib:math.absInt",
+              "stdlib:math.ceil",
+              "stdlib:math.floor",
+              "stdlib:math.sqrt",
+              "stdlib:string.replace",
+              "stdlib:string.split",
+              "stdlib:string.substring",
+              "stdlib:string.trim",
+              "stdlib:table.keys",
+              "stdlib:time.nowMillis",
+              "type:boolean",
+              "type:bytes",
+              "type:int",
+              "type:null",
+              "type:number",
+              "type:string",
+              "type:table",
+              "unop:NEG",
+              "unop:NOT"
+            ],
+            "missed": {
+              "binop": [
+                "AND",
+                "GTE",
+                "NEQ",
+                "POW"
+              ],
+              "structure": [
+                "AssignExpr"
+              ],
+              "import": [
+                "local",
+                "std/table"
+              ],
+              "literal": [
+                "NumberLiteral"
+              ],
+              "modifier": [
+                "async"
+              ],
+              "node": [
+                "AwaitExpression",
+                "BreakStatement",
+                "ContinueStatement",
+                "DeleteStatement",
+                "QualifiedType",
+                "UnaryExpr"
+              ],
+              "stdlib": [
+                "math.absNumber",
+                "math.ceil",
+                "math.floor",
+                "math.maxInt",
+                "math.minInt",
+                "math.sqrt",
+                "string.contains",
+                "string.endsWith",
+                "string.length",
+                "string.replace",
+                "string.split",
+                "string.startsWith",
+                "string.substring",
+                "table.keys"
+              ],
+              "type": [
+                "Error",
+                "bytes",
+                "number"
+              ],
+              "unop": [
+                "NEG",
+                "NOT"
+              ]
+            }
+          },
+          "cost": {
+            "n": 34,
+            "prompt_tokens_mean": 1485.9705882352941,
+            "output_tokens_mean": 447.61764705882354,
+            "output_tokens_total": 15219,
+            "generation_ms_p50": 17379.822,
+            "generation_ms_p95": 83493.527,
+            "generation_ms_max": 89859.207,
+            "aggregate_tokens_per_second": 15.487934713133514,
+            "server_ms_total": 1389217.3369999998,
+            "server_ms_per_compiled": 231536.2228333333,
+            "server_ms_per_pass": 694608.6684999999,
+            "passes_per_server_minute": 0.08637957273059861,
+            "atoms_reproduced": 65,
+            "server_ms_per_atom": 21372.574415384614,
+            "hit_token_limit": 6,
+            "argmax_rejection_rate": 0.010847454456915097
+          },
+          "per_task": {
+            "bank_account": {
+              "rung": 4,
+              "rung_label": "runs",
+              "diagnostics": [],
+              "tokens": 300,
+              "generation_ms": 16007.727,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": "test failed: failureCode"
+            },
+            "binary_search": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2001",
+                "E3009"
+              ],
+              "tokens": 620,
+              "generation_ms": 46254.536,
+              "hit_cap": false,
+              "echoes_example": true,
+              "failed_check": null
+            },
+            "byte_checksum": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2003"
+              ],
+              "tokens": 620,
+              "generation_ms": 34406.569,
+              "hit_cap": false,
+              "echoes_example": true,
+              "failed_check": null
+            },
+            "chain_list": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1006",
+                "E1037"
+              ],
+              "tokens": 1024,
+              "generation_ms": 63208.584,
+              "hit_cap": true,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "circle_geometry": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2004",
+                "E3001"
+              ],
+              "tokens": 139,
+              "generation_ms": 5897.235,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "config_lookup": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E3003"
+              ],
+              "tokens": 193,
+              "generation_ms": 8508.127,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "counter_factory": {
+              "rung": 4,
+              "rung_label": "runs",
+              "diagnostics": [],
+              "tokens": 460,
+              "generation_ms": 23036.715,
+              "hit_cap": false,
+              "echoes_example": true,
+              "failed_check": "test failed: makeCounter sequence"
+            },
+            "dice_lcg": {
+              "rung": 5,
+              "rung_label": "passes",
+              "diagnostics": [],
+              "tokens": 204,
+              "generation_ms": 10526.938,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "event_filter": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2001",
+                "E3003"
+              ],
+              "tokens": 206,
+              "generation_ms": 31416.575,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "fetch_pipeline": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E3004"
+              ],
+              "tokens": 262,
+              "generation_ms": 12026.21,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "grade_book": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1006",
+                "E1037"
+              ],
+              "tokens": 1024,
+              "generation_ms": 70138.12,
+              "hit_cap": true,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "histogram": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2001",
+                "E3007",
+                "E3018"
+              ],
+              "tokens": 672,
+              "generation_ms": 40468.97,
+              "hit_cap": false,
+              "echoes_example": true,
+              "failed_check": null
+            },
+            "interval_merge": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2001"
+              ],
+              "tokens": 191,
+              "generation_ms": 11460.084,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "inventory": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2001",
+                "E3003",
+                "E3007"
+              ],
+              "tokens": 343,
+              "generation_ms": 28036.219,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "kv_cache": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2001",
+                "E2004"
+              ],
+              "tokens": 180,
+              "generation_ms": 7794.342,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "matrix_ops": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1006"
+              ],
+              "tokens": 1024,
+              "generation_ms": 44179.375,
+              "hit_cap": true,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "order_total": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E5003"
+              ],
+              "tokens": 173,
+              "generation_ms": 9354.941,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "packet_buffer": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2003"
+              ],
+              "tokens": 105,
+              "generation_ms": 4451.418,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "path_tools": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2004",
+                "E3009"
+              ],
+              "tokens": 168,
+              "generation_ms": 7388.837,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "polynomial": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2001",
+                "E2004",
+                "E3001",
+                "E3006",
+                "E3007"
+              ],
+              "tokens": 383,
+              "generation_ms": 26941.909,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "profile_json": {
+              "rung": 5,
+              "rung_label": "passes",
+              "diagnostics": [],
+              "tokens": 100,
+              "generation_ms": 5264.929,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "queue_ring": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1006",
+                "E1008"
+              ],
+              "tokens": 1024,
+              "generation_ms": 69042.498,
+              "hit_cap": true,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "request_timer": {
+              "rung": 4,
+              "rung_label": "runs",
+              "diagnostics": [],
+              "tokens": 164,
+              "generation_ms": 9414.601,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": "test failed: isSlow"
+            },
+            "rle_codec": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E3003",
+                "E3006",
+                "E3015"
+              ],
+              "tokens": 632,
+              "generation_ms": 38972.27,
+              "hit_cap": false,
+              "echoes_example": true,
+              "failed_check": null
+            },
+            "sample_stats": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E5001",
+                "E5003"
+              ],
+              "tokens": 346,
+              "generation_ms": 23680.643,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "shape_area": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2001"
+              ],
+              "tokens": 196,
+              "generation_ms": 11180.406,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "signup_validation": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2004"
+              ],
+              "tokens": 218,
+              "generation_ms": 15655.601,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "sorting_kit": {
+              "rung": 3,
+              "rung_label": "interface",
+              "diagnostics": [],
+              "tokens": 879,
+              "generation_ms": 54161.835,
+              "hit_cap": false,
+              "echoes_example": true,
+              "failed_check": null
+            },
+            "status_report": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1006"
+              ],
+              "tokens": 1024,
+              "generation_ms": 89859.207,
+              "hit_cap": true,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "temperature_log": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2001",
+                "E3010"
+              ],
+              "tokens": 304,
+              "generation_ms": 17379.822,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "text_wrap": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2001",
+                "E3003",
+                "E3015"
+              ],
+              "tokens": 581,
+              "generation_ms": 38546.452,
+              "hit_cap": false,
+              "echoes_example": true,
+              "failed_check": null
+            },
+            "tic_tac_toe": {
+              "rung": 0,
+              "rung_label": "parse failed",
+              "diagnostics": [
+                "E1003"
+              ],
+              "tokens": 1024,
+              "generation_ms": 83493.527,
+              "hit_cap": true,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "traffic_light": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2004"
+              ],
+              "tokens": 281,
+              "generation_ms": 16105.657,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            },
+            "word_tools": {
+              "rung": 1,
+              "rung_label": "syntax",
+              "diagnostics": [
+                "E2004",
+                "E3003",
+                "E4007"
+              ],
+              "tokens": 155,
+              "generation_ms": 8374.978,
+              "hit_cap": false,
+              "echoes_example": false,
+              "failed_check": null
+            }
+          }
+        }
+      },
+      "paired": {
+        "left": "raw",
+        "right": "constrained",
+        "n": 34,
+        "rungs": {
+          "syntax": {
+            "a": 8,
+            "b": 28,
+            "rescued": [
+              "bank_account",
+              "binary_search",
+              "byte_checksum",
+              "config_lookup",
+              "counter_factory",
+              "dice_lcg",
+              "event_filter",
+              "fetch_pipeline",
+              "histogram",
+              "interval_merge",
+              "inventory",
+              "kv_cache",
+              "order_total",
+              "polynomial",
+              "request_timer",
+              "rle_codec",
+              "sample_stats",
+              "temperature_log",
+              "text_wrap",
+              "word_tools"
+            ],
+            "harmed": []
+          },
+          "compiles": {
+            "a": 1,
+            "b": 6,
+            "rescued": [
+              "bank_account",
+              "counter_factory",
+              "dice_lcg",
+              "request_timer",
+              "sorting_kit"
+            ],
+            "harmed": []
+          },
+          "interface": {
+            "a": 1,
+            "b": 6,
+            "rescued": [
+              "bank_account",
+              "counter_factory",
+              "dice_lcg",
+              "request_timer",
+              "sorting_kit"
+            ],
+            "harmed": []
+          },
+          "runs": {
+            "a": 1,
+            "b": 5,
+            "rescued": [
+              "bank_account",
+              "counter_factory",
+              "dice_lcg",
+              "request_timer"
+            ],
+            "harmed": []
+          },
+          "passes": {
+            "a": 1,
+            "b": 2,
+            "rescued": [
+              "dice_lcg"
+            ],
+            "harmed": []
+          }
+        }
+      }
+    }
+  },
+  "untested": [],
+  "coverage": {
+    "reachable": 99,
+    "universe": 114,
+    "categories": {
+      "binop:ADD": "binop",
+      "binop:AND": "binop",
+      "binop:DIV": "binop",
+      "binop:EQ": "binop",
+      "binop:GT": "binop",
+      "binop:GTE": "binop",
+      "binop:LT": "binop",
+      "binop:LTE": "binop",
+      "binop:MOD": "binop",
+      "binop:MUL": "binop",
+      "binop:NEQ": "binop",
+      "binop:OR": "binop",
+      "binop:POW": "binop",
+      "binop:SUB": "binop",
+      "directive:JSONABLE": "directive",
+      "forinit:AssignExpr": "structure",
+      "forinit:VarDecl": "structure",
+      "import:local": "import",
+      "import:std/console": "import",
+      "import:std/json": "import",
+      "import:std/math": "import",
+      "import:std/string": "import",
+      "import:std/table": "import",
+      "import:std/time": "import",
+      "literal:BooleanLiteral": "literal",
+      "literal:IntLiteral": "literal",
+      "literal:NullLiteral": "literal",
+      "literal:NumberLiteral": "literal",
+      "literal:StringLiteral": "literal",
+      "modifier:async": "modifier",
+      "modifier:field-default": "modifier",
+      "modifier:field-optional": "modifier",
+      "modifier:field-required": "modifier",
+      "node:ArrayLiteralExpr": "node",
+      "node:ArrayType": "node",
+      "node:AssignmentExpr": "node",
+      "node:AwaitExpression": "node",
+      "node:BinaryExpr": "node",
+      "node:BreakStatement": "node",
+      "node:CallExpr": "node",
+      "node:ClassDeclaration": "node",
+      "node:ContinueStatement": "node",
+      "node:DeleteStatement": "node",
+      "node:ExportDeclaration": "node",
+      "node:ExpressionStatement": "node",
+      "node:ForOfStatement": "node",
+      "node:ForStatement": "node",
+      "node:FunctionDeclaration": "node",
+      "node:FunctionExpr": "node",
+      "node:FunctionType": "node",
+      "node:HasExpr": "node",
+      "node:IdentifierExpr": "node",
+      "node:IfStatement": "node",
+      "node:ImportDeclaration": "node",
+      "node:IndexExpr": "node",
+      "node:LiteralExpr": "node",
+      "node:MemberAccessExpr": "node",
+      "node:NamedType": "node",
+      "node:NullableType": "node",
+      "node:ObjectLiteralExpr": "node",
+      "node:QualifiedType": "node",
+      "node:ReturnStatement": "node",
+      "node:TemplateLiteralExpr": "node",
+      "node:ThrowStatement": "node",
+      "node:TryStatement": "node",
+      "node:UnaryExpr": "node",
+      "node:VariableDeclaration": "node",
+      "node:WhileStatement": "node",
+      "stdlib:console.error": "stdlib",
+      "stdlib:console.log": "stdlib",
+      "stdlib:json.parse": "stdlib",
+      "stdlib:json.stringify": "stdlib",
+      "stdlib:math.absInt": "stdlib",
+      "stdlib:math.absNumber": "stdlib",
+      "stdlib:math.ceil": "stdlib",
+      "stdlib:math.floor": "stdlib",
+      "stdlib:math.maxInt": "stdlib",
+      "stdlib:math.minInt": "stdlib",
+      "stdlib:math.sqrt": "stdlib",
+      "stdlib:string.contains": "stdlib",
+      "stdlib:string.endsWith": "stdlib",
+      "stdlib:string.length": "stdlib",
+      "stdlib:string.replace": "stdlib",
+      "stdlib:string.split": "stdlib",
+      "stdlib:string.startsWith": "stdlib",
+      "stdlib:string.substring": "stdlib",
+      "stdlib:string.trim": "stdlib",
+      "stdlib:table.keys": "stdlib",
+      "stdlib:time.nowMillis": "stdlib",
+      "type:Error": "type",
+      "type:boolean": "type",
+      "type:bytes": "type",
+      "type:int": "type",
+      "type:null": "type",
+      "type:number": "type",
+      "type:string": "type",
+      "type:table": "type",
+      "unop:NEG": "unop",
+      "unop:NOT": "unop"
+    }
+  },
+  "profiles": {
+    "raw": {
+      "n": 34,
+      "no_fence": 0,
+      "grammar_valid": 0,
+      "grammar_valid_normalized": 7,
+      "syntax": 8,
+      "compiles": 1,
+      "interface": 1,
+      "runs": 1,
+      "passes": 1,
+      "hit_cap": 0,
+      "echoes_example": [
+        "binary_search",
+        "byte_checksum",
+        "counter_factory",
+        "histogram",
+        "rle_codec",
+        "sorting_kit",
+        "text_wrap"
+      ],
+      "diagnostics": {
+        "E1037": 23,
+        "E1041": 18,
+        "E1049": 17,
+        "E1013": 12,
+        "E1010": 5,
+        "E1006": 4,
+        "E1007": 4,
+        "E1008": 4,
+        "E2004": 3,
+        "E2001": 3,
+        "E2003": 2,
+        "E1005": 2,
+        "E1015": 2,
+        "E1011": 1,
+        "E1012": 1,
+        "E1017": 1,
+        "E1018": 1,
+        "E3009": 1,
+        "E5001": 1,
+        "E5003": 1,
+        "E3007": 1
+      },
+      "layers": {
+        "E1": {
+          "tasks": 26,
+          "codes": {
+            "E1037": 23,
+            "E1041": 18,
+            "E1049": 17,
+            "E1013": 12,
+            "E1010": 5,
+            "E1006": 4,
+            "E1008": 4,
+            "E1007": 4,
+            "E1005": 2,
+            "E1015": 2,
+            "E1011": 1,
+            "E1017": 1,
+            "E1018": 1,
+            "E1012": 1
+          }
+        },
+        "E2": {
+          "tasks": 7,
+          "codes": {
+            "E2004": 3,
+            "E2001": 3,
+            "E2003": 2
+          }
+        },
+        "E3": {
+          "tasks": 2,
+          "codes": {
+            "E3009": 1,
+            "E3007": 1
+          }
+        },
+        "E5": {
+          "tasks": 1,
+          "codes": {
+            "E5003": 1,
+            "E5001": 1
+          }
+        }
+      },
+      "foreign": {
+        "++ / --": 13,
+        "+= / -=": 14,
+        "const / var": 4,
+        "=== absent": 0
+      },
+      "undeclared": {
+        "Math": 3,
+        "state": 3,
+        "const": 2,
+        "width": 2,
+        "height": 2
+      },
+      "coverage": {
+        "compiled": [
+          "directive:JSONABLE",
+          "import:std/json",
+          "literal:BooleanLiteral",
+          "literal:IntLiteral",
+          "literal:StringLiteral",
+          "modifier:field-default",
+          "modifier:field-required",
+          "node:CallExpr",
+          "node:ClassDeclaration",
+          "node:ExportDeclaration",
+          "node:FunctionDeclaration",
+          "node:IdentifierExpr",
+          "node:ImportDeclaration",
+          "node:LiteralExpr",
+          "node:MemberAccessExpr",
+          "node:NamedType",
+          "node:ObjectLiteralExpr",
+          "node:ReturnStatement",
+          "node:VariableDeclaration",
+          "stdlib:json.parse",
+          "stdlib:json.stringify",
+          "type:boolean",
+          "type:int",
+          "type:string",
+          "type:table"
+        ],
+        "parsed": [
+          "binop:ADD",
+          "binop:AND",
+          "binop:DIV",
+          "binop:EQ",
+          "binop:GT",
+          "binop:GTE",
+          "binop:LT",
+          "binop:LTE",
+          "binop:MOD",
+          "binop:MUL",
+          "binop:OR",
+          "binop:SUB",
+          "directive:JSONABLE",
+          "forinit:VarDecl",
+          "import:local",
+          "import:std/console",
+          "import:std/json",
+          "import:std/math",
+          "import:std/string",
+          "literal:BooleanLiteral",
+          "literal:IntLiteral",
+          "literal:NullLiteral",
+          "literal:NumberLiteral",
+          "literal:StringLiteral",
+          "modifier:field-default",
+          "modifier:field-optional",
+          "modifier:field-required",
+          "node:ArrayLiteralExpr",
+          "node:ArrayType",
+          "node:AssignmentExpr",
+          "node:BinaryExpr",
+          "node:CallExpr",
+          "node:ClassDeclaration",
+          "node:ExportDeclaration",
+          "node:ExpressionStatement",
+          "node:ForOfStatement",
+          "node:ForStatement",
+          "node:FunctionDeclaration",
+          "node:HasExpr",
+          "node:IdentifierExpr",
+          "node:IfStatement",
+          "node:ImportDeclaration",
+          "node:IndexExpr",
+          "node:LiteralExpr",
+          "node:MemberAccessExpr",
+          "node:NamedType",
+          "node:NullableType",
+          "node:ObjectLiteralExpr",
+          "node:QualifiedType",
+          "node:ReturnStatement",
+          "node:TemplateLiteralExpr",
+          "node:ThrowStatement",
+          "node:TryStatement",
+          "node:UnaryExpr",
+          "node:VariableDeclaration",
+          "node:WhileStatement",
+          "stdlib:console.log",
+          "stdlib:json.parse",
+          "stdlib:json.stringify",
+          "stdlib:math.ceil",
+          "stdlib:math.floor",
+          "stdlib:math.sqrt",
+          "stdlib:string.split",
+          "stdlib:string.substring",
+          "stdlib:string.trim",
+          "type:boolean",
+          "type:bytes",
+          "type:int",
+          "type:null",
+          "type:number",
+          "type:string",
+          "type:table",
+          "unop:NEG",
+          "unop:NOT"
+        ],
+        "missed": {
+          "binop": [
+            "ADD",
+            "AND",
+            "DIV",
+            "EQ",
+            "GT",
+            "GTE",
+            "LT",
+            "LTE",
+            "MOD",
+            "MUL",
+            "NEQ",
+            "OR",
+            "POW",
+            "SUB"
+          ],
+          "structure": [
+            "AssignExpr",
+            "VarDecl"
+          ],
+          "import": [
+            "local",
+            "std/console",
+            "std/math",
+            "std/string",
+            "std/table",
+            "std/time"
+          ],
+          "literal": [
+            "NullLiteral",
+            "NumberLiteral"
+          ],
+          "modifier": [
+            "async",
+            "field-optional"
+          ],
+          "node": [
+            "ArrayLiteralExpr",
+            "ArrayType",
+            "AssignmentExpr",
+            "AwaitExpression",
+            "BinaryExpr",
+            "BreakStatement",
+            "ContinueStatement",
+            "DeleteStatement",
+            "ExpressionStatement",
+            "ForOfStatement",
+            "ForStatement",
+            "FunctionExpr",
+            "FunctionType",
+            "HasExpr",
+            "IfStatement",
+            "IndexExpr",
+            "NullableType",
+            "QualifiedType",
+            "TemplateLiteralExpr",
+            "ThrowStatement",
+            "TryStatement",
+            "UnaryExpr",
+            "WhileStatement"
+          ],
+          "stdlib": [
+            "console.error",
+            "console.log",
+            "math.absInt",
+            "math.absNumber",
+            "math.ceil",
+            "math.floor",
+            "math.maxInt",
+            "math.minInt",
+            "math.sqrt",
+            "string.contains",
+            "string.endsWith",
+            "string.length",
+            "string.replace",
+            "string.split",
+            "string.startsWith",
+            "string.substring",
+            "string.trim",
+            "table.keys",
+            "time.nowMillis"
+          ],
+          "type": [
+            "Error",
+            "bytes",
+            "null",
+            "number"
+          ],
+          "unop": [
+            "NEG",
+            "NOT"
+          ]
+        }
+      },
+      "cost": {
+        "n": 34,
+        "prompt_tokens_mean": 1485.9705882352941,
+        "output_tokens_mean": 304.7647058823529,
+        "output_tokens_total": 10362,
+        "generation_ms_p50": 11039.074,
+        "generation_ms_p95": 36150.536,
+        "generation_ms_max": 45779.563,
+        "aggregate_tokens_per_second": 20.43692174280199,
+        "server_ms_total": 907472.9429999999,
+        "server_ms_per_compiled": 907472.9429999999,
+        "server_ms_per_pass": 907472.9429999999,
+        "passes_per_server_minute": 0.0661176737695859,
+        "atoms_reproduced": 25,
+        "server_ms_per_atom": 36298.91772,
+        "hit_token_limit": 0,
+        "argmax_rejection_rate": 0.0
+      },
+      "per_task": {
+        "bank_account": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1037"
+          ],
+          "tokens": 286,
+          "generation_ms": 13448.347,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "binary_search": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1037"
+          ],
+          "tokens": 615,
+          "generation_ms": 28488.599,
+          "hit_cap": false,
+          "echoes_example": true,
+          "failed_check": null
+        },
+        "byte_checksum": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1037",
+            "E2003"
+          ],
+          "tokens": 613,
+          "generation_ms": 36150.536,
+          "hit_cap": false,
+          "echoes_example": true,
+          "failed_check": null
+        },
+        "chain_list": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1013",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 349,
+          "generation_ms": 14177.584,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "circle_geometry": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2004"
+          ],
+          "tokens": 126,
+          "generation_ms": 4936.285,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "config_lookup": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1013",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 190,
+          "generation_ms": 7353.745,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "counter_factory": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1011",
+            "E1037",
+            "E1041"
+          ],
+          "tokens": 461,
+          "generation_ms": 18617.009,
+          "hit_cap": false,
+          "echoes_example": true,
+          "failed_check": null
+        },
+        "dice_lcg": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1037"
+          ],
+          "tokens": 190,
+          "generation_ms": 7538.508,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "event_filter": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1010",
+            "E1013",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 206,
+          "generation_ms": 8270.176,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "fetch_pipeline": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1005",
+            "E1012",
+            "E1015",
+            "E1017",
+            "E1018",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 183,
+          "generation_ms": 7186.565,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "grade_book": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1005",
+            "E1013",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 292,
+          "generation_ms": 11636.584,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "histogram": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1013",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 681,
+          "generation_ms": 30271.744,
+          "hit_cap": false,
+          "echoes_example": true,
+          "failed_check": null
+        },
+        "interval_merge": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1013",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 191,
+          "generation_ms": 8129.059,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "inventory": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1013",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 261,
+          "generation_ms": 10330.462,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "kv_cache": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1037"
+          ],
+          "tokens": 207,
+          "generation_ms": 8090.411,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "matrix_ops": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1037"
+          ],
+          "tokens": 442,
+          "generation_ms": 17766.592,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "order_total": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1013",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 172,
+          "generation_ms": 7419.488,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "packet_buffer": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2003"
+          ],
+          "tokens": 109,
+          "generation_ms": 4229.597,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "path_tools": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2004",
+            "E3009",
+            "E5001",
+            "E5003"
+          ],
+          "tokens": 143,
+          "generation_ms": 5625.566,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "polynomial": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1006",
+            "E1007",
+            "E1008",
+            "E1010",
+            "E1015",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 319,
+          "generation_ms": 15875.975,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "profile_json": {
+          "rung": 5,
+          "rung_label": "passes",
+          "diagnostics": [],
+          "tokens": 104,
+          "generation_ms": 5239.702,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "queue_ring": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1006",
+            "E1007",
+            "E1008",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 214,
+          "generation_ms": 10733.061,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "request_timer": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1013",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 194,
+          "generation_ms": 9714.199,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "rle_codec": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1013",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 587,
+          "generation_ms": 31032.157,
+          "hit_cap": false,
+          "echoes_example": true,
+          "failed_check": null
+        },
+        "sample_stats": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1037"
+          ],
+          "tokens": 327,
+          "generation_ms": 19539.378,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "shape_area": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001"
+          ],
+          "tokens": 161,
+          "generation_ms": 7841.542,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "signup_validation": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E3007"
+          ],
+          "tokens": 228,
+          "generation_ms": 11039.074,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "sorting_kit": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001"
+          ],
+          "tokens": 653,
+          "generation_ms": 45779.563,
+          "hit_cap": false,
+          "echoes_example": true,
+          "failed_check": null
+        },
+        "status_report": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1006",
+            "E1007",
+            "E1008",
+            "E1010",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 216,
+          "generation_ms": 13310.339,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "temperature_log": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1013",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 265,
+          "generation_ms": 13135.078,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "text_wrap": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1013",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 540,
+          "generation_ms": 28462.397,
+          "hit_cap": false,
+          "echoes_example": true,
+          "failed_check": null
+        },
+        "tic_tac_toe": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1010",
+            "E1037"
+          ],
+          "tokens": 422,
+          "generation_ms": 22821.575,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "traffic_light": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001",
+            "E2004"
+          ],
+          "tokens": 307,
+          "generation_ms": 17165.057,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "word_tools": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1006",
+            "E1007",
+            "E1008",
+            "E1010",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 108,
+          "generation_ms": 5667.566,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        }
+      }
+    },
+    "constrained": {
+      "n": 34,
+      "no_fence": 34,
+      "grammar_valid": 28,
+      "grammar_valid_normalized": 28,
+      "syntax": 28,
+      "compiles": 6,
+      "interface": 6,
+      "runs": 5,
+      "passes": 2,
+      "hit_cap": 6,
+      "echoes_example": [
+        "binary_search",
+        "byte_checksum",
+        "counter_factory",
+        "histogram",
+        "rle_codec",
+        "sorting_kit",
+        "text_wrap"
+      ],
+      "diagnostics": {
+        "E2001": 10,
+        "E2004": 7,
+        "E3003": 6,
+        "E1006": 5,
+        "E3007": 3,
+        "E3009": 2,
+        "E2003": 2,
+        "E1037": 2,
+        "E3001": 2,
+        "E5003": 2,
+        "E3006": 2,
+        "E3015": 2,
+        "E3004": 1,
+        "E3018": 1,
+        "E1008": 1,
+        "E5001": 1,
+        "E3010": 1,
+        "E1003": 1,
+        "E4007": 1
+      },
+      "layers": {
+        "E1": {
+          "tasks": 6,
+          "codes": {
+            "E1006": 5,
+            "E1037": 2,
+            "E1008": 1,
+            "E1003": 1
+          }
+        },
+        "E2": {
+          "tasks": 17,
+          "codes": {
+            "E2001": 10,
+            "E2004": 7,
+            "E2003": 2
+          }
+        },
+        "E3": {
+          "tasks": 13,
+          "codes": {
+            "E3003": 6,
+            "E3007": 3,
+            "E3009": 2,
+            "E3001": 2,
+            "E3006": 2,
+            "E3015": 2,
+            "E3004": 1,
+            "E3018": 1,
+            "E3010": 1
+          }
+        },
+        "E4": {
+          "tasks": 1,
+          "codes": {
+            "E4007": 1
+          }
+        },
+        "E5": {
+          "tasks": 2,
+          "codes": {
+            "E5003": 2,
+            "E5001": 1
+          }
+        }
+      },
+      "foreign": {
+        "++ / --": 2,
+        "+= / -=": 0,
+        "const / var": 0,
+        "=== absent": 0
+      },
+      "undeclared": {
+        "Math": 15,
+        "event": 12,
+        "prevEvent": 2,
+        "undefined": 2,
+        "counts": 1,
+        "item": 1,
+        "console": 1
+      },
+      "coverage": {
+        "compiled": [
+          "binop:ADD",
+          "binop:DIV",
+          "binop:EQ",
+          "binop:GT",
+          "binop:LT",
+          "binop:LTE",
+          "binop:MOD",
+          "binop:MUL",
+          "binop:OR",
+          "binop:SUB",
+          "directive:JSONABLE",
+          "forinit:VarDecl",
+          "import:std/console",
+          "import:std/json",
+          "import:std/math",
+          "import:std/string",
+          "import:std/time",
+          "literal:BooleanLiteral",
+          "literal:IntLiteral",
+          "literal:NullLiteral",
+          "literal:StringLiteral",
+          "modifier:field-default",
+          "modifier:field-optional",
+          "modifier:field-required",
+          "node:ArrayLiteralExpr",
+          "node:ArrayType",
+          "node:AssignmentExpr",
+          "node:BinaryExpr",
+          "node:CallExpr",
+          "node:ClassDeclaration",
+          "node:ExportDeclaration",
+          "node:ExpressionStatement",
+          "node:ForOfStatement",
+          "node:ForStatement",
+          "node:FunctionDeclaration",
+          "node:FunctionExpr",
+          "node:FunctionType",
+          "node:HasExpr",
+          "node:IdentifierExpr",
+          "node:IfStatement",
+          "node:ImportDeclaration",
+          "node:IndexExpr",
+          "node:LiteralExpr",
+          "node:MemberAccessExpr",
+          "node:NamedType",
+          "node:NullableType",
+          "node:ObjectLiteralExpr",
+          "node:ReturnStatement",
+          "node:TemplateLiteralExpr",
+          "node:ThrowStatement",
+          "node:TryStatement",
+          "node:VariableDeclaration",
+          "node:WhileStatement",
+          "stdlib:console.error",
+          "stdlib:console.log",
+          "stdlib:json.parse",
+          "stdlib:json.stringify",
+          "stdlib:math.absInt",
+          "stdlib:string.trim",
+          "stdlib:time.nowMillis",
+          "type:boolean",
+          "type:int",
+          "type:null",
+          "type:string",
+          "type:table"
+        ],
+        "parsed": [
+          "binop:ADD",
+          "binop:AND",
+          "binop:DIV",
+          "binop:EQ",
+          "binop:GT",
+          "binop:GTE",
+          "binop:LT",
+          "binop:LTE",
+          "binop:MOD",
+          "binop:MUL",
+          "binop:NEQ",
+          "binop:OR",
+          "binop:SUB",
+          "directive:JSONABLE",
+          "forinit:VarDecl",
+          "import:local",
+          "import:std/console",
+          "import:std/json",
+          "import:std/math",
+          "import:std/string",
+          "import:std/table",
+          "import:std/time",
+          "literal:BooleanLiteral",
+          "literal:IntLiteral",
+          "literal:NullLiteral",
+          "literal:NumberLiteral",
+          "literal:StringLiteral",
+          "modifier:async",
+          "modifier:field-default",
+          "modifier:field-optional",
+          "modifier:field-required",
+          "node:ArrayLiteralExpr",
+          "node:ArrayType",
+          "node:AssignmentExpr",
+          "node:AwaitExpression",
+          "node:BinaryExpr",
+          "node:CallExpr",
+          "node:ClassDeclaration",
+          "node:DeleteStatement",
+          "node:ExportDeclaration",
+          "node:ExpressionStatement",
+          "node:ForOfStatement",
+          "node:ForStatement",
+          "node:FunctionDeclaration",
+          "node:FunctionExpr",
+          "node:FunctionType",
+          "node:HasExpr",
+          "node:IdentifierExpr",
+          "node:IfStatement",
+          "node:ImportDeclaration",
+          "node:IndexExpr",
+          "node:LiteralExpr",
+          "node:MemberAccessExpr",
+          "node:NamedType",
+          "node:NullableType",
+          "node:ObjectLiteralExpr",
+          "node:QualifiedType",
+          "node:ReturnStatement",
+          "node:TemplateLiteralExpr",
+          "node:ThrowStatement",
+          "node:TryStatement",
+          "node:UnaryExpr",
+          "node:VariableDeclaration",
+          "node:WhileStatement",
+          "stdlib:console.error",
+          "stdlib:console.log",
+          "stdlib:json.parse",
+          "stdlib:json.stringify",
+          "stdlib:math.absInt",
+          "stdlib:math.ceil",
+          "stdlib:math.floor",
+          "stdlib:math.sqrt",
+          "stdlib:string.replace",
+          "stdlib:string.split",
+          "stdlib:string.substring",
+          "stdlib:string.trim",
+          "stdlib:table.keys",
+          "stdlib:time.nowMillis",
+          "type:boolean",
+          "type:bytes",
+          "type:int",
+          "type:null",
+          "type:number",
+          "type:string",
+          "type:table",
+          "unop:NEG",
+          "unop:NOT"
+        ],
+        "missed": {
+          "binop": [
+            "AND",
+            "GTE",
+            "NEQ",
+            "POW"
+          ],
+          "structure": [
+            "AssignExpr"
+          ],
+          "import": [
+            "local",
+            "std/table"
+          ],
+          "literal": [
+            "NumberLiteral"
+          ],
+          "modifier": [
+            "async"
+          ],
+          "node": [
+            "AwaitExpression",
+            "BreakStatement",
+            "ContinueStatement",
+            "DeleteStatement",
+            "QualifiedType",
+            "UnaryExpr"
+          ],
+          "stdlib": [
+            "math.absNumber",
+            "math.ceil",
+            "math.floor",
+            "math.maxInt",
+            "math.minInt",
+            "math.sqrt",
+            "string.contains",
+            "string.endsWith",
+            "string.length",
+            "string.replace",
+            "string.split",
+            "string.startsWith",
+            "string.substring",
+            "table.keys"
+          ],
+          "type": [
+            "Error",
+            "bytes",
+            "number"
+          ],
+          "unop": [
+            "NEG",
+            "NOT"
+          ]
+        }
+      },
+      "cost": {
+        "n": 34,
+        "prompt_tokens_mean": 1485.9705882352941,
+        "output_tokens_mean": 447.61764705882354,
+        "output_tokens_total": 15219,
+        "generation_ms_p50": 17379.822,
+        "generation_ms_p95": 83493.527,
+        "generation_ms_max": 89859.207,
+        "aggregate_tokens_per_second": 15.487934713133514,
+        "server_ms_total": 1389217.3369999998,
+        "server_ms_per_compiled": 231536.2228333333,
+        "server_ms_per_pass": 694608.6684999999,
+        "passes_per_server_minute": 0.08637957273059861,
+        "atoms_reproduced": 65,
+        "server_ms_per_atom": 21372.574415384614,
+        "hit_token_limit": 6,
+        "argmax_rejection_rate": 0.010847454456915097
+      },
+      "per_task": {
+        "bank_account": {
+          "rung": 4,
+          "rung_label": "runs",
+          "diagnostics": [],
+          "tokens": 300,
+          "generation_ms": 16007.727,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": "test failed: failureCode"
+        },
+        "binary_search": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001",
+            "E3009"
+          ],
+          "tokens": 620,
+          "generation_ms": 46254.536,
+          "hit_cap": false,
+          "echoes_example": true,
+          "failed_check": null
+        },
+        "byte_checksum": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2003"
+          ],
+          "tokens": 620,
+          "generation_ms": 34406.569,
+          "hit_cap": false,
+          "echoes_example": true,
+          "failed_check": null
+        },
+        "chain_list": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1006",
+            "E1037"
+          ],
+          "tokens": 1024,
+          "generation_ms": 63208.584,
+          "hit_cap": true,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "circle_geometry": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2004",
+            "E3001"
+          ],
+          "tokens": 139,
+          "generation_ms": 5897.235,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "config_lookup": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E3003"
+          ],
+          "tokens": 193,
+          "generation_ms": 8508.127,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "counter_factory": {
+          "rung": 4,
+          "rung_label": "runs",
+          "diagnostics": [],
+          "tokens": 460,
+          "generation_ms": 23036.715,
+          "hit_cap": false,
+          "echoes_example": true,
+          "failed_check": "test failed: makeCounter sequence"
+        },
+        "dice_lcg": {
+          "rung": 5,
+          "rung_label": "passes",
+          "diagnostics": [],
+          "tokens": 204,
+          "generation_ms": 10526.938,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "event_filter": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001",
+            "E3003"
+          ],
+          "tokens": 206,
+          "generation_ms": 31416.575,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "fetch_pipeline": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E3004"
+          ],
+          "tokens": 262,
+          "generation_ms": 12026.21,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "grade_book": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1006",
+            "E1037"
+          ],
+          "tokens": 1024,
+          "generation_ms": 70138.12,
+          "hit_cap": true,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "histogram": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001",
+            "E3007",
+            "E3018"
+          ],
+          "tokens": 672,
+          "generation_ms": 40468.97,
+          "hit_cap": false,
+          "echoes_example": true,
+          "failed_check": null
+        },
+        "interval_merge": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001"
+          ],
+          "tokens": 191,
+          "generation_ms": 11460.084,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "inventory": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001",
+            "E3003",
+            "E3007"
+          ],
+          "tokens": 343,
+          "generation_ms": 28036.219,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "kv_cache": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001",
+            "E2004"
+          ],
+          "tokens": 180,
+          "generation_ms": 7794.342,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "matrix_ops": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1006"
+          ],
+          "tokens": 1024,
+          "generation_ms": 44179.375,
+          "hit_cap": true,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "order_total": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E5003"
+          ],
+          "tokens": 173,
+          "generation_ms": 9354.941,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "packet_buffer": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2003"
+          ],
+          "tokens": 105,
+          "generation_ms": 4451.418,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "path_tools": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2004",
+            "E3009"
+          ],
+          "tokens": 168,
+          "generation_ms": 7388.837,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "polynomial": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001",
+            "E2004",
+            "E3001",
+            "E3006",
+            "E3007"
+          ],
+          "tokens": 383,
+          "generation_ms": 26941.909,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "profile_json": {
+          "rung": 5,
+          "rung_label": "passes",
+          "diagnostics": [],
+          "tokens": 100,
+          "generation_ms": 5264.929,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "queue_ring": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1006",
+            "E1008"
+          ],
+          "tokens": 1024,
+          "generation_ms": 69042.498,
+          "hit_cap": true,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "request_timer": {
+          "rung": 4,
+          "rung_label": "runs",
+          "diagnostics": [],
+          "tokens": 164,
+          "generation_ms": 9414.601,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": "test failed: isSlow"
+        },
+        "rle_codec": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E3003",
+            "E3006",
+            "E3015"
+          ],
+          "tokens": 632,
+          "generation_ms": 38972.27,
+          "hit_cap": false,
+          "echoes_example": true,
+          "failed_check": null
+        },
+        "sample_stats": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E5001",
+            "E5003"
+          ],
+          "tokens": 346,
+          "generation_ms": 23680.643,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "shape_area": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001"
+          ],
+          "tokens": 196,
+          "generation_ms": 11180.406,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "signup_validation": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2004"
+          ],
+          "tokens": 218,
+          "generation_ms": 15655.601,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "sorting_kit": {
+          "rung": 3,
+          "rung_label": "interface",
+          "diagnostics": [],
+          "tokens": 879,
+          "generation_ms": 54161.835,
+          "hit_cap": false,
+          "echoes_example": true,
+          "failed_check": null
+        },
+        "status_report": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1006"
+          ],
+          "tokens": 1024,
+          "generation_ms": 89859.207,
+          "hit_cap": true,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "temperature_log": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001",
+            "E3010"
+          ],
+          "tokens": 304,
+          "generation_ms": 17379.822,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "text_wrap": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001",
+            "E3003",
+            "E3015"
+          ],
+          "tokens": 581,
+          "generation_ms": 38546.452,
+          "hit_cap": false,
+          "echoes_example": true,
+          "failed_check": null
+        },
+        "tic_tac_toe": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1003"
+          ],
+          "tokens": 1024,
+          "generation_ms": 83493.527,
+          "hit_cap": true,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "traffic_light": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2004"
+          ],
+          "tokens": 281,
+          "generation_ms": 16105.657,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "word_tools": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2004",
+            "E3003",
+            "E4007"
+          ],
+          "tokens": 155,
+          "generation_ms": 8374.978,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        }
+      }
+    }
+  },
+  "paired": {
+    "left": "raw",
+    "right": "constrained",
+    "n": 34,
+    "rungs": {
+      "syntax": {
+        "a": 8,
+        "b": 28,
+        "rescued": [
+          "bank_account",
+          "binary_search",
+          "byte_checksum",
+          "config_lookup",
+          "counter_factory",
+          "dice_lcg",
+          "event_filter",
+          "fetch_pipeline",
+          "histogram",
+          "interval_merge",
+          "inventory",
+          "kv_cache",
+          "order_total",
+          "polynomial",
+          "request_timer",
+          "rle_codec",
+          "sample_stats",
+          "temperature_log",
+          "text_wrap",
+          "word_tools"
+        ],
+        "harmed": []
+      },
+      "compiles": {
+        "a": 1,
+        "b": 6,
+        "rescued": [
+          "bank_account",
+          "counter_factory",
+          "dice_lcg",
+          "request_timer",
+          "sorting_kit"
+        ],
+        "harmed": []
+      },
+      "interface": {
+        "a": 1,
+        "b": 6,
+        "rescued": [
+          "bank_account",
+          "counter_factory",
+          "dice_lcg",
+          "request_timer",
+          "sorting_kit"
+        ],
+        "harmed": []
+      },
+      "runs": {
+        "a": 1,
+        "b": 5,
+        "rescued": [
+          "bank_account",
+          "counter_factory",
+          "dice_lcg",
+          "request_timer"
+        ],
+        "harmed": []
+      },
+      "passes": {
+        "a": 1,
+        "b": 2,
+        "rescued": [
+          "dice_lcg"
+        ],
+        "harmed": []
+      }
+    }
+  },
+  "failed_tests": [
+    {
+      "profile": "constrained",
+      "task": "bank_account",
+      "message": "test failed: failureCode"
+    },
+    {
+      "profile": "constrained",
+      "task": "counter_factory",
+      "message": "test failed: makeCounter sequence"
+    },
+    {
+      "profile": "constrained",
+      "task": "request_timer",
+      "message": "test failed: isSlow"
+    }
+  ],
+  "repair": null
+}

@@ -1,0 +1,9 @@
+export function digitSum(n: int): int {
+  let total: int = 0;
+  let rest: int = n;
+  while (rest > 0) {
+    total = total + rest % 10;
+    rest = rest / 10;
+  }
+  return total;
+}

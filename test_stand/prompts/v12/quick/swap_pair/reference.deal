@@ -1,0 +1,9 @@
+export class Pair {
+  left: int = 0;
+  right: int = 0;
+}
+
+export function swapPair(pair: Pair): Pair {
+  let swapped: Pair = { left: pair.right, right: pair.left };
+  return swapped;
+}

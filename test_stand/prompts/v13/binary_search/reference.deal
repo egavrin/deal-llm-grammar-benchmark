@@ -1,0 +1,35 @@
+export function insertPosition(sorted: int[], target: int): int {
+  let low: int = 0;
+  let high: int = sorted.length;
+  while (low < high) {
+    let middle: int = (low + high) / 2;
+    if (sorted[middle] < target) {
+      low = middle + 1;
+    } else {
+      high = middle;
+    }
+  }
+  return low;
+}
+
+export function indexOf(sorted: int[], target: int): int {
+  let position: int = insertPosition(sorted, target);
+  if (position < sorted.length && sorted[position] === target) {
+    return position;
+  }
+  return -1;
+}
+
+export function holdsValue(sorted: int[], target: int): boolean {
+  return indexOf(sorted, target) !== -1;
+}
+
+export function countOf(sorted: int[], target: int): int {
+  let count: int = 0;
+  let index: int = insertPosition(sorted, target);
+  while (index < sorted.length && sorted[index] === target) {
+    count = count + 1;
+    index = index + 1;
+  }
+  return count;
+}

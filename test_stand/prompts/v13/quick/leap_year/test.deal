@@ -1,0 +1,13 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let value: int of [1900, 1996, 2000, 2023, 2024, 2100]) {
+    if (candidate.isLeapYear(value) !== oracle.isLeapYear(value)) {
+      throw { code: "DIFF", message: "isLeapYear" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

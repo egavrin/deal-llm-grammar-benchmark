@@ -1,0 +1,6 @@
+import * as json from "std/json";
+
+export function personJson(name: string, age: int): string {
+  let record: table = { name: name, age: age };
+  return json.stringify(record);
+}

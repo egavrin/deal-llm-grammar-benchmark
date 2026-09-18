@@ -8,3 +8,14 @@ results/server-*.log
 results/reproduced-results.jsonl
 results/reproduced/
 tools/gbnf-throughput
+
+
+# test stand: only inputs and code are tracked, everything derived is not
+test_stand/.env
+test_stand/results/
+test_stand/capability/build/
+test_stand/__pycache__/
+test_stand/*.log
+
+# model weights and their provenance records
+models/

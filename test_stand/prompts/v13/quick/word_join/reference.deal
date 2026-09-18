@@ -1,0 +1,12 @@
+export function wordJoin(parts: string[], separator: string): string {
+  let result: string = "";
+  let i: int = 0;
+  while (i < parts.length) {
+    if (i > 0) {
+      result = result + separator;
+    }
+    result = result + parts[i];
+    i = i + 1;
+  }
+  return result;
+}

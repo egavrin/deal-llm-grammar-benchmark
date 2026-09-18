@@ -1,0 +1,5 @@
+export function pairTotal(record: table): int {
+  let first: int = record.first;
+  let second: int = record.second;
+  return first + second;
+}

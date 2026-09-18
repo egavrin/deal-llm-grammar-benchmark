@@ -1,0 +1,27 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function check(name: string, score: int): null {
+  let mine: candidate.Profile = { name: name, score: score, active: true };
+  let theirs: oracle.Profile = { name: name, score: score, active: true };
+  let encodedMine: string = candidate.encode(mine);
+  let encodedTheirs: string = oracle.encode(theirs);
+  // The round trip is what the brief promises; JSON key order is not.
+  if (candidate.decodeScore(encodedMine) !== oracle.decodeScore(encodedTheirs)) {
+    throw { code: "DIFF", message: "encode/decode round trip" };
+  }
+  if (candidate.decodeScore(encodedTheirs) !== score) {
+    throw { code: "DIFF", message: "decodeScore of reference-encoded text" };
+  }
+  return null;
+}
+
+export function main(): null {
+  check("Ada", 0);
+  check("Grace", 42);
+  check("", 7);
+  check("Long Name Here", -5);
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

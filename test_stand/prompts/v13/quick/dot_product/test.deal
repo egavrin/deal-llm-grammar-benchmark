@@ -1,0 +1,18 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let none: int[] = [];
+  if (candidate.dotProduct(none, [1, 2]) !== oracle.dotProduct(none, [1, 2])) {
+    throw { code: "DIFF", message: "dotProduct empty" };
+  }
+  if (candidate.dotProduct([1, 2, 3], [4, 5, 6]) !== oracle.dotProduct([1, 2, 3], [4, 5, 6])) {
+    throw { code: "DIFF", message: "dotProduct" };
+  }
+  if (candidate.dotProduct([1, 2, 3], [4, 5]) !== oracle.dotProduct([1, 2, 3], [4, 5])) {
+    throw { code: "DIFF", message: "dotProduct uneven" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

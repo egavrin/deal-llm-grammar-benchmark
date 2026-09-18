@@ -1,0 +1,72 @@
+==============================================================================
+run        2026-09-03-coder-1.5b-prompts2
+model      qwen2.5-coder-1.5b-q4_k_m    seed 42      max_tokens 1024
+grammar    dcbaec3561e8                 compiler 73b93e60ebe9
+tasks      14     repair rounds 0 asked, 0 run     prompt cache off
+attempts   unconstrained 14     grammar 14
+==============================================================================
+
+[1] LATENCY   per attempt
+  not measured: this run predates streaming, so there is no
+  first-token event to time. Re-run to fill this block.
+  * max, not p95: fewer than 20 attempts to take one from
+
+[2] QUALITY   COUNT of tasks solved at k repair rounds or fewer, n=14
+                             k=0
+  ----------------------------------------------------------------------------
+  compiles  unconstrained      1
+  compiles  grammar            3
+  passes    unconstrained      1
+  passes    grammar            1
+  ----------------------------------------------------------------------------
+  ran round unconstrained     14
+  ran round grammar           14
+  ----------------------------------------------------------------------------
+  never compiled              unconstrained 13     grammar 11
+  never passed                unconstrained 13     grammar 13
+
+[3] COST PER ATTEMPT
+                              unconstrained           grammar       
+                               p50     p95   n     p50     p95   n
+  ----------------------------------------------------------------------------
+  input toks cached / new    not measured (run predates prompt caching)
+  llm wall time, s            18.7    29.6*  14    20.0    83.4*  14
+  compile time, ms             115     173*  14     141     190*  14
+  test time, ms                  0       4*  14       0       4*  14
+  output toks                  190     461*  14     193    1024*  14
+
+[4] COST PER SOLVED TASK   its own attempts, its failed rounds included
+                             unconstrained         grammar
+  ----------------------------------------------------------------------------
+  tasks that compiled                    1               3   tasks
+    llm wall time, s                  14.6            22.5
+    compile time, ms                   173             175
+    test time, ms                        4               3
+    output toks                        104             241
+  ----------------------------------------------------------------------------
+  tasks that passed                      1               1   tasks
+    llm wall time, s                  14.6            15.0
+    compile time, ms                   173             169
+    test time, ms                        4               4
+    output toks                        104             100
+
+[5] GRAMMAR vs UNCONSTRAINED BASELINE   same tasks, seeds, retry loop
+                          baseline    grammar     delta
+  ----------------------------------------------------------------------------
+  tasks solved
+    compiles @k=0                1          3        +2
+    passes @k=0                  1          1        +0
+    never passed                13         13        +0
+  ----------------------------------------------------------------------------
+  cost per attempt, p50
+    llm wall time, s          18.7       20.0      +1.3
+    compile time, ms           115        141       +26
+    test time, ms                0          0        +0
+    output toks                190        193        +3
+  ----------------------------------------------------------------------------
+  cost of a task that passed
+    llm wall time, s          14.6       15.0      +0.4
+    compile time, ms           173        169        -5
+    test time, ms                4          4        +0
+    output toks                104        100        -4
+==============================================================================

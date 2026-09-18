@@ -1,0 +1,16 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let value: int of [-10, 0, 5, 10, 11, 100]) {
+    if (candidate.clampValue(value, 0, 10) !== oracle.clampValue(value, 0, 10)) {
+      throw { code: "DIFF", message: "clampValue" };
+    }
+    if (candidate.clampValue(value, 5, 5) !== oracle.clampValue(value, 5, 5)) {
+      throw { code: "DIFF", message: "clampValue tight" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

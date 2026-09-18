@@ -1,0 +1,1167 @@
+{
+  "schema": 1,
+  "inputs": {
+    "fingerprint": {
+      "grammar_sha256": "dcbaec3561e8cedda9951ae0ff10c3dbbbea64377d33e3766f2eff5ea5e6fb8b",
+      "primer_sha256": "c1ea7e4f99f9209e054dcef13275b54868e8c7b4e4dfb0e5174a3af148f50a93",
+      "prompts_sha256": "2fb53402f9394f25c7208e573bf523d4e7f0488bb3721ae7d22c6a8e29989d11",
+      "compiler_commit": "73b93e60ebe9c197e98e43f268ae0f7f1ba84ad0",
+      "model_sha256": "1ff39f0807727295e79879773765a43d7c235c1fedc547514c197a74d157a436",
+      "backend": "luajit",
+      "seed": 42,
+      "max_tokens": 1024
+    },
+    "written": "2026-09-03T15:13:41"
+  },
+  "tasks": [
+    "circle_geometry",
+    "config_lookup",
+    "counter_factory",
+    "fetch_pipeline",
+    "kv_cache",
+    "order_total",
+    "packet_buffer",
+    "profile_json",
+    "request_timer",
+    "sample_stats",
+    "shape_area",
+    "signup_validation",
+    "status_report",
+    "tic_tac_toe"
+  ],
+  "untested": [],
+  "coverage": {
+    "reachable": 99,
+    "universe": 114,
+    "categories": {
+      "binop:ADD": "binop",
+      "binop:AND": "binop",
+      "binop:DIV": "binop",
+      "binop:EQ": "binop",
+      "binop:GT": "binop",
+      "binop:GTE": "binop",
+      "binop:LT": "binop",
+      "binop:LTE": "binop",
+      "binop:MOD": "binop",
+      "binop:MUL": "binop",
+      "binop:NEQ": "binop",
+      "binop:OR": "binop",
+      "binop:POW": "binop",
+      "binop:SUB": "binop",
+      "directive:JSONABLE": "directive",
+      "forinit:AssignExpr": "structure",
+      "forinit:VarDecl": "structure",
+      "import:local": "import",
+      "import:std/console": "import",
+      "import:std/json": "import",
+      "import:std/math": "import",
+      "import:std/string": "import",
+      "import:std/table": "import",
+      "import:std/time": "import",
+      "literal:BooleanLiteral": "literal",
+      "literal:IntLiteral": "literal",
+      "literal:NullLiteral": "literal",
+      "literal:NumberLiteral": "literal",
+      "literal:StringLiteral": "literal",
+      "modifier:async": "modifier",
+      "modifier:field-default": "modifier",
+      "modifier:field-optional": "modifier",
+      "modifier:field-required": "modifier",
+      "node:ArrayLiteralExpr": "node",
+      "node:ArrayType": "node",
+      "node:AssignmentExpr": "node",
+      "node:AwaitExpression": "node",
+      "node:BinaryExpr": "node",
+      "node:BreakStatement": "node",
+      "node:CallExpr": "node",
+      "node:ClassDeclaration": "node",
+      "node:ContinueStatement": "node",
+      "node:DeleteStatement": "node",
+      "node:ExportDeclaration": "node",
+      "node:ExpressionStatement": "node",
+      "node:ForOfStatement": "node",
+      "node:ForStatement": "node",
+      "node:FunctionDeclaration": "node",
+      "node:FunctionExpr": "node",
+      "node:FunctionType": "node",
+      "node:HasExpr": "node",
+      "node:IdentifierExpr": "node",
+      "node:IfStatement": "node",
+      "node:ImportDeclaration": "node",
+      "node:IndexExpr": "node",
+      "node:LiteralExpr": "node",
+      "node:MemberAccessExpr": "node",
+      "node:NamedType": "node",
+      "node:NullableType": "node",
+      "node:ObjectLiteralExpr": "node",
+      "node:QualifiedType": "node",
+      "node:ReturnStatement": "node",
+      "node:TemplateLiteralExpr": "node",
+      "node:ThrowStatement": "node",
+      "node:TryStatement": "node",
+      "node:UnaryExpr": "node",
+      "node:VariableDeclaration": "node",
+      "node:WhileStatement": "node",
+      "stdlib:console.error": "stdlib",
+      "stdlib:console.log": "stdlib",
+      "stdlib:json.parse": "stdlib",
+      "stdlib:json.stringify": "stdlib",
+      "stdlib:math.absInt": "stdlib",
+      "stdlib:math.absNumber": "stdlib",
+      "stdlib:math.ceil": "stdlib",
+      "stdlib:math.floor": "stdlib",
+      "stdlib:math.maxInt": "stdlib",
+      "stdlib:math.minInt": "stdlib",
+      "stdlib:math.sqrt": "stdlib",
+      "stdlib:string.contains": "stdlib",
+      "stdlib:string.endsWith": "stdlib",
+      "stdlib:string.length": "stdlib",
+      "stdlib:string.replace": "stdlib",
+      "stdlib:string.split": "stdlib",
+      "stdlib:string.startsWith": "stdlib",
+      "stdlib:string.substring": "stdlib",
+      "stdlib:string.trim": "stdlib",
+      "stdlib:table.keys": "stdlib",
+      "stdlib:time.nowMillis": "stdlib",
+      "type:Error": "type",
+      "type:boolean": "type",
+      "type:bytes": "type",
+      "type:int": "type",
+      "type:null": "type",
+      "type:number": "type",
+      "type:string": "type",
+      "type:table": "type",
+      "unop:NEG": "unop",
+      "unop:NOT": "unop"
+    }
+  },
+  "profiles": {
+    "raw": {
+      "n": 14,
+      "no_fence": 0,
+      "grammar_valid": 0,
+      "grammar_valid_normalized": 2,
+      "syntax": 2,
+      "compiles": 1,
+      "interface": 1,
+      "runs": 1,
+      "passes": 0,
+      "hit_cap": 0,
+      "echoes_example": [],
+      "diagnostics": {
+        "E1037": 8,
+        "E1041": 8,
+        "E1049": 7,
+        "E1015": 5,
+        "E1005": 4,
+        "E1006": 4,
+        "E1008": 4,
+        "E1017": 3,
+        "E1018": 3,
+        "E1007": 3,
+        "E1012": 2,
+        "E2004": 1,
+        "E5001": 1,
+        "E5003": 1,
+        "E1011": 1,
+        "E1025": 1,
+        "E1034": 1,
+        "E2003": 1,
+        "E1010": 1
+      },
+      "layers": {
+        "E1": {
+          "tasks": 12,
+          "codes": {
+            "E1041": 8,
+            "E1037": 8,
+            "E1049": 7,
+            "E1015": 5,
+            "E1005": 4,
+            "E1008": 4,
+            "E1006": 4,
+            "E1018": 3,
+            "E1017": 3,
+            "E1007": 3,
+            "E1012": 2,
+            "E1011": 1,
+            "E1025": 1,
+            "E1034": 1,
+            "E1010": 1
+          }
+        },
+        "E2": {
+          "tasks": 2,
+          "codes": {
+            "E2004": 1,
+            "E2003": 1
+          }
+        },
+        "E5": {
+          "tasks": 1,
+          "codes": {
+            "E5001": 1,
+            "E5003": 1
+          }
+        }
+      },
+      "foreign": {
+        "++ / --": 3,
+        "+= / -=": 2,
+        "const / var": 5,
+        "=== absent": 0
+      },
+      "undeclared": {},
+      "coverage": {
+        "compiled": [
+          "binop:ADD",
+          "binop:AND",
+          "binop:EQ",
+          "binop:MUL",
+          "binop:SUB",
+          "import:local",
+          "literal:IntLiteral",
+          "node:BinaryExpr",
+          "node:CallExpr",
+          "node:ExportDeclaration",
+          "node:FunctionDeclaration",
+          "node:IdentifierExpr",
+          "node:ImportDeclaration",
+          "node:LiteralExpr",
+          "node:MemberAccessExpr",
+          "node:NamedType",
+          "node:ObjectLiteralExpr",
+          "node:QualifiedType",
+          "node:ReturnStatement",
+          "type:boolean",
+          "type:int"
+        ],
+        "parsed": [
+          "binop:ADD",
+          "binop:AND",
+          "binop:EQ",
+          "binop:MUL",
+          "binop:SUB",
+          "import:local",
+          "import:std/math",
+          "literal:IntLiteral",
+          "literal:NumberLiteral",
+          "node:BinaryExpr",
+          "node:CallExpr",
+          "node:ExportDeclaration",
+          "node:FunctionDeclaration",
+          "node:IdentifierExpr",
+          "node:ImportDeclaration",
+          "node:LiteralExpr",
+          "node:MemberAccessExpr",
+          "node:NamedType",
+          "node:ObjectLiteralExpr",
+          "node:QualifiedType",
+          "node:ReturnStatement",
+          "node:UnaryExpr",
+          "stdlib:math.absInt",
+          "stdlib:math.ceil",
+          "stdlib:math.floor",
+          "stdlib:math.sqrt",
+          "type:boolean",
+          "type:int",
+          "type:number",
+          "unop:NEG"
+        ],
+        "missed": {
+          "binop": [
+            "DIV",
+            "GT",
+            "GTE",
+            "LT",
+            "LTE",
+            "MOD",
+            "NEQ",
+            "OR",
+            "POW"
+          ],
+          "directive": [
+            "JSONABLE"
+          ],
+          "structure": [
+            "AssignExpr",
+            "VarDecl"
+          ],
+          "import": [
+            "std/console",
+            "std/json",
+            "std/math",
+            "std/string",
+            "std/table",
+            "std/time"
+          ],
+          "literal": [
+            "BooleanLiteral",
+            "NullLiteral",
+            "NumberLiteral",
+            "StringLiteral"
+          ],
+          "modifier": [
+            "async",
+            "field-default",
+            "field-optional",
+            "field-required"
+          ],
+          "node": [
+            "ArrayLiteralExpr",
+            "ArrayType",
+            "AssignmentExpr",
+            "AwaitExpression",
+            "BreakStatement",
+            "ClassDeclaration",
+            "ContinueStatement",
+            "DeleteStatement",
+            "ExpressionStatement",
+            "ForOfStatement",
+            "ForStatement",
+            "FunctionExpr",
+            "FunctionType",
+            "HasExpr",
+            "IfStatement",
+            "IndexExpr",
+            "NullableType",
+            "TemplateLiteralExpr",
+            "ThrowStatement",
+            "TryStatement",
+            "UnaryExpr",
+            "VariableDeclaration",
+            "WhileStatement"
+          ],
+          "stdlib": [
+            "console.error",
+            "console.log",
+            "json.parse",
+            "json.stringify",
+            "math.absInt",
+            "math.absNumber",
+            "math.ceil",
+            "math.floor",
+            "math.maxInt",
+            "math.minInt",
+            "math.sqrt",
+            "string.contains",
+            "string.endsWith",
+            "string.length",
+            "string.replace",
+            "string.split",
+            "string.startsWith",
+            "string.substring",
+            "string.trim",
+            "table.keys",
+            "time.nowMillis"
+          ],
+          "type": [
+            "Error",
+            "bytes",
+            "null",
+            "number",
+            "string",
+            "table"
+          ],
+          "unop": [
+            "NEG",
+            "NOT"
+          ]
+        }
+      },
+      "cost": {
+        "n": 14,
+        "prompt_tokens_mean": 1026.642857142857,
+        "output_tokens_mean": 197.57142857142858,
+        "output_tokens_total": 2766,
+        "generation_ms_p50": 6264.553,
+        "generation_ms_p95": 21642.2,
+        "generation_ms_max": 21642.2,
+        "aggregate_tokens_per_second": 25.563669674208683,
+        "server_ms_total": 210345.122,
+        "server_ms_per_compiled": 210345.122,
+        "server_ms_per_pass": null,
+        "passes_per_server_minute": 0.0,
+        "atoms_reproduced": 21,
+        "server_ms_per_atom": 10016.434380952382,
+        "hit_token_limit": 0,
+        "argmax_rejection_rate": 0.0
+      },
+      "per_task": {
+        "circle_geometry": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2004",
+            "E5001",
+            "E5003"
+          ],
+          "tokens": 123,
+          "generation_ms": 4899.54,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "config_lookup": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1005",
+            "E1015",
+            "E1017",
+            "E1018",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 166,
+          "generation_ms": 6264.553,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "counter_factory": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1011",
+            "E1037",
+            "E1041"
+          ],
+          "tokens": 155,
+          "generation_ms": 5825.305,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "fetch_pipeline": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1005",
+            "E1012",
+            "E1015",
+            "E1017",
+            "E1018",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 183,
+          "generation_ms": 6774.442,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "kv_cache": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1015",
+            "E1025",
+            "E1034",
+            "E1037"
+          ],
+          "tokens": 172,
+          "generation_ms": 6403.27,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "order_total": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1015",
+            "E1037"
+          ],
+          "tokens": 197,
+          "generation_ms": 7467.209,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "packet_buffer": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1006",
+            "E1007",
+            "E1008",
+            "E1041",
+            "E1049",
+            "E2003"
+          ],
+          "tokens": 114,
+          "generation_ms": 4260.12,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "profile_json": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1006",
+            "E1007",
+            "E1008",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 114,
+          "generation_ms": 4281.075,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "request_timer": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1037"
+          ],
+          "tokens": 167,
+          "generation_ms": 6476.658,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "sample_stats": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1037"
+          ],
+          "tokens": 309,
+          "generation_ms": 11795.556,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "shape_area": {
+          "rung": 4,
+          "rung_label": "runs",
+          "diagnostics": [],
+          "tokens": 133,
+          "generation_ms": 5104.252,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": "test failed: areaFromOrigin"
+        },
+        "signup_validation": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1006",
+            "E1007",
+            "E1008",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 288,
+          "generation_ms": 10968.897,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "status_report": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1005",
+            "E1012",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 160,
+          "generation_ms": 6037.351,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "tic_tac_toe": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1005",
+            "E1006",
+            "E1008",
+            "E1010",
+            "E1015",
+            "E1017",
+            "E1018",
+            "E1037",
+            "E1041",
+            "E1049"
+          ],
+          "tokens": 485,
+          "generation_ms": 21642.2,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        }
+      }
+    },
+    "constrained": {
+      "n": 14,
+      "no_fence": 14,
+      "grammar_valid": 12,
+      "grammar_valid_normalized": 12,
+      "syntax": 12,
+      "compiles": 2,
+      "interface": 2,
+      "runs": 2,
+      "passes": 0,
+      "hit_cap": 2,
+      "echoes_example": [],
+      "diagnostics": {
+        "E3003": 4,
+        "E2001": 4,
+        "E5003": 2,
+        "E3007": 2,
+        "E2004": 1,
+        "E5001": 1,
+        "E3014": 1,
+        "E1044": 1,
+        "E2003": 1,
+        "E1006": 1,
+        "E1008": 1,
+        "E5002": 1,
+        "E3004": 1,
+        "E4002": 1
+      },
+      "layers": {
+        "E1": {
+          "tasks": 2,
+          "codes": {
+            "E1044": 1,
+            "E1008": 1,
+            "E1006": 1
+          }
+        },
+        "E2": {
+          "tasks": 6,
+          "codes": {
+            "E2001": 4,
+            "E2004": 1,
+            "E2003": 1
+          }
+        },
+        "E3": {
+          "tasks": 6,
+          "codes": {
+            "E3003": 4,
+            "E3007": 2,
+            "E3014": 1,
+            "E3004": 1
+          }
+        },
+        "E4": {
+          "tasks": 1,
+          "codes": {
+            "E4002": 1
+          }
+        },
+        "E5": {
+          "tasks": 3,
+          "codes": {
+            "E5003": 2,
+            "E5001": 1,
+            "E5002": 1
+          }
+        }
+      },
+      "foreign": {
+        "++ / --": 0,
+        "+= / -=": 0,
+        "const / var": 0,
+        "=== absent": 0
+      },
+      "undeclared": {
+        "i": 11,
+        "const": 3,
+        "Promise": 3,
+        "score1": 2,
+        "bonus1": 2,
+        "total": 2,
+        "totalSoFar": 2,
+        "item": 2,
+        "Math": 2,
+        "cellValue": 2,
+        "Array": 1,
+        "newGame": 1
+      },
+      "coverage": {
+        "compiled": [
+          "binop:ADD",
+          "binop:AND",
+          "binop:EQ",
+          "binop:LT",
+          "binop:MUL",
+          "binop:SUB",
+          "import:local",
+          "import:std/math",
+          "literal:IntLiteral",
+          "node:AssignmentExpr",
+          "node:BinaryExpr",
+          "node:CallExpr",
+          "node:ExportDeclaration",
+          "node:ExpressionStatement",
+          "node:FunctionDeclaration",
+          "node:FunctionExpr",
+          "node:FunctionType",
+          "node:IdentifierExpr",
+          "node:ImportDeclaration",
+          "node:LiteralExpr",
+          "node:MemberAccessExpr",
+          "node:NamedType",
+          "node:ObjectLiteralExpr",
+          "node:QualifiedType",
+          "node:ReturnStatement",
+          "node:VariableDeclaration",
+          "node:WhileStatement",
+          "type:boolean",
+          "type:int"
+        ],
+        "parsed": [
+          "binop:ADD",
+          "binop:AND",
+          "binop:DIV",
+          "binop:EQ",
+          "binop:GT",
+          "binop:GTE",
+          "binop:LT",
+          "binop:LTE",
+          "binop:MUL",
+          "binop:NEQ",
+          "binop:OR",
+          "binop:SUB",
+          "forinit:VarDecl",
+          "import:local",
+          "import:std/console",
+          "import:std/json",
+          "import:std/math",
+          "import:std/string",
+          "import:std/table",
+          "import:std/time",
+          "literal:BooleanLiteral",
+          "literal:IntLiteral",
+          "literal:NullLiteral",
+          "literal:NumberLiteral",
+          "literal:StringLiteral",
+          "modifier:async",
+          "modifier:field-default",
+          "modifier:field-optional",
+          "modifier:field-required",
+          "node:ArrayLiteralExpr",
+          "node:ArrayType",
+          "node:AssignmentExpr",
+          "node:AwaitExpression",
+          "node:BinaryExpr",
+          "node:CallExpr",
+          "node:ClassDeclaration",
+          "node:ExportDeclaration",
+          "node:ExpressionStatement",
+          "node:ForStatement",
+          "node:FunctionDeclaration",
+          "node:FunctionExpr",
+          "node:FunctionType",
+          "node:HasExpr",
+          "node:IdentifierExpr",
+          "node:IfStatement",
+          "node:ImportDeclaration",
+          "node:IndexExpr",
+          "node:LiteralExpr",
+          "node:MemberAccessExpr",
+          "node:NamedType",
+          "node:NullableType",
+          "node:ObjectLiteralExpr",
+          "node:QualifiedType",
+          "node:ReturnStatement",
+          "node:TemplateLiteralExpr",
+          "node:ThrowStatement",
+          "node:TryStatement",
+          "node:UnaryExpr",
+          "node:VariableDeclaration",
+          "node:WhileStatement",
+          "stdlib:console.error",
+          "stdlib:console.log",
+          "stdlib:math.absInt",
+          "stdlib:math.ceil",
+          "stdlib:math.floor",
+          "stdlib:math.sqrt",
+          "stdlib:string.replace",
+          "stdlib:string.split",
+          "stdlib:string.startsWith",
+          "stdlib:string.trim",
+          "stdlib:time.nowMillis",
+          "type:boolean",
+          "type:bytes",
+          "type:int",
+          "type:null",
+          "type:number",
+          "type:string",
+          "unop:NEG"
+        ],
+        "missed": {
+          "binop": [
+            "DIV",
+            "GT",
+            "GTE",
+            "LTE",
+            "MOD",
+            "NEQ",
+            "OR",
+            "POW"
+          ],
+          "directive": [
+            "JSONABLE"
+          ],
+          "structure": [
+            "AssignExpr",
+            "VarDecl"
+          ],
+          "import": [
+            "std/console",
+            "std/json",
+            "std/string",
+            "std/table",
+            "std/time"
+          ],
+          "literal": [
+            "BooleanLiteral",
+            "NullLiteral",
+            "NumberLiteral",
+            "StringLiteral"
+          ],
+          "modifier": [
+            "async",
+            "field-default",
+            "field-optional",
+            "field-required"
+          ],
+          "node": [
+            "ArrayLiteralExpr",
+            "ArrayType",
+            "AwaitExpression",
+            "BreakStatement",
+            "ClassDeclaration",
+            "ContinueStatement",
+            "DeleteStatement",
+            "ForOfStatement",
+            "ForStatement",
+            "HasExpr",
+            "IfStatement",
+            "IndexExpr",
+            "NullableType",
+            "TemplateLiteralExpr",
+            "ThrowStatement",
+            "TryStatement",
+            "UnaryExpr"
+          ],
+          "stdlib": [
+            "console.error",
+            "console.log",
+            "json.parse",
+            "json.stringify",
+            "math.absInt",
+            "math.absNumber",
+            "math.ceil",
+            "math.floor",
+            "math.maxInt",
+            "math.minInt",
+            "math.sqrt",
+            "string.contains",
+            "string.endsWith",
+            "string.length",
+            "string.replace",
+            "string.split",
+            "string.startsWith",
+            "string.substring",
+            "string.trim",
+            "table.keys",
+            "time.nowMillis"
+          ],
+          "type": [
+            "Error",
+            "bytes",
+            "null",
+            "number",
+            "string",
+            "table"
+          ],
+          "unop": [
+            "NEG",
+            "NOT"
+          ]
+        }
+      },
+      "cost": {
+        "n": 14,
+        "prompt_tokens_mean": 1026.642857142857,
+        "output_tokens_mean": 332.7857142857143,
+        "output_tokens_total": 4659,
+        "generation_ms_p50": 10854.124,
+        "generation_ms_p95": 58943.004,
+        "generation_ms_max": 58943.004,
+        "aggregate_tokens_per_second": 15.99690722340088,
+        "server_ms_total": 394821.42600000004,
+        "server_ms_per_compiled": 197410.71300000002,
+        "server_ms_per_pass": null,
+        "passes_per_server_minute": 0.0,
+        "atoms_reproduced": 29,
+        "server_ms_per_atom": 13614.531931034484,
+        "hit_token_limit": 2,
+        "argmax_rejection_rate": 0.01985409916418126
+      },
+      "per_task": {
+        "circle_geometry": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2004",
+            "E5001",
+            "E5003"
+          ],
+          "tokens": 119,
+          "generation_ms": 4854.708,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "config_lookup": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E3003"
+          ],
+          "tokens": 211,
+          "generation_ms": 9899.874,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "counter_factory": {
+          "rung": 4,
+          "rung_label": "runs",
+          "diagnostics": [],
+          "tokens": 153,
+          "generation_ms": 9211.667,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": "test failed: countTo(0)"
+        },
+        "fetch_pipeline": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001",
+            "E3003",
+            "E3014"
+          ],
+          "tokens": 191,
+          "generation_ms": 23436.721,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "kv_cache": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1044"
+          ],
+          "tokens": 1024,
+          "generation_ms": 58943.004,
+          "hit_cap": true,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "order_total": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001",
+            "E3003",
+            "E5003"
+          ],
+          "tokens": 203,
+          "generation_ms": 30657.479,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "packet_buffer": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2003"
+          ],
+          "tokens": 128,
+          "generation_ms": 7192.507,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "profile_json": {
+          "rung": 0,
+          "rung_label": "parse failed",
+          "diagnostics": [
+            "E1006",
+            "E1008"
+          ],
+          "tokens": 1024,
+          "generation_ms": 42691.801,
+          "hit_cap": true,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "request_timer": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E3007"
+          ],
+          "tokens": 173,
+          "generation_ms": 11758.713,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "sample_stats": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001"
+          ],
+          "tokens": 313,
+          "generation_ms": 16515.881,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "shape_area": {
+          "rung": 4,
+          "rung_label": "runs",
+          "diagnostics": [],
+          "tokens": 129,
+          "generation_ms": 5601.691,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": "test failed: areaFromOrigin"
+        },
+        "signup_validation": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E5002"
+          ],
+          "tokens": 252,
+          "generation_ms": 10854.124,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "status_report": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E3004"
+          ],
+          "tokens": 166,
+          "generation_ms": 7644.449,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        },
+        "tic_tac_toe": {
+          "rung": 1,
+          "rung_label": "syntax",
+          "diagnostics": [
+            "E2001",
+            "E3003",
+            "E3007",
+            "E4002"
+          ],
+          "tokens": 573,
+          "generation_ms": 51981.178,
+          "hit_cap": false,
+          "echoes_example": false,
+          "failed_check": null
+        }
+      }
+    }
+  },
+  "paired": {
+    "left": "raw",
+    "right": "constrained",
+    "n": 14,
+    "rungs": {
+      "syntax": {
+        "a": 2,
+        "b": 12,
+        "rescued": [
+          "config_lookup",
+          "counter_factory",
+          "fetch_pipeline",
+          "order_total",
+          "packet_buffer",
+          "request_timer",
+          "sample_stats",
+          "signup_validation",
+          "status_report",
+          "tic_tac_toe"
+        ],
+        "harmed": []
+      },
+      "compiles": {
+        "a": 1,
+        "b": 2,
+        "rescued": [
+          "counter_factory"
+        ],
+        "harmed": []
+      },
+      "interface": {
+        "a": 1,
+        "b": 2,
+        "rescued": [
+          "counter_factory"
+        ],
+        "harmed": []
+      },
+      "runs": {
+        "a": 1,
+        "b": 2,
+        "rescued": [
+          "counter_factory"
+        ],
+        "harmed": []
+      },
+      "passes": {
+        "a": 0,
+        "b": 0,
+        "rescued": [],
+        "harmed": []
+      }
+    }
+  },
+  "failed_tests": [
+    {
+      "profile": "constrained",
+      "task": "counter_factory",
+      "message": "test failed: countTo(0)"
+    },
+    {
+      "profile": "constrained",
+      "task": "shape_area",
+      "message": "test failed: areaFromOrigin"
+    },
+    {
+      "profile": "raw",
+      "task": "shape_area",
+      "message": "test failed: areaFromOrigin"
+    }
+  ],
+  "repair": null
+}

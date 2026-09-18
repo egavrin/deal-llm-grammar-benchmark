@@ -1,0 +1,9 @@
+export function evenCount(values: int[]): int {
+  let evens: int = 0;
+  for (let value: int of values) {
+    if (value % 2 === 0) {
+      evens = evens + 1;
+    }
+  }
+  return evens;
+}

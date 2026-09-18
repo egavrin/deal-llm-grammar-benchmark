@@ -1,0 +1,28 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function sameMaybe(a: int | null, b: int | null, what: string): null {
+  if (a === null || b === null) {
+    if (a !== null || b !== null) {
+      throw { code: "DIFF", message: what };
+    }
+    return null;
+  }
+  if (a !== b) {
+    throw { code: "DIFF", message: what };
+  }
+  return null;
+}
+
+export function main(): null {
+  let none: int[] = [];
+  let inputs: int[][] = [none, [1, 5, 9, 12], [12, 1], [3, 3]];
+  for (let values: int[] of inputs) {
+    for (let limit: int of [0, 4, 20]) {
+      sameMaybe(candidate.firstOverLimit(values, limit), oracle.firstOverLimit(values, limit), "firstOverLimit");
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

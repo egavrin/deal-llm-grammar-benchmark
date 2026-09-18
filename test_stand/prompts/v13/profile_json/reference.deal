@@ -1,0 +1,19 @@
+import * as json from "std/json";
+
+// @jsonable
+export class Profile {
+  name: string = "";
+  score: int = 0;
+  active: boolean = true;
+}
+
+export function encode(profile: Profile): string {
+  let payload: table = { name: profile.name, score: profile.score };
+  return json.stringify(payload);
+}
+
+export function decodeScore(text: string): int {
+  let payload: table = json.parse(text);
+  let score: int = payload.score;
+  return score;
+}

@@ -1,0 +1,30 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function outcome(n: int, mine: boolean): string {
+  try {
+    if (mine) {
+      candidate.requirePositive(n);
+    } else {
+      oracle.requirePositive(n);
+    }
+  } catch (e) {
+    let failure: Error = e;
+    return failure.code;
+  }
+  return "ok";
+}
+
+export function main(): null {
+  for (let n: int of [-3, 0, 1, 50]) {
+    if (outcome(n, true) !== outcome(n, false)) {
+      throw { code: "DIFF", message: "requirePositive" };
+    }
+    if (n > 0 && candidate.requirePositive(n) !== oracle.requirePositive(n)) {
+      throw { code: "DIFF", message: "requirePositive value" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

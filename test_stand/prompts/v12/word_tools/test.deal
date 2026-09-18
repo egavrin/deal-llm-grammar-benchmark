@@ -1,0 +1,33 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function check(text: string): null {
+  if (candidate.wordCount(text) !== oracle.wordCount(text)) {
+    throw { code: "DIFF", message: "wordCount" };
+  }
+  if (candidate.reversed(text) !== oracle.reversed(text)) {
+    throw { code: "DIFF", message: "reversed" };
+  }
+  if (candidate.isPalindrome(text) !== oracle.isPalindrome(text)) {
+    throw { code: "DIFF", message: "isPalindrome" };
+  }
+  return null;
+}
+
+export function main(): null {
+  check("");
+  check("   ");
+  check("deal");
+  check("level");
+  check("  one two three ");
+  check("a b");
+  check("Racecar");
+  for (let times: int of [0, 1, 3, -2]) {
+    if (candidate.repeatText("ab", times) !== oracle.repeatText("ab", times)) {
+      throw { code: "DIFF", message: "repeat" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

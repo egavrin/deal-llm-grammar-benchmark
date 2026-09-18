@@ -1,0 +1,14 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let first: int of [0, 4, -4]) {
+    let record: table = { first: first, second: 10 };
+    if (candidate.pairTotal(record) !== oracle.pairTotal(record)) {
+      throw { code: "DIFF", message: "pairTotal" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

@@ -1,0 +1,38 @@
+// Differential: the reference defines the expected behaviour, this module only
+// supplies inputs. Nothing here states a computed answer, so a wrong expected
+// value cannot be written by mistake.
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function fail(what: string): null {
+  throw { code: "DIFF", message: what };
+  return null;
+}
+
+function checkOne(r: number): null {
+  if (candidate.area(r) !== oracle.area(r)) { fail("area"); }
+  if (candidate.roundedArea(r) !== oracle.roundedArea(r)) { fail("roundedArea"); }
+  if (candidate.ceilingArea(r) !== oracle.ceilingArea(r)) { fail("ceilingArea"); }
+  if (candidate.distanceFromOrigin(r) !== oracle.distanceFromOrigin(r)) {
+    fail("distanceFromOrigin");
+  }
+  return null;
+}
+
+function checkPair(a: number, b: number): null {
+  if (candidate.hypotenuse(a, b) !== oracle.hypotenuse(a, b)) { fail("hypotenuse"); }
+  return null;
+}
+
+export function main(): null {
+  checkOne(0.0);
+  checkOne(1.0);
+  checkOne(2.5);
+  checkOne(10.0);
+  checkPair(3.0, 4.0);
+  checkPair(0.0, 0.0);
+  checkPair(1.5, 2.5);
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

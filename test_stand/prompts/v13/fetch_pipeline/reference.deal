@@ -1,0 +1,21 @@
+async function fetchScore(id: int): int {
+  return id * 10;
+}
+
+async function fetchBonus(id: int): int {
+  return id + 1;
+}
+
+export async function combinedScore(id: int): int {
+  let score: int = await fetchScore(id);
+  let bonus: int = await fetchBonus(id);
+  return score + bonus;
+}
+
+export async function totalForAll(ids: int[]): int {
+  let total: int = 0;
+  for (let id: int of ids) {
+    total = total + await combinedScore(id);
+  }
+  return total;
+}

@@ -1,0 +1,13 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let value: int of [0, 7, 10, 99, 1234, 100000]) {
+    if (candidate.digitSum(value) !== oracle.digitSum(value)) {
+      throw { code: "DIFF", message: "digitSum" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

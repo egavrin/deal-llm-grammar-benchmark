@@ -1,0 +1,33 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function check(path: string): null {
+  if (candidate.baseName(path) !== oracle.baseName(path)) {
+    throw { code: "DIFF", message: "baseName" };
+  }
+  if (candidate.extensionOf(path) !== oracle.extensionOf(path)) {
+    throw { code: "DIFF", message: "extensionOf" };
+  }
+  if (candidate.depth(path) !== oracle.depth(path)) {
+    throw { code: "DIFF", message: "depth" };
+  }
+  return null;
+}
+
+export function main(): null {
+  check("notes.txt");
+  check("src/main.deal");
+  check("/usr/local/bin/tool");
+  check("archive.tar.gz");
+  check("dir/.hidden");
+  check("plain");
+  check("");
+  for (let directory: string of ["", "src", "src/", "/"]) {
+    if (candidate.joinPath(directory, "a.deal") !== oracle.joinPath(directory, "a.deal")) {
+      throw { code: "DIFF", message: "joinPath" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

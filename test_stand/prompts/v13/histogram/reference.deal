@@ -1,0 +1,45 @@
+export function bucketCounts(values: int[], size: int): int[] {
+  let counts: int[] = [];
+  if (size <= 0) {
+    return counts;
+  }
+  for (let value: int of values) {
+    let bucket: int = value / size;
+    while (counts.length <= bucket) {
+      counts[counts.length] = 0;
+    }
+    counts[bucket] = counts[bucket] + 1;
+  }
+  return counts;
+}
+
+export function largestBucket(values: int[], size: int): int {
+  let counts: int[] = bucketCounts(values, size);
+  let best: int = -1;
+  let i: int = 0;
+  while (i < counts.length) {
+    if (best === -1 || counts[i] > counts[best]) {
+      best = i;
+    }
+    i = i + 1;
+  }
+  return best;
+}
+
+export function mode(values: int[]): int {
+  let bestValue: int = 0;
+  let bestCount: int = 0;
+  for (let value: int of values) {
+    let count: int = 0;
+    for (let other: int of values) {
+      if (other === value) {
+        count = count + 1;
+      }
+    }
+    if (count > bestCount || (count === bestCount && value < bestValue)) {
+      bestValue = value;
+      bestCount = count;
+    }
+  }
+  return bestValue;
+}

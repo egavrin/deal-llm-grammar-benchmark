@@ -1,0 +1,27 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let states: string[] = ["green", "yellow", "red", "blue", ""];
+  for (let state: string of states) {
+    if (candidate.isValid(state) !== oracle.isValid(state)) {
+      throw { code: "DIFF", message: "isValid" };
+    }
+    if (candidate.nextState(state) !== oracle.nextState(state)) {
+      throw { code: "DIFF", message: "nextState" };
+    }
+    for (let steps: int of [-1, 0, 1, 2, 3, 7]) {
+      if (candidate.after(state, steps) !== oracle.after(state, steps)) {
+        throw { code: "DIFF", message: "after" };
+      }
+    }
+    for (let target: string of states) {
+      if (candidate.stepsTo(state, target) !== oracle.stepsTo(state, target)) {
+        throw { code: "DIFF", message: "stepsTo" };
+      }
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

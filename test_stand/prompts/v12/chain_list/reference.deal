@@ -1,0 +1,42 @@
+export class Node {
+  value: int = 0;
+  next: Node | null = null;
+}
+
+export function fromArray(values: int[]): Node | null {
+  let head: Node | null = null;
+  let index: int = values.length - 1;
+  while (index >= 0) {
+    let node: Node = { value: values[index], next: head };
+    head = node;
+    index = index - 1;
+  }
+  return head;
+}
+
+export function count(head: Node | null): int {
+  if (head !== null) {
+    return 1 + count(head.next);
+  }
+  return 0;
+}
+
+export function sum(head: Node | null): int {
+  if (head !== null) {
+    return head.value + sum(head.next);
+  }
+  return 0;
+}
+
+export function nth(head: Node | null, index: int): int | null {
+  if (index < 0) {
+    return null;
+  }
+  if (head !== null) {
+    if (index === 0) {
+      return head.value;
+    }
+    return nth(head.next, index - 1);
+  }
+  return null;
+}

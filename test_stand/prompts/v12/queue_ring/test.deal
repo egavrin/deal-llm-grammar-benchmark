@@ -1,0 +1,48 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function sameMaybe(a: int | null, b: int | null, what: string): null {
+  if (a === null || b === null) {
+    if (a !== null || b !== null) {
+      throw { code: "DIFF", message: what };
+    }
+    return null;
+  }
+  if (a !== b) {
+    throw { code: "DIFF", message: what };
+  }
+  return null;
+}
+
+export function main(): null {
+  let mine: candidate.Queue = {};
+  let theirs: oracle.Queue = {};
+  sameMaybe(candidate.dequeue(mine), oracle.dequeue(theirs), "dequeue on empty");
+  sameMaybe(candidate.peek(mine), oracle.peek(theirs), "peek on empty");
+  if (candidate.size(mine) !== oracle.size(theirs)) {
+    throw { code: "DIFF", message: "size of empty" };
+  }
+  for (let value: int of [4, 8, 15, 16]) {
+    candidate.enqueue(mine, value);
+    oracle.enqueue(theirs, value);
+  }
+  if (candidate.size(mine) !== oracle.size(theirs)) {
+    throw { code: "DIFF", message: "size after enqueue" };
+  }
+  sameMaybe(candidate.peek(mine), oracle.peek(theirs), "peek");
+  sameMaybe(candidate.dequeue(mine), oracle.dequeue(theirs), "first dequeue");
+  sameMaybe(candidate.dequeue(mine), oracle.dequeue(theirs), "second dequeue");
+  candidate.enqueue(mine, 23);
+  oracle.enqueue(theirs, 23);
+  if (candidate.size(mine) !== oracle.size(theirs)) {
+    throw { code: "DIFF", message: "size after mixed use" };
+  }
+  sameMaybe(candidate.peek(mine), oracle.peek(theirs), "peek after mixed use");
+  while (oracle.size(theirs) > 0) {
+    sameMaybe(candidate.dequeue(mine), oracle.dequeue(theirs), "draining");
+  }
+  sameMaybe(candidate.dequeue(mine), oracle.dequeue(theirs), "dequeue after draining");
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

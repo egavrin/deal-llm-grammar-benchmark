@@ -1,0 +1,12 @@
+{attempt}
+
+Your module was rejected. The DEAL compiler reported:
+
+{diagnostics}
+
+Fix exactly these errors and output the complete corrected module. Output only
+source code — no Markdown fences, no explanation, no commentary. Keep every
+export the task asked for, and change nothing the compiler did not complain
+about.
+
+CORRECTED MODULE:

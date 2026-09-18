@@ -1,0 +1,13 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let value: string of ["", "a", "ab", "abc", "abcd", "deal"]) {
+    if (candidate.middleChar(value) !== oracle.middleChar(value)) {
+      throw { code: "DIFF", message: "middleChar" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

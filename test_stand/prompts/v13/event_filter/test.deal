@@ -1,0 +1,74 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function mine(kind: string, at: int): candidate.Event {
+  let event: candidate.Event = { kind: kind, at: at };
+  return event;
+}
+
+function mineNoted(kind: string, at: int, note: string): candidate.Event {
+  let event: candidate.Event = { kind: kind, at: at, note: note };
+  return event;
+}
+
+function theirs(kind: string, at: int): oracle.Event {
+  let event: oracle.Event = { kind: kind, at: at };
+  return event;
+}
+
+function theirsNoted(kind: string, at: int, note: string): oracle.Event {
+  let event: oracle.Event = { kind: kind, at: at, note: note };
+  return event;
+}
+
+function sameEvents(a: candidate.Event[], b: oracle.Event[], what: string): null {
+  if (a.length !== b.length) {
+    throw { code: "DIFF", message: what };
+  }
+  for (let i: int = 0; i < a.length; i = i + 1) {
+    if (a[i].kind !== b[i].kind || a[i].at !== b[i].at) {
+      throw { code: "DIFF", message: what };
+    }
+  }
+  return null;
+}
+
+export function main(): null {
+  let log: candidate.Event[] = [];
+  log[log.length] = mine("start", 10);
+  log[log.length] = mineNoted("warn", 25, "disk");
+  log[log.length] = mine("warn", 40);
+  log[log.length] = mineNoted("stop", 40, "planned");
+  log[log.length] = mine("start", 5);
+  let expected: oracle.Event[] = [];
+  expected[expected.length] = theirs("start", 10);
+  expected[expected.length] = theirsNoted("warn", 25, "disk");
+  expected[expected.length] = theirs("warn", 40);
+  expected[expected.length] = theirsNoted("stop", 40, "planned");
+  expected[expected.length] = theirs("start", 5);
+
+  for (let kind: string of ["start", "warn", "stop", "none"]) {
+    sameEvents(candidate.ofKind(log, kind), oracle.ofKind(expected, kind), "ofKind");
+  }
+  let newestMine: candidate.Event | null = candidate.latest(log);
+  let newestTheirs: oracle.Event | null = oracle.latest(expected);
+  if (newestMine === null || newestTheirs === null) {
+    throw { code: "DIFF", message: "latest" };
+  }
+  if (newestMine.kind !== newestTheirs.kind || newestMine.at !== newestTheirs.at) {
+    throw { code: "DIFF", message: "latest picks the first of a tie" };
+  }
+  let empty: candidate.Event[] = [];
+  if (candidate.latest(empty) !== null) {
+    throw { code: "DIFF", message: "latest of an empty log" };
+  }
+  if (candidate.annotated(log) !== oracle.annotated(expected)) {
+    throw { code: "DIFF", message: "annotated" };
+  }
+  sameEvents(candidate.inRange(log, 10, 40), oracle.inRange(expected, 10, 40), "inRange inclusive");
+  sameEvents(candidate.inRange(log, 11, 39), oracle.inRange(expected, 11, 39), "inRange");
+  sameEvents(candidate.inRange(log, 50, 60), oracle.inRange(expected, 50, 60), "inRange none");
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

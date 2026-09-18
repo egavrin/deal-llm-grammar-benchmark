@@ -1,0 +1,95 @@
+Write one complete DEAL v1.2 module for the task at the end.
+
+The answer is the module source and nothing else: it starts with `import` or
+`export`, it contains no Markdown fences, no prose, no tests and no main
+function. Imports come before every other declaration.
+
+Here is a finished module from an unrelated project, to show what DEAL looks
+like. It has nothing to do with the task; do not copy any of it into your
+answer.
+
+--- begin example, not part of your answer ---
+{example}
+--- end example ---
+
+DEAL v1.2 reference:
+
+Declarations
+  export function name(a: int, b: int): int { return a + b; }
+  export class Item { sku: string = ""; qty: int = 0; note?: string; }
+  Required class fields must have a default. Optional fields use `?:` and take
+  no default. Use has(value.note) to test whether an optional field is present.
+  Put `// @jsonable` on its own line before `export class` when asked for a
+  JSON-serialisable class.
+  A class value is built with an object literal: let item: Item = { sku: "A", qty: 1 };
+  There is no `new` and no constructor.
+
+Statements
+  let total: int = 0;          every statement ends with a semicolon
+  total = total + 1;           no ++, no +=, no ternary, no switch
+  if (a === b) { } else { }
+  while (a < b) { }
+  for (let i: int = 0; i < n; i = i + 1) { }
+  for (let value: int of values) { }
+  break; continue;
+  delete config.key; delete config["key"];
+  throw { code: "E_NAME", message: "what happened" };
+  try { } catch (e) { }        e has type Error, with e.code and e.message
+
+Types
+  null boolean int number string bytes table Error
+  T[] for arrays, T | null for nullable, ClassName for declared classes
+  (a: int) => int for function values
+  alias.ClassName for a class imported from another module
+  int is signed 32-bit and distinct from number. There are no implicit
+  conversions and no truthiness. int(x) and number(x) convert between the two;
+  there is no conversion to string.
+
+Expressions
+  ! - ** * / % + - < <= > >= === !== && ||
+  values[0]                    zero-based indexing
+  values.length                a property, not a call
+  let empty: int[] = [];       array literal
+  values[values.length] = x;   append
+  let point: Point = { x: 1, y: 2 };      object literals are context-typed
+  let counts: table = { seen: 0 };        table literal
+  counts["seen"] = 1; counts.seen = 2;    table entries by key or by field
+  let add: (a: int, b: int) => int = function(a: int, b: int): int { return a + b; };
+  `${name} is ready`           interpolation accepts string values only
+  let buffer: bytes = bytes(8);
+  Strings, arrays and tables have no methods. Work on strings through the
+  std/string functions below, and on arrays through loops and indexing.
+
+Async
+  async function load(id: int): int { return id; }
+  let value: int = await load(1);        await applies to a call
+
+Standard library, available only through these imports, with exactly these members
+  import * as console from "std/console";
+    console.log(string): null            console.error(string): null
+  import * as json from "std/json";
+    json.stringify(table): string        json.parse(string): table
+  import * as math from "std/math";
+    math.floor(number): number           math.ceil(number): number
+    math.sqrt(number): number            math.absInt(int): int
+    math.absNumber(number): number       math.minInt(int, int): int
+    math.maxInt(int, int): int
+  import * as strings from "std/string";
+    strings.length(string): int          strings.trim(string): string
+    strings.substring(string, int, int): string
+    strings.contains(string, string): boolean
+    strings.startsWith(string, string): boolean
+    strings.endsWith(string, string): boolean
+    strings.replace(string, string, string): string
+    strings.split(string, string): string[]
+  import * as tables from "std/table";
+    tables.keys(table): string[]
+  import * as time from "std/time";
+    time.nowMillis(): int
+
+TASK:
+{task}
+
+Reply with the DEAL module only, starting with `import` or `export`. Declare
+exactly what the task asks for and nothing else; none of the example's
+declarations belong in your answer.

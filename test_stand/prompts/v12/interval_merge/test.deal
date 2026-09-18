@@ -1,0 +1,50 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function mine(start: int, finish: int): candidate.Interval {
+  let interval: candidate.Interval = { start: start, finish: finish };
+  return interval;
+}
+
+function theirs(start: int, finish: int): oracle.Interval {
+  let interval: oracle.Interval = { start: start, finish: finish };
+  return interval;
+}
+
+function checkPair(s1: int, f1: int, s2: int, f2: int): null {
+  if (candidate.overlaps(mine(s1, f1), mine(s2, f2)) !== oracle.overlaps(theirs(s1, f1), theirs(s2, f2))) {
+    throw { code: "DIFF", message: "overlaps" };
+  }
+  let a: candidate.Interval = candidate.mergeTwo(mine(s1, f1), mine(s2, f2));
+  let b: oracle.Interval = oracle.mergeTwo(theirs(s1, f1), theirs(s2, f2));
+  if (a.start !== b.start || a.finish !== b.finish) {
+    throw { code: "DIFF", message: "mergeTwo" };
+  }
+  return null;
+}
+
+export function main(): null {
+  for (let point: int of [0, 3, 5, 7, 10]) {
+    if (candidate.covers(mine(3, 7), point) !== oracle.covers(theirs(3, 7), point)) {
+      throw { code: "DIFF", message: "contains" };
+    }
+  }
+  checkPair(1, 5, 5, 9);
+  checkPair(1, 4, 5, 9);
+  checkPair(10, 20, 2, 3);
+  checkPair(0, 100, 40, 50);
+  checkPair(4, 4, 4, 4);
+  let noneMine: candidate.Interval[] = [];
+  let noneTheirs: oracle.Interval[] = [];
+  if (candidate.totalLength(noneMine) !== oracle.totalLength(noneTheirs)) {
+    throw { code: "DIFF", message: "totalLength of none" };
+  }
+  let someMine: candidate.Interval[] = [mine(1, 5), mine(3, 4), mine(10, 10)];
+  let someTheirs: oracle.Interval[] = [theirs(1, 5), theirs(3, 4), theirs(10, 10)];
+  if (candidate.totalLength(someMine) !== oracle.totalLength(someTheirs)) {
+    throw { code: "DIFF", message: "totalLength" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

@@ -1,0 +1,10 @@
+import * as strings from "std/string";
+
+export function middleChar(text: string): string {
+  let length: int = strings.length(text);
+  if (length === 0) {
+    return "";
+  }
+  let middle: int = length / 2;
+  return strings.substring(text, middle, middle + 1);
+}

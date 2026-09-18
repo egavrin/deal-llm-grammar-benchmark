@@ -1,0 +1,34 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function check(sorted: int[], target: int): null {
+  if (candidate.indexOf(sorted, target) !== oracle.indexOf(sorted, target)) {
+    throw { code: "DIFF", message: "indexOf" };
+  }
+  if (candidate.insertPosition(sorted, target) !== oracle.insertPosition(sorted, target)) {
+    throw { code: "DIFF", message: "insertPosition" };
+  }
+  if (candidate.holdsValue(sorted, target) !== oracle.holdsValue(sorted, target)) {
+    throw { code: "DIFF", message: "holdsValue" };
+  }
+  if (candidate.countOf(sorted, target) !== oracle.countOf(sorted, target)) {
+    throw { code: "DIFF", message: "countOf" };
+  }
+  return null;
+}
+
+export function main(): null {
+  let none: int[] = [];
+  check(none, 3);
+  let single: int[] = [5];
+  for (let target: int of [4, 5, 6]) {
+    check(single, target);
+  }
+  let many: int[] = [1, 2, 2, 2, 5, 8, 8, 13];
+  for (let target: int of [0, 1, 2, 3, 5, 8, 9, 13, 20]) {
+    check(many, target);
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

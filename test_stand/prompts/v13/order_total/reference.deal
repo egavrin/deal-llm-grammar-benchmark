@@ -1,0 +1,24 @@
+export class LineItem {
+  sku: string = "";
+  unitPrice: int = 0;
+  quantity: int = 0;
+}
+
+export function subtotal(item: LineItem): int {
+  return item.unitPrice * item.quantity;
+}
+
+export function orderTotal(items: LineItem[]): int {
+  let total: int = 0;
+  for (let item: LineItem of items) {
+    total = total + subtotal(item);
+  }
+  return total;
+}
+
+export function sampleOrder(): LineItem[] {
+  let first: LineItem = { sku: "PEN", unitPrice: 150, quantity: 3 };
+  let second: LineItem = { sku: "PAD", unitPrice: 420, quantity: 1 };
+  let items: LineItem[] = [first, second];
+  return items;
+}

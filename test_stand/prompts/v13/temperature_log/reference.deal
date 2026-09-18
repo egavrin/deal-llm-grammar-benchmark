@@ -1,0 +1,40 @@
+import * as math from "std/math";
+
+export function toFahrenheit(celsius: number): number {
+  return celsius * 1.8 + 32.0;
+}
+
+export function hottest(readings: number[]): number {
+  if (readings.length === 0) {
+    return 0.0;
+  }
+  let best: number = readings[0];
+  for (let reading: number of readings) {
+    if (reading > best) {
+      best = reading;
+    }
+  }
+  return best;
+}
+
+export function countAbove(readings: number[], limit: number): int {
+  let count: int = 0;
+  for (let reading: number of readings) {
+    if (reading > limit) {
+      count = count + 1;
+    }
+  }
+  return count;
+}
+
+export function roundedMean(readings: number[]): int {
+  if (readings.length === 0) {
+    return 0;
+  }
+  let total: number = 0.0;
+  for (let reading: number of readings) {
+    total = total + reading;
+  }
+  let mean: number = total / number(readings.length);
+  return int(math.floor(mean + 0.5));
+}

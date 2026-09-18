@@ -1,0 +1,17 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let none: string[] = [];
+  let inputs: string[][] = [none, ["one"], ["a", "b", "c"], ["", "x", ""]];
+  for (let parts: string[] of inputs) {
+    for (let separator: string of [", ", "", "-"]) {
+      if (candidate.wordJoin(parts, separator) !== oracle.wordJoin(parts, separator)) {
+        throw { code: "DIFF", message: "wordJoin" };
+      }
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

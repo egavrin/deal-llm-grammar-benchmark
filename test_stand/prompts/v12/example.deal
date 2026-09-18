@@ -1,0 +1,47 @@
+import * as strings from "std/string";
+import * as console from "std/console";
+
+// @jsonable
+export class Plant {
+  name: string = "";
+  waterMl: int = 0;
+  label?: string;
+}
+
+export function plantNamed(name: string, waterMl: int): Plant {
+  let plant: Plant = { name: strings.trim(name), waterMl: waterMl };
+  return plant;
+}
+
+export function labelOf(plant: Plant): string | null {
+  if (has(plant.label)) {
+    return plant.label;
+  }
+  return null;
+}
+
+export function waterByName(plants: Plant[]): table {
+  let totals: table = {};
+  for (let plant: Plant of plants) {
+    totals[plant.name] = plant.waterMl;
+  }
+  return totals;
+}
+
+export function thirstyNames(plants: Plant[], limitMl: int): string[] {
+  let names: string[] = [];
+  for (let index: int = 0; index < plants.length; index = index + 1) {
+    if (plants[index].waterMl < limitMl) {
+      names[names.length] = plants[index].name;
+    }
+  }
+  return names;
+}
+
+export function report(plant: Plant): null {
+  if (plant.waterMl < 0) {
+    throw { code: "E_WATER", message: "negative water" };
+  }
+  console.log(`${plant.name}: watered`);
+  return null;
+}

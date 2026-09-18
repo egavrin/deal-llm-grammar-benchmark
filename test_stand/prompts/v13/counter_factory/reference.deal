@@ -1,0 +1,26 @@
+export function makeCounter(start: int): () => int {
+  let current: int = start;
+  return function(): int {
+    current = current + 1;
+    return current;
+  };
+}
+
+export function makeAdder(step: int): (value: int) => int {
+  return function(value: int): int {
+    return value + step;
+  };
+}
+
+export function applyTwice(fn: (value: int) => int, seed: int): int {
+  return fn(fn(seed));
+}
+
+export function countTo(limit: int): int {
+  let next: () => int = makeCounter(0);
+  let last: int = 0;
+  while (last < limit) {
+    last = next();
+  }
+  return last;
+}

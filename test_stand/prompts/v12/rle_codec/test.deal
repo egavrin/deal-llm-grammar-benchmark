@@ -1,0 +1,40 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function sameList(a: int[], b: int[], what: string): null {
+  if (a.length !== b.length) {
+    throw { code: "DIFF", message: what };
+  }
+  for (let i: int = 0; i < a.length; i = i + 1) {
+    if (a[i] !== b[i]) {
+      throw { code: "DIFF", message: what };
+    }
+  }
+  return null;
+}
+
+function check(values: int[]): null {
+  sameList(candidate.runLengths(values), oracle.runLengths(values), "runLengths");
+  sameList(candidate.expand(oracle.runLengths(values)), values, "expand undoes runLengths");
+  if (candidate.longestRun(values) !== oracle.longestRun(values)) {
+    throw { code: "DIFF", message: "longestRun" };
+  }
+  if (candidate.runCount(values) !== oracle.runCount(values)) {
+    throw { code: "DIFF", message: "runCount" };
+  }
+  return null;
+}
+
+export function main(): null {
+  let none: int[] = [];
+  check(none);
+  check([5]);
+  check([7, 7, 3]);
+  check([1, 1, 1, 1]);
+  check([1, 2, 3]);
+  check([0, 0, 9, 9, 9, 0]);
+  sameList(candidate.expand([4, 0, 2, 3]), oracle.expand([4, 0, 2, 3]), "expand with a zero run");
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

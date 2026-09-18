@@ -1,0 +1,37 @@
+{
+  "description": "DEAL v1.3 candidate, step 2: typed `let` and no C-style for loop (VERA-L direction). Grammar deal-v1.3b on the v13 prompt set, whose references, example and primer no longer use for(;;).",
+  "prompts": "prompts/v13",
+  "primer": "prompts/v13/primer.txt",
+  "grammar": "grammars/deal-v1.3b-no-cfor.gbnf",
+  "compiler": "${DEAL_COMPILER}",
+  "model": "qwen2.5-coder-0.5b",
+  "backend": "luajit",
+  "removes": [
+    "node:ForStatement",
+    "forinit:AssignExpr",
+    "forinit:VarDecl"
+  ],
+  "expects_rejected_fixtures": [
+    "await-in-loop-body.deal",
+    "break-continue.deal",
+    "break-in-try.deal",
+    "catch-error-inside-loop-continue.deal",
+    "continue-after-caught-error.deal",
+    "continue-in-try.deal",
+    "continue.deal",
+    "empty-for-with-update.deal",
+    "empty-for.deal",
+    "for-c-style.deal",
+    "for-loop-closure-array.deal",
+    "for-loop-closure-values.deal",
+    "for-loop-closure.deal",
+    "let-inference.deal",
+    "loops-inside-try.deal",
+    "nested-break-in-try.deal",
+    "nested-continue-in-try.deal",
+    "nested-for-while-forof.deal",
+    "nested-loop-closure-capture.deal",
+    "nested-try-break-continue.deal",
+    "return-in-try.deal"
+  ]
+}

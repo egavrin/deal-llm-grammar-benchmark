@@ -1,0 +1,39 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as shapes from "./shapes";
+import * as console from "std/console";
+
+function point(x: int, y: int): shapes.Point {
+  let p: shapes.Point = { x: x, y: y };
+  return p;
+}
+
+function check(ax: int, ay: int, bx: int, by: int): null {
+  let a: shapes.Point = point(ax, ay);
+  let b: shapes.Point = point(bx, by);
+  if (candidate.boundingArea(a, b) !== oracle.boundingArea(a, b)) {
+    throw { code: "DIFF", message: "boundingArea" };
+  }
+  if (candidate.isOrigin(a) !== oracle.isOrigin(a)) {
+    throw { code: "DIFF", message: "isOrigin" };
+  }
+  if (candidate.areaFromOrigin(b) !== oracle.areaFromOrigin(b)) {
+    throw { code: "DIFF", message: "areaFromOrigin" };
+  }
+  // Class values compare by reference; compare the moved point field by field.
+  let mine: shapes.Point = candidate.translate(a, 3, -4);
+  let theirs: shapes.Point = oracle.translate(a, 3, -4);
+  if (mine.x !== theirs.x || mine.y !== theirs.y) {
+    throw { code: "DIFF", message: "translate" };
+  }
+  return null;
+}
+
+export function main(): null {
+  check(0, 0, 0, 0);
+  check(0, 0, 3, 4);
+  check(2, 1, 5, 6);
+  check(-1, -2, 1, 2);
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

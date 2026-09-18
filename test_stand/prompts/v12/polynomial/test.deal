@@ -1,0 +1,42 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function sameList(a: number[], b: number[], what: string): null {
+  if (a.length !== b.length) {
+    throw { code: "DIFF", message: what };
+  }
+  for (let i: int = 0; i < a.length; i = i + 1) {
+    if (a[i] !== b[i]) {
+      throw { code: "DIFF", message: what };
+    }
+  }
+  return null;
+}
+
+function check(coefficients: number[]): null {
+  for (let x: number of [0.0, 1.0, -2.0, 0.5]) {
+    if (candidate.valueAt(coefficients, x) !== oracle.valueAt(coefficients, x)) {
+      throw { code: "DIFF", message: "valueAt" };
+    }
+  }
+  if (candidate.degree(coefficients) !== oracle.degree(coefficients)) {
+    throw { code: "DIFF", message: "degree" };
+  }
+  sameList(candidate.derivative(coefficients), oracle.derivative(coefficients), "derivative");
+  return null;
+}
+
+export function main(): null {
+  let none: number[] = [];
+  check(none);
+  check([4.0]);
+  check([0.0, 0.0]);
+  check([1.0, -3.0, 2.0]);
+  check([2.5, 0.0, 0.0, 1.0]);
+  sameList(candidate.addPolys([1.0, 2.0], [3.0]), oracle.addPolys([1.0, 2.0], [3.0]), "addPolys");
+  sameList(candidate.addPolys(none, [3.0, 4.0]), oracle.addPolys(none, [3.0, 4.0]), "addPolys with empty");
+  sameList(candidate.addPolys([1.0, 1.0, 1.0], [-1.0, -1.0, -1.0]), oracle.addPolys([1.0, 1.0, 1.0], [-1.0, -1.0, -1.0]), "addPolys cancelling");
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

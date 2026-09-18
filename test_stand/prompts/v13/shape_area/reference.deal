@@ -1,0 +1,20 @@
+import * as shapes from "./shapes";
+
+export function boundingArea(a: shapes.Point, b: shapes.Point): int {
+  let width: int = b.x - a.x;
+  let height: int = b.y - a.y;
+  return width * height;
+}
+
+export function isOrigin(p: shapes.Point): boolean {
+  return p.x === 0 && p.y === 0;
+}
+
+export function translate(p: shapes.Point, dx: int, dy: int): shapes.Point {
+  let moved: shapes.Point = { x: p.x + dx, y: p.y + dy };
+  return moved;
+}
+
+export function areaFromOrigin(corner: shapes.Point): int {
+  return boundingArea(shapes.origin(), corner);
+}

@@ -1,0 +1,20 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let left: int of [0, 3, -1]) {
+    let mine: candidate.Pair = { left: left, right: 9 };
+    let theirs: oracle.Pair = { left: left, right: 9 };
+    let a: candidate.Pair = candidate.swapPair(mine);
+    let b: oracle.Pair = oracle.swapPair(theirs);
+    if (a.left !== b.left || a.right !== b.right) {
+      throw { code: "DIFF", message: "swapPair" };
+    }
+    if (mine.left !== left) {
+      throw { code: "DIFF", message: "swapPair must not change its argument" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

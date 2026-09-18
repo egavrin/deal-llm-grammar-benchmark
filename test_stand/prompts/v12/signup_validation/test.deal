@@ -1,0 +1,45 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function check(email: string, age: int): null {
+  let mine: candidate.Signup = { email: email, age: age };
+  let theirs: oracle.Signup = { email: email, age: age };
+  if (candidate.isAdult(mine) !== oracle.isAdult(theirs)) {
+    throw { code: "DIFF", message: "isAdult" };
+  }
+  if (candidate.isReferred(mine) !== oracle.isReferred(theirs)) {
+    throw { code: "DIFF", message: "isReferred without a referral" };
+  }
+  if (candidate.validationCode(mine) !== oracle.validationCode(theirs)) {
+    throw { code: "DIFF", message: "validationCode" };
+  }
+  return null;
+}
+
+export function main(): null {
+  check("a@b.c", 30);
+  check("a@b.c", 17);
+  check("a@b.c", 121);
+  check("", 30);
+  check("", 17);
+
+  let referred: candidate.Signup = { email: "a@b.c", age: 30, referral: "friend" };
+  let referredOracle: oracle.Signup = { email: "a@b.c", age: 30, referral: "friend" };
+  if (candidate.isReferred(referred) !== oracle.isReferred(referredOracle)) {
+    throw { code: "DIFF", message: "isReferred with a referral" };
+  }
+
+  // reject must throw rather than return.
+  let threw: boolean = false;
+  try {
+    candidate.reject("because");
+  } catch (e) {
+    threw = true;
+  }
+  if (!threw) {
+    throw { code: "DIFF", message: "reject must throw" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

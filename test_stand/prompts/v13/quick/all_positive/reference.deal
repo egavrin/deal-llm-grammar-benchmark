@@ -1,0 +1,8 @@
+export function allPositive(values: int[]): boolean {
+  for (let value: int of values) {
+    if (value <= 0) {
+      return false;
+    }
+  }
+  return true;
+}

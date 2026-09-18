@@ -1,0 +1,8 @@
+import * as strings from "std/string";
+
+export function withoutPrefix(text: string, prefix: string): string {
+  if (strings.startsWith(text, prefix)) {
+    return strings.substring(text, strings.length(prefix), strings.length(text));
+  }
+  return text;
+}

@@ -1,0 +1,13 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let value: int of [0, 1, 2, 3, 6, 7, 27]) {
+    if (candidate.collatzSteps(value) !== oracle.collatzSteps(value)) {
+      throw { code: "DIFF", message: "collatzSteps" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

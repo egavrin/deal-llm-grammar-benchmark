@@ -1,0 +1,53 @@
+import * as strings from "std/string";
+
+function words(text: string): string[] {
+  let trimmed: string = strings.trim(text);
+  if (trimmed === "") {
+    let none: string[] = [];
+    return none;
+  }
+  return strings.split(trimmed, " ");
+}
+
+export function wrap(text: string, width: int): string[] {
+  let lines: string[] = [];
+  let line: string = "";
+  for (let word: string of words(text)) {
+    if (line === "") {
+      line = word;
+    } else if (strings.length(line) + 1 + strings.length(word) <= width) {
+      line = line + " " + word;
+    } else {
+      lines[lines.length] = line;
+      line = word;
+    }
+  }
+  if (line !== "") {
+    lines[lines.length] = line;
+  }
+  return lines;
+}
+
+export function longestWord(text: string): string {
+  let best: string = "";
+  for (let word: string of words(text)) {
+    if (strings.length(word) > strings.length(best)) {
+      best = word;
+    }
+  }
+  return best;
+}
+
+export function countChar(text: string, ch: string): int {
+  let count: int = 0;
+  for (let i: int = 0; i < strings.length(text); i = i + 1) {
+    if (strings.substring(text, i, i + 1) === ch) {
+      count = count + 1;
+    }
+  }
+  return count;
+}
+
+export function lineCount(text: string, width: int): int {
+  return wrap(text, width).length;
+}

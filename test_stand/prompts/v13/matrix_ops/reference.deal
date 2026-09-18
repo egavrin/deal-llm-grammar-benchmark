@@ -1,0 +1,63 @@
+export function identity(n: int): int[][] {
+  let rows: int[][] = [];
+  let i: int = 0;
+  while (i < n) {
+    let row: int[] = [];
+    let j: int = 0;
+    while (j < n) {
+      if (i === j) {
+        row[row.length] = 1;
+      } else {
+        row[row.length] = 0;
+      }
+      j = j + 1;
+    }
+    rows[rows.length] = row;
+    i = i + 1;
+  }
+  return rows;
+}
+
+export function transpose(m: int[][]): int[][] {
+  let result: int[][] = [];
+  if (m.length === 0) {
+    return result;
+  }
+  let width: int = m[0].length;
+  let j: int = 0;
+  while (j < width) {
+    let column: int[] = [];
+    let i: int = 0;
+    while (i < m.length) {
+      column[column.length] = m[i][j];
+      i = i + 1;
+    }
+    result[result.length] = column;
+    j = j + 1;
+  }
+  return result;
+}
+
+export function rowSums(m: int[][]): int[] {
+  let sums: int[] = [];
+  for (let row: int[] of m) {
+    let total: int = 0;
+    for (let value: int of row) {
+      total = total + value;
+    }
+    sums[sums.length] = total;
+  }
+  return sums;
+}
+
+export function trace(m: int[][]): int {
+  let total: int = 0;
+  let i: int = 0;
+  while (i < m.length) {
+    if (i < m[i].length) {
+      total = total + m[i][i];
+    }
+    i = i + 1;
+  }
+  return total;
+}

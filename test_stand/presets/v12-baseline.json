@@ -1,0 +1,9 @@
+{
+  "description": "DEAL v1.2 on the compiler's main branch, with the grammar corrected against it (accepts 280/280 valid modules in the compiler's conformance corpus).",
+  "prompts": "prompts/v12",
+  "primer": "prompts/v12/primer.txt",
+  "grammar": "grammars/deal-v1.2.gbnf",
+  "compiler": "${DEAL_COMPILER}",
+  "model": "qwen2.5-coder-0.5b-official",
+  "backend": "luajit"
+}

@@ -1,0 +1,30 @@
+import * as math from "std/math";
+
+export class Interval {
+  start: int = 0;
+  finish: int = 0;
+}
+
+export function covers(interval: Interval, point: int): boolean {
+  return interval.start <= point && point <= interval.finish;
+}
+
+export function overlaps(a: Interval, b: Interval): boolean {
+  return a.start <= b.finish && b.start <= a.finish;
+}
+
+export function mergeTwo(a: Interval, b: Interval): Interval {
+  let merged: Interval = {
+    start: math.minInt(a.start, b.start),
+    finish: math.maxInt(a.finish, b.finish),
+  };
+  return merged;
+}
+
+export function totalLength(intervals: Interval[]): int {
+  let total: int = 0;
+  for (let interval: Interval of intervals) {
+    total = total + (interval.finish - interval.start);
+  }
+  return total;
+}

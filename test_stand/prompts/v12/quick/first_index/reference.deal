@@ -1,0 +1,8 @@
+export function firstIndexOf(values: int[], target: int): int {
+  for (let i: int = 0; i < values.length; i = i + 1) {
+    if (values[i] === target) {
+      return i;
+    }
+  }
+  return -1;
+}

@@ -1,0 +1,54 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function mine(name: string, scores: int[]): candidate.Student {
+  let student: candidate.Student = { name: name, scores: scores };
+  return student;
+}
+
+function theirs(name: string, scores: int[]): oracle.Student {
+  let student: oracle.Student = { name: name, scores: scores };
+  return student;
+}
+
+function sameMaybe(a: string | null, b: string | null, what: string): null {
+  if (a === null || b === null) {
+    if (a !== null || b !== null) {
+      throw { code: "DIFF", message: what };
+    }
+    return null;
+  }
+  if (a !== b) {
+    throw { code: "DIFF", message: what };
+  }
+  return null;
+}
+
+export function main(): null {
+  for (let score: int of [100, 90, 89, 80, 79, 70, 69, 0]) {
+    if (candidate.letter(score) !== oracle.letter(score)) {
+      throw { code: "DIFF", message: "letter" };
+    }
+  }
+  let none: int[] = [];
+  if (candidate.average(mine("Nobody", none)) !== oracle.average(theirs("Nobody", none))) {
+    throw { code: "DIFF", message: "average without scores" };
+  }
+  if (candidate.average(mine("Ada", [90, 85, 92])) !== oracle.average(theirs("Ada", [90, 85, 92]))) {
+    throw { code: "DIFF", message: "average" };
+  }
+  let a: candidate.Student[] = [];
+  let b: oracle.Student[] = [];
+  sameMaybe(candidate.best(a), oracle.best(b), "best of none");
+  a = [mine("Ada", [90, 85, 92]), mine("Grace", [70, 95, 100]), mine("Linus", [89]), mine("Tie", [89])];
+  b = [theirs("Ada", [90, 85, 92]), theirs("Grace", [70, 95, 100]), theirs("Linus", [89]), theirs("Tie", [89])];
+  sameMaybe(candidate.best(a), oracle.best(b), "best");
+  for (let minimum: int of [0, 89, 90, 100]) {
+    if (candidate.passingCount(a, minimum) !== oracle.passingCount(b, minimum)) {
+      throw { code: "DIFF", message: "passingCount" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

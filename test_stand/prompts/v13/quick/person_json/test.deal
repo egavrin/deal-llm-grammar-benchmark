@@ -1,0 +1,21 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+import * as json from "std/json";
+
+export function main(): null {
+  for (let name: string of ["Ada", "", "Grace Hopper"]) {
+    let mine: table = json.parse(candidate.personJson(name, 36));
+    let theirs: table = json.parse(oracle.personJson(name, 36));
+    let myName: string = mine.name;
+    let theirName: string = theirs.name;
+    let myAge: int = mine.age;
+    let theirAge: int = theirs.age;
+    if (myName !== theirName || myAge !== theirAge) {
+      throw { code: "DIFF", message: "personJson" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

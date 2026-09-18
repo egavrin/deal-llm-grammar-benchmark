@@ -1,0 +1,48 @@
+export class Event {
+  kind: string = "";
+  at: int = 0;
+  note?: string;
+}
+
+export function ofKind(events: Event[], kind: string): Event[] {
+  let matching: Event[] = [];
+  for (let event: Event of events) {
+    if (event.kind === kind) {
+      matching[matching.length] = event;
+    }
+  }
+  return matching;
+}
+
+export function latest(events: Event[]): Event | null {
+  if (events.length === 0) {
+    return null;
+  }
+  let newest: Event = events[0];
+  for (let event: Event of events) {
+    if (event.at > newest.at) {
+      newest = event;
+    }
+  }
+  return newest;
+}
+
+export function annotated(events: Event[]): int {
+  let count: int = 0;
+  for (let event: Event of events) {
+    if (has(event.note)) {
+      count = count + 1;
+    }
+  }
+  return count;
+}
+
+export function inRange(events: Event[], start: int, finish: int): Event[] {
+  let inside: Event[] = [];
+  for (let event: Event of events) {
+    if (event.at >= start && event.at <= finish) {
+      inside[inside.length] = event;
+    }
+  }
+  return inside;
+}

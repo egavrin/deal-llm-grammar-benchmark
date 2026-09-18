@@ -1,0 +1,29 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function check(service: string, failed: int): null {
+  if (candidate.severity(failed) !== oracle.severity(failed)) {
+    throw { code: "DIFF", message: "severity" };
+  }
+  if (candidate.headline(service, true) !== oracle.headline(service, true)) {
+    throw { code: "DIFF", message: "headline healthy" };
+  }
+  if (candidate.headline(service, false) !== oracle.headline(service, false)) {
+    throw { code: "DIFF", message: "headline degraded" };
+  }
+  if (candidate.summary(service, failed) !== oracle.summary(service, failed)) {
+    throw { code: "DIFF", message: "summary" };
+  }
+  return null;
+}
+
+export function main(): null {
+  check("api", 0);
+  check("api", 1);
+  check("api", 4);
+  check("api", 5);
+  check("worker", 12);
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

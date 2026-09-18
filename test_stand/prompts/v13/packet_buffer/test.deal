@@ -1,0 +1,35 @@
+// `bytes` values cannot be compared (E3019), so buffers are compared through
+// their observable length rather than with !==.
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function checkSize(size: int): null {
+  if (candidate.allocate(size).length !== oracle.allocate(size).length) {
+    throw { code: "DIFF", message: "allocate length" };
+  }
+  return null;
+}
+
+function checkPacket(tag: int, size: int): null {
+  let mine: candidate.Packet = candidate.makePacket(tag, size);
+  let theirs: oracle.Packet = oracle.makePacket(tag, size);
+  if (candidate.tagOf(mine) !== oracle.tagOf(theirs)) {
+    throw { code: "DIFF", message: "tagOf" };
+  }
+  if (mine.payload.length !== theirs.payload.length) {
+    throw { code: "DIFF", message: "packet payload length" };
+  }
+  return null;
+}
+
+export function main(): null {
+  checkSize(0);
+  checkSize(1);
+  checkSize(8);
+  checkPacket(0, 0);
+  checkPacket(7, 4);
+  checkPacket(-2, 16);
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

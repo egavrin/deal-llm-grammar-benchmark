@@ -1,0 +1,36 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function check(values: int[]): null {
+  if (candidate.sumOfEven(values) !== oracle.sumOfEven(values)) {
+    throw { code: "DIFF", message: "sumOfEven" };
+  }
+  if (candidate.firstNegative(values) !== oracle.firstNegative(values)) {
+    throw { code: "DIFF", message: "firstNegative" };
+  }
+  if (candidate.spread(values) !== oracle.spread(values)) {
+    throw { code: "DIFF", message: "spread" };
+  }
+  if (candidate.meanOrZero(values) !== oracle.meanOrZero(values)) {
+    throw { code: "DIFF", message: "meanOrZero" };
+  }
+  return null;
+}
+
+export function main(): null {
+  let empty: int[] = [];
+  check(empty);
+  let one: int[] = [7];
+  check(one);
+  let evens: int[] = [2, 4, 6, 8];
+  check(evens);
+  let mixed: int[] = [1, 2, 3, 4, 5];
+  check(mixed);
+  let negatives: int[] = [5, -3, 8, -1];
+  check(negatives);
+  let leadingNegative: int[] = [-9, 1, 2];
+  check(leadingNegative);
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

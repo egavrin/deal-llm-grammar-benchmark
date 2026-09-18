@@ -1,0 +1,15 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let none: int[] = [];
+  let inputs: int[][] = [none, [1, 2, 3], [1, 0, 3], [-1], [5]];
+  for (let values: int[] of inputs) {
+    if (candidate.allPositive(values) !== oracle.allPositive(values)) {
+      throw { code: "DIFF", message: "allPositive" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

@@ -1,0 +1,5 @@
+import * as math from "std/math";
+
+export function ceilDiv(a: int, b: int): int {
+  return int(math.ceil(number(a) / number(b)));
+}

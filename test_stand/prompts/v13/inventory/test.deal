@@ -1,0 +1,53 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function sameList(a: string[], b: string[], what: string): null {
+  if (a.length !== b.length) {
+    throw { code: "DIFF", message: what };
+  }
+  for (let i: int = 0; i < a.length; i = i + 1) {
+    if (a[i] !== b[i]) {
+      throw { code: "DIFF", message: what };
+    }
+  }
+  return null;
+}
+
+export function main(): null {
+  let mine: candidate.Stock[] = [];
+  let theirs: oracle.Stock[] = [];
+  if (candidate.totalUnits(mine) !== oracle.totalUnits(theirs)) {
+    throw { code: "DIFF", message: "totalUnits of an empty list" };
+  }
+  candidate.addUnits(mine, "PEN", 5);
+  oracle.addUnits(theirs, "PEN", 5);
+  candidate.addUnits(mine, "PAD", 2);
+  oracle.addUnits(theirs, "PAD", 2);
+  candidate.addUnits(mine, "PEN", 3);
+  oracle.addUnits(theirs, "PEN", 3);
+  candidate.addUnits(mine, "INK", 0);
+  oracle.addUnits(theirs, "INK", 0);
+  if (mine.length !== theirs.length) {
+    throw { code: "DIFF", message: "record count after addUnits" };
+  }
+  if (candidate.totalUnits(mine) !== oracle.totalUnits(theirs)) {
+    throw { code: "DIFF", message: "totalUnits" };
+  }
+  let found: candidate.Stock | null = candidate.find(mine, "PEN");
+  let expected: oracle.Stock | null = oracle.find(theirs, "PEN");
+  if (found === null || expected === null) {
+    throw { code: "DIFF", message: "find PEN" };
+  }
+  if (found.units !== expected.units) {
+    throw { code: "DIFF", message: "units of PEN" };
+  }
+  if (candidate.find(mine, "NONE") !== null) {
+    throw { code: "DIFF", message: "find of a missing sku" };
+  }
+  sameList(candidate.lowStock(mine, 3), oracle.lowStock(theirs, 3), "lowStock 3");
+  sameList(candidate.lowStock(mine, 100), oracle.lowStock(theirs, 100), "lowStock 100");
+  sameList(candidate.lowStock(mine, 0), oracle.lowStock(theirs, 0), "lowStock 0");
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

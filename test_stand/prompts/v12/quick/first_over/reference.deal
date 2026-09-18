@@ -1,0 +1,10 @@
+export function firstOverLimit(values: int[], limit: int): int | null {
+  let found: int | null = null;
+  for (let value: int of values) {
+    if (value > limit) {
+      found = value;
+      break;
+    }
+  }
+  return found;
+}

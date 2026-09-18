@@ -1,0 +1,43 @@
+name: Test stand
+
+on:
+  push:
+    paths:
+      - 'test_stand/**'
+      - '.github/workflows/test-stand.yml'
+  pull_request:
+    paths:
+      - 'test_stand/**'
+      - '.github/workflows/test-stand.yml'
+
+permissions:
+  contents: read
+
+# The language gates (references compile, corpus completeness, grammar
+# fidelity) need a DEAL compiler, a JDK 25, LuaJIT and llama.cpp, so they run
+# locally via `benchmark.py check`. CI covers everything that needs none of
+# that: syntax, the stand's own unit tests, prompt-set structure and the
+# leakage rule, and the published artifacts staying untouched.
+jobs:
+  stand:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Check Python and shell syntax
+        run: |
+          python3 -m py_compile test_stand/*.py
+          bash -n test_stand/bin/*.sh
+
+      - name: Unit tests, no toolchain
+        run: |
+          python3 -m pip install --quiet pytest
+          python3 -m pytest -q test_stand/tests
+
+      - name: Published benchmark artifacts are untouched
+        run: |
+          python3 scripts/verify_manifest.py
+          python3 scripts/audit_results.py results/raw-results.jsonl --expect-published

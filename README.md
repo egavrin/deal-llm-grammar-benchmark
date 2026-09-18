@@ -88,6 +88,26 @@ syntax, latency, throughput, rescued-task, and harmed-task counts by family.
 All pinned revisions, parameters, hashes, and artifact provenance are also in
 [`manifest.json`](manifest.json).
 
+## Test stand
+
+The benchmark above is frozen. Ongoing work on the language, its grammar and
+its prompts happens on the test stand in [`test_stand/`](test_stand/README.md):
+the same measurement — raw versus grammar-constrained generation, compiled and
+run by the real compiler — turned into a tool whose three inputs, prompts,
+grammar and compiler, are swappable, fingerprinted, and gated before any run.
+It runs on Linux x64 with a CPU build of llama.cpp and needs nothing outside
+the repository:
+
+```bash
+test_stand/bin/setup_linux.sh
+python3 test_stand/benchmark.py check --preset v12-baseline
+python3 test_stand/benchmark.py run   --preset v12-baseline --out test_stand/results/today
+```
+
+Its numbers are not comparable with the table above: different hardware,
+34 tasks instead of 800, a worked example in the prompt. Compare stand runs
+with each other, through `test_stand/compare.py`.
+
 ## Repository layout
 
 ```text

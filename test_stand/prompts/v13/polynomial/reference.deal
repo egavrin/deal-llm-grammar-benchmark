@@ -1,0 +1,51 @@
+export function valueAt(coefficients: number[], x: number): number {
+  let result: number = 0.0;
+  let index: int = coefficients.length - 1;
+  while (index >= 0) {
+    result = result * x + coefficients[index];
+    index = index - 1;
+  }
+  return result;
+}
+
+export function degree(coefficients: number[]): int {
+  let index: int = coefficients.length - 1;
+  while (index >= 0) {
+    if (coefficients[index] !== 0.0) {
+      return index;
+    }
+    index = index - 1;
+  }
+  return -1;
+}
+
+export function derivative(coefficients: number[]): number[] {
+  let result: number[] = [];
+  let i: int = 1;
+  while (i < coefficients.length) {
+    result[result.length] = number(i) * coefficients[i];
+    i = i + 1;
+  }
+  return result;
+}
+
+export function addPolys(a: number[], b: number[]): number[] {
+  let result: number[] = [];
+  let length: int = a.length;
+  if (b.length > length) {
+    length = b.length;
+  }
+  let i: int = 0;
+  while (i < length) {
+    let total: number = 0.0;
+    if (i < a.length) {
+      total = total + a[i];
+    }
+    if (i < b.length) {
+      total = total + b[i];
+    }
+    result[result.length] = total;
+    i = i + 1;
+  }
+  return result;
+}

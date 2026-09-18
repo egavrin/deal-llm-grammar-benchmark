@@ -1,0 +1,13 @@
+export function dotProduct(a: int[], b: int[]): int {
+  let total: int = 0;
+  let length: int = a.length;
+  if (b.length < length) {
+    length = b.length;
+  }
+  let i: int = 0;
+  while (i < length) {
+    total = total + a[i] * b[i];
+    i = i + 1;
+  }
+  return total;
+}

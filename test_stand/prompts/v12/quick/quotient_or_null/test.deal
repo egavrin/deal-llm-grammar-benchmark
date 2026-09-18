@@ -1,0 +1,26 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function sameMaybe(a: int | null, b: int | null, what: string): null {
+  if (a === null || b === null) {
+    if (a !== null || b !== null) {
+      throw { code: "DIFF", message: what };
+    }
+    return null;
+  }
+  if (a !== b) {
+    throw { code: "DIFF", message: what };
+  }
+  return null;
+}
+
+export function main(): null {
+  for (let a: int of [0, 7, -7, 100]) {
+    for (let b: int of [0, 1, 2, -3]) {
+      sameMaybe(candidate.quotientOrNull(a, b), oracle.quotientOrNull(a, b), "quotientOrNull");
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

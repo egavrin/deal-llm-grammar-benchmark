@@ -1,0 +1,36 @@
+import * as strings from "std/string";
+
+export function joinPath(directory: string, name: string): string {
+  if (directory === "") {
+    return name;
+  }
+  if (strings.endsWith(directory, "/")) {
+    return directory + name;
+  }
+  return directory + "/" + name;
+}
+
+export function baseName(path: string): string {
+  let parts: string[] = strings.split(path, "/");
+  if (parts.length === 0) {
+    return "";
+  }
+  return parts[parts.length - 1];
+}
+
+export function extensionOf(path: string): string {
+  let base: string = baseName(path);
+  if (!strings.contains(base, ".")) {
+    return "";
+  }
+  let parts: string[] = strings.split(base, ".");
+  return parts[parts.length - 1];
+}
+
+export function depth(path: string): int {
+  let parts: string[] = strings.split(path, "/");
+  if (parts.length === 0) {
+    return 0;
+  }
+  return parts.length - 1;
+}

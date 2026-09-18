@@ -1,0 +1,42 @@
+export class Stock {
+  sku: string = "";
+  units: int = 0;
+}
+
+export function find(items: Stock[], sku: string): Stock | null {
+  for (let item: Stock of items) {
+    if (item.sku === sku) {
+      return item;
+    }
+  }
+  return null;
+}
+
+export function addUnits(items: Stock[], sku: string, count: int): null {
+  let existing: Stock | null = find(items, sku);
+  if (existing !== null) {
+    existing.units = existing.units + count;
+    return null;
+  }
+  let fresh: Stock = { sku: sku, units: count };
+  items[items.length] = fresh;
+  return null;
+}
+
+export function totalUnits(items: Stock[]): int {
+  let total: int = 0;
+  for (let item: Stock of items) {
+    total = total + item.units;
+  }
+  return total;
+}
+
+export function lowStock(items: Stock[], threshold: int): string[] {
+  let low: string[] = [];
+  for (let item: Stock of items) {
+    if (item.units < threshold) {
+      low[low.length] = item.sku;
+    }
+  }
+  return low;
+}

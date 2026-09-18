@@ -1,0 +1,49 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function check(data: bytes): null {
+  if (candidate.byteSum(data) !== oracle.byteSum(data)) {
+    throw { code: "DIFF", message: "byteSum" };
+  }
+  if (candidate.checksum(data) !== oracle.checksum(data)) {
+    throw { code: "DIFF", message: "checksum" };
+  }
+  if (candidate.isZero(data) !== oracle.isZero(data)) {
+    throw { code: "DIFF", message: "isZero" };
+  }
+  for (let value: int of [0, 7, 255]) {
+    if (candidate.countByte(data, value) !== oracle.countByte(data, value)) {
+      throw { code: "DIFF", message: "countByte" };
+    }
+  }
+  return null;
+}
+
+export function main(): null {
+  for (let size: int of [0, 1, 5]) {
+    for (let value: int of [0, 7, 255]) {
+      let mine: bytes = candidate.filled(size, value);
+      let theirs: bytes = oracle.filled(size, value);
+      if (mine.length !== theirs.length) {
+        throw { code: "DIFF", message: "filled length" };
+      }
+      for (let i: int = 0; i < theirs.length; i = i + 1) {
+        if (mine[i] !== theirs[i]) {
+          throw { code: "DIFF", message: "filled content" };
+        }
+      }
+      check(theirs);
+    }
+  }
+  let mixed: bytes = bytes(6);
+  mixed[0] = 200;
+  mixed[1] = 100;
+  mixed[2] = 7;
+  mixed[3] = 0;
+  mixed[4] = 255;
+  mixed[5] = 7;
+  check(mixed);
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

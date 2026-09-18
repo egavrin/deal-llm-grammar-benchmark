@@ -1,0 +1,9 @@
+{
+  "description": "v12-baseline with the lean grammar: comments, strings and templates bounded so a looping model hits the grammar instead of the token cap. Same language, same prompts, same compiler; accepts 280/280 valid fixtures.",
+  "prompts": "prompts/v12",
+  "primer": "prompts/v12/primer.txt",
+  "grammar": "grammars/deal-v1.2-lean.gbnf",
+  "compiler": "${DEAL_COMPILER}",
+  "model": "qwen2.5-coder-0.5b-official",
+  "backend": "luajit"
+}

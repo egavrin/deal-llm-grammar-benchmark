@@ -1,0 +1,27 @@
+export function nextSeed(seed: int): int {
+  return (seed * 75 + 74) % 65537;
+}
+
+export function rollFrom(seed: int): int {
+  return nextSeed(seed) % 6 + 1;
+}
+
+export function rollMany(seed: int, count: int): int[] {
+  let rolls: int[] = [];
+  let current: int = seed;
+  let remaining: int = count;
+  while (remaining > 0) {
+    rolls[rolls.length] = rollFrom(current);
+    current = nextSeed(current);
+    remaining = remaining - 1;
+  }
+  return rolls;
+}
+
+export function totalOf(seed: int, count: int): int {
+  let total: int = 0;
+  for (let roll: int of rollMany(seed, count)) {
+    total = total + roll;
+  }
+  return total;
+}

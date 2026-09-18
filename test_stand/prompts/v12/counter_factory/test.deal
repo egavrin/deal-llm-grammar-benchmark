@@ -1,0 +1,46 @@
+// Function values cannot be compared, so the closures are exercised and their
+// results compared instead.
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function checkCounter(start: int): null {
+  let mine: () => int = candidate.makeCounter(start);
+  let theirs: () => int = oracle.makeCounter(start);
+  let step: int = 0;
+  for (step = 0; step < 4; step = step + 1) {
+    if (mine() !== theirs()) {
+      throw { code: "DIFF", message: "makeCounter sequence" };
+    }
+  }
+  return null;
+}
+
+function checkAdder(step: int, value: int): null {
+  let mine: (v: int) => int = candidate.makeAdder(step);
+  let theirs: (v: int) => int = oracle.makeAdder(step);
+  if (mine(value) !== theirs(value)) {
+    throw { code: "DIFF", message: "makeAdder" };
+  }
+  if (candidate.applyTwice(mine, value) !== oracle.applyTwice(theirs, value)) {
+    throw { code: "DIFF", message: "applyTwice" };
+  }
+  return null;
+}
+
+export function main(): null {
+  checkCounter(0);
+  checkCounter(40);
+  checkCounter(-3);
+  checkAdder(1, 0);
+  checkAdder(5, 10);
+  checkAdder(-2, 7);
+  if (candidate.countTo(0) !== oracle.countTo(0)) {
+    throw { code: "DIFF", message: "countTo(0)" };
+  }
+  if (candidate.countTo(5) !== oracle.countTo(5)) {
+    throw { code: "DIFF", message: "countTo(5)" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

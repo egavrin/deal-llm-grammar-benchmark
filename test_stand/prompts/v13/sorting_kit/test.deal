@@ -1,0 +1,59 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function sameList(a: int[], b: int[], what: string): null {
+  if (a.length !== b.length) {
+    throw { code: "DIFF", message: what };
+  }
+  for (let i: int = 0; i < a.length; i = i + 1) {
+    if (a[i] !== b[i]) {
+      throw { code: "DIFF", message: what };
+    }
+  }
+  return null;
+}
+
+function sameMaybe(a: int | null, b: int | null, what: string): null {
+  if (a === null || b === null) {
+    if (a !== null || b !== null) {
+      throw { code: "DIFF", message: what };
+    }
+    return null;
+  }
+  if (a !== b) {
+    throw { code: "DIFF", message: what };
+  }
+  return null;
+}
+
+function check(values: int[]): null {
+  let before: int[] = [];
+  for (let value: int of values) {
+    before[before.length] = value;
+  }
+  sameList(candidate.sortedCopy(values), oracle.sortedCopy(values), "sortedCopy");
+  sameList(values, before, "sortedCopy must not change its argument");
+  if (candidate.isSorted(values) !== oracle.isSorted(values)) {
+    throw { code: "DIFF", message: "isSorted" };
+  }
+  if (candidate.median(values) !== oracle.median(values)) {
+    throw { code: "DIFF", message: "median" };
+  }
+  for (let k: int of [0, 1, 2, 3, 6]) {
+    sameMaybe(candidate.kthSmallest(values, k), oracle.kthSmallest(values, k), "kthSmallest");
+  }
+  return null;
+}
+
+export function main(): null {
+  let none: int[] = [];
+  check(none);
+  check([5]);
+  check([3, 1, 2]);
+  check([1, 2, 2, 9]);
+  check([9, -4, 7, 0, 7]);
+  check([1, 1, 1]);
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

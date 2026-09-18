@@ -1,0 +1,15 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let none: int[] = [];
+  let inputs: int[][] = [none, [1], [2], [1, 2, 3, 4, 5, 6], [-2, 0, 7]];
+  for (let values: int[] of inputs) {
+    if (candidate.evenCount(values) !== oracle.evenCount(values)) {
+      throw { code: "DIFF", message: "evenCount" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

@@ -1,0 +1,21 @@
+import * as math from "std/math";
+
+export function area(radius: number): number {
+  return 3.14159 * radius ** 2.0;
+}
+
+export function hypotenuse(a: number, b: number): number {
+  return math.sqrt(a ** 2.0 + b ** 2.0);
+}
+
+export function roundedArea(radius: number): number {
+  return math.floor(area(radius) + 0.5);
+}
+
+export function ceilingArea(radius: number): number {
+  return math.ceil(area(radius));
+}
+
+export function distanceFromOrigin(x: number): number {
+  return math.absNumber(-x);
+}

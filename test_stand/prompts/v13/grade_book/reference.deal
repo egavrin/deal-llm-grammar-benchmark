@@ -1,0 +1,51 @@
+export class Student {
+  name: string = "";
+  scores: int[] = [];
+}
+
+export function average(student: Student): int {
+  if (student.scores.length === 0) {
+    return 0;
+  }
+  let total: int = 0;
+  for (let score: int of student.scores) {
+    total = total + score;
+  }
+  return total / student.scores.length;
+}
+
+export function letter(score: int): string {
+  if (score >= 90) {
+    return "A";
+  }
+  if (score >= 80) {
+    return "B";
+  }
+  if (score >= 70) {
+    return "C";
+  }
+  return "F";
+}
+
+export function best(students: Student[]): string | null {
+  if (students.length === 0) {
+    return null;
+  }
+  let winner: Student = students[0];
+  for (let student: Student of students) {
+    if (average(student) > average(winner)) {
+      winner = student;
+    }
+  }
+  return winner.name;
+}
+
+export function passingCount(students: Student[], minimum: int): int {
+  let count: int = 0;
+  for (let student: Student of students) {
+    if (average(student) >= minimum) {
+      count = count + 1;
+    }
+  }
+  return count;
+}

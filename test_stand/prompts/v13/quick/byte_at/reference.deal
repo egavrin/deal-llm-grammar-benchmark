@@ -1,0 +1,6 @@
+export function byteAt(data: bytes, index: int): int {
+  if (index < 0 || index >= data.length) {
+    return -1;
+  }
+  return data[index];
+}

@@ -1,0 +1,60 @@
+{
+  "_about": "Models the stand can run on. `file` is relative to models/. Entries with a `url` are downloaded by `models.py fetch NAME`; entries with only a `repo` are converted locally by bin/prepare_model.sh (needs torch). `sha256` is the registry's expected hash of the file; a run records the actual one in its fingerprint either way.",
+  "qwen2.5-coder-0.5b": {
+    "file": "qwen2.5-coder-0.5b-q4_k_m.gguf",
+    "repo": "Qwen/Qwen2.5-Coder-0.5B-Instruct",
+    "revision": "ea3f2471cf1b1f0db85067f1ef93848e38e88c25",
+    "quantization": "Q4_K_M",
+    "sha256": "e36c625624f6b65829b955134e9acdc8528e511eb53c9feed6d2b40384b9ddd2",
+    "published_sha256": "5231325088f468169793028bd680f714548fe36977f89f0fc64fbdffeb519220",
+    "note": "Local conversion of the published benchmark's model. The published SHA-256 is the macOS build's; the Linux build differs and is the hash recorded here."
+  },
+  "qwen2.5-coder-0.5b-f16": {
+    "file": "qwen2.5-coder-0.5b-f16.gguf",
+    "repo": "Qwen/Qwen2.5-Coder-0.5B-Instruct",
+    "revision": "ea3f2471cf1b1f0db85067f1ef93848e38e88c25",
+    "quantization": "F16",
+    "sha256": "c10e918e1d4aff4474226545bacac50e553392df9adcc1d476a43ac5643bf323",
+    "note": "The unquantized intermediate of the conversion above."
+  },
+  "qwen2.5-coder-1.5b": {
+    "file": "qwen2.5-coder-1.5b-q4_k_m.gguf",
+    "repo": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+    "revision": "2e1fd397ee46e1388853d2af2c993145b0f1098a",
+    "quantization": "Q4_K_M",
+    "sha256": "1ff39f0807727295e79879773765a43d7c235c1fedc547514c197a74d157a436",
+    "note": "Three times the parameters, to separate 'the language is hard to generate' from 'the model is small'. Local conversion."
+  },
+  "qwen2.5-coder-1.5b-f16": {
+    "file": "qwen2.5-coder-1.5b-f16.gguf",
+    "repo": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+    "revision": "2e1fd397ee46e1388853d2af2c993145b0f1098a",
+    "quantization": "F16",
+    "sha256": "a8988d65d99698add265bd128386cf1bc6f28cf86820438ce7f34d0b2b4ecd71",
+    "note": "The unquantized intermediate of the conversion above."
+  },
+  "qwen2.5-coder-0.5b-official": {
+    "file": "qwen2.5-coder-0.5b-instruct-q4_k_m.gguf",
+    "repo": "Qwen/Qwen2.5-Coder-0.5B-Instruct-GGUF",
+    "url": "https://huggingface.co/Qwen/Qwen2.5-Coder-0.5B-Instruct-GGUF/resolve/main/qwen2.5-coder-0.5b-instruct-q4_k_m.gguf",
+    "quantization": "Q4_K_M",
+    "sha256": "1d9614638d18024d0fbb36575a15f1302a3adf044df10345688ec4f6e1c4ff32",
+    "note": "Qwen's own GGUF release. Larger than the local conversion (491 MB vs 398): a different quantization mix."
+  },
+  "qwen2.5-coder-0.5b-official-f16": {
+    "file": "qwen2.5-coder-0.5b-instruct-fp16.gguf",
+    "repo": "Qwen/Qwen2.5-Coder-0.5B-Instruct-GGUF",
+    "url": "https://huggingface.co/Qwen/Qwen2.5-Coder-0.5B-Instruct-GGUF/resolve/main/qwen2.5-coder-0.5b-instruct-fp16.gguf",
+    "quantization": "F16",
+    "sha256": "bb69b303c65113199b19c72f9c75bca449200b6cdf807e0f7d8822f669c02e64",
+    "note": "Qwen's own unquantized GGUF release."
+  },
+  "qwen2.5-coder-1.5b-official": {
+    "file": "qwen2.5-coder-1.5b-instruct-q4_k_m.gguf",
+    "repo": "Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF",
+    "url": "https://huggingface.co/Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF/resolve/main/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf",
+    "quantization": "Q4_K_M",
+    "sha256": "cc324af070c2ecbfd324a30884d2f951a7ff756aba85cb811a6ec436933bb046",
+    "note": "Qwen's own GGUF release; no fp16 is published for 1.5B."
+  }
+}

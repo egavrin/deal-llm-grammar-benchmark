@@ -1,0 +1,7 @@
+export function dayLabel(index: int): string {
+  let names: string[] = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+  if (index < 0 || index >= names.length) {
+    return "?";
+  }
+  return names[index];
+}

@@ -1,0 +1,15 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let text: string of ["prefix-value", "value", "", "pre"]) {
+    for (let prefix: string of ["prefix-", "", "value"]) {
+      if (candidate.withoutPrefix(text, prefix) !== oracle.withoutPrefix(text, prefix)) {
+        throw { code: "DIFF", message: "withoutPrefix" };
+      }
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

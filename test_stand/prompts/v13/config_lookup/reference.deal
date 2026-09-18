@@ -1,0 +1,28 @@
+import * as strings from "std/string";
+
+export function findValue(lines: string[], key: string): string | null {
+  for (let line: string of lines) {
+    let trimmed: string = strings.trim(line);
+    if (strings.startsWith(trimmed, key)) {
+      let rest: string = strings.substring(
+        trimmed, strings.length(key), strings.length(trimmed));
+      if (strings.startsWith(rest, "=")) {
+        return strings.trim(strings.substring(rest, 1, strings.length(rest)));
+      }
+    }
+  }
+  return null;
+}
+
+export function hasSection(text: string, name: string): boolean {
+  return strings.contains(text, name) && strings.endsWith(text, "]");
+}
+
+export function normalize(line: string): string {
+  return strings.replace(strings.trim(line), "\t", " ");
+}
+
+export function fieldCount(line: string, separator: string): int {
+  let parts: string[] = strings.split(line, separator);
+  return parts.length;
+}

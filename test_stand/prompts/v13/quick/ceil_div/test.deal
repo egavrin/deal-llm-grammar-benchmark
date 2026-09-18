@@ -1,0 +1,15 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let a: int of [1, 7, 8, 9, 100]) {
+    for (let b: int of [1, 2, 3, 8]) {
+      if (candidate.ceilDiv(a, b) !== oracle.ceilDiv(a, b)) {
+        throw { code: "DIFF", message: "ceilDiv" };
+      }
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

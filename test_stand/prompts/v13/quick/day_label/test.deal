@@ -1,0 +1,13 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let value: int of [-1, 0, 3, 6, 7]) {
+    if (candidate.dayLabel(value) !== oracle.dayLabel(value)) {
+      throw { code: "DIFF", message: "dayLabel" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

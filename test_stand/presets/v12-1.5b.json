@@ -1,0 +1,9 @@
+{
+  "description": "Same language, prompts and grammar as v12-baseline, on Qwen2.5-Coder-1.5B instead of the default 0.5B. Three times the parameters, to tell 'the language is hard to generate' apart from 'the model is small'.",
+  "prompts": "prompts/v12",
+  "primer": "prompts/v12/primer.txt",
+  "grammar": "grammars/deal-v1.2.gbnf",
+  "compiler": "${DEAL_COMPILER}",
+  "model": "qwen2.5-coder-1.5b",
+  "backend": "luajit"
+}

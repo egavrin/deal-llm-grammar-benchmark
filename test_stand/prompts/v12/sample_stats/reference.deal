@@ -1,0 +1,49 @@
+import * as math from "std/math";
+
+export function sumOfEven(values: int[]): int {
+  let total: int = 0;
+  for (let index: int = 0; index < values.length; index = index + 1) {
+    if (values[index] % 2 !== 0) {
+      continue;
+    }
+    total = total + values[index];
+  }
+  return total;
+}
+
+export function firstNegative(values: int[]): int {
+  let index: int = 0;
+  let found: int = -1;
+  while (index < values.length) {
+    if (values[index] < 0) {
+      found = values[index];
+      break;
+    }
+    index = index + 1;
+  }
+  return found;
+}
+
+export function spread(values: int[]): int {
+  if (values.length === 0) {
+    return 0;
+  }
+  let low: int = values[0];
+  let high: int = values[0];
+  for (let value: int of values) {
+    low = math.minInt(low, value);
+    high = math.maxInt(high, value);
+  }
+  return math.absInt(high - low);
+}
+
+export function meanOrZero(values: int[]): int {
+  if (values.length === 0) {
+    return 0;
+  }
+  let total: int = 0;
+  for (let value: int of values) {
+    total = total + value;
+  }
+  return total / values.length;
+}

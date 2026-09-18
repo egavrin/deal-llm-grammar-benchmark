@@ -1,0 +1,32 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+function check(readings: number[], limit: number): null {
+  if (candidate.hottest(readings) !== oracle.hottest(readings)) {
+    throw { code: "DIFF", message: "hottest" };
+  }
+  if (candidate.countAbove(readings, limit) !== oracle.countAbove(readings, limit)) {
+    throw { code: "DIFF", message: "countAbove" };
+  }
+  if (candidate.roundedMean(readings) !== oracle.roundedMean(readings)) {
+    throw { code: "DIFF", message: "roundedMean" };
+  }
+  return null;
+}
+
+export function main(): null {
+  for (let c: number of [0.0, 100.0, -40.0, 36.6]) {
+    if (candidate.toFahrenheit(c) !== oracle.toFahrenheit(c)) {
+      throw { code: "DIFF", message: "toFahrenheit" };
+    }
+  }
+  let none: number[] = [];
+  check(none, 10.0);
+  check([21.5], 21.5);
+  check([18.0, 22.5, 19.0, 30.25], 20.0);
+  check([-5.0, -12.5, 0.5], 0.0);
+  check([2.5, 3.5], 3.0);
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

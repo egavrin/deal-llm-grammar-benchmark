@@ -1,0 +1,29 @@
+export class Queue {
+  items: int[] = [];
+  head: int = 0;
+}
+
+export function enqueue(queue: Queue, value: int): null {
+  queue.items[queue.items.length] = value;
+  return null;
+}
+
+export function size(queue: Queue): int {
+  return queue.items.length - queue.head;
+}
+
+export function peek(queue: Queue): int | null {
+  if (size(queue) === 0) {
+    return null;
+  }
+  return queue.items[queue.head];
+}
+
+export function dequeue(queue: Queue): int | null {
+  if (size(queue) === 0) {
+    return null;
+  }
+  let value: int = queue.items[queue.head];
+  queue.head = queue.head + 1;
+  return value;
+}

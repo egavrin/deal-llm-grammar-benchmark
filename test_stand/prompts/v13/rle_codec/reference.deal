@@ -1,0 +1,46 @@
+export function runLengths(values: int[]): int[] {
+  let pairs: int[] = [];
+  let index: int = 0;
+  while (index < values.length) {
+    let value: int = values[index];
+    let length: int = 0;
+    while (index < values.length && values[index] === value) {
+      length = length + 1;
+      index = index + 1;
+    }
+    pairs[pairs.length] = value;
+    pairs[pairs.length] = length;
+  }
+  return pairs;
+}
+
+export function expand(pairs: int[]): int[] {
+  let values: int[] = [];
+  let i: int = 0;
+  while (i + 1 < pairs.length) {
+    let remaining: int = pairs[i + 1];
+    while (remaining > 0) {
+      values[values.length] = pairs[i];
+      remaining = remaining - 1;
+    }
+    i = i + 2;
+  }
+  return values;
+}
+
+export function longestRun(values: int[]): int {
+  let pairs: int[] = runLengths(values);
+  let best: int = 0;
+  let i: int = 1;
+  while (i < pairs.length) {
+    if (pairs[i] > best) {
+      best = pairs[i];
+    }
+    i = i + 2;
+  }
+  return best;
+}
+
+export function runCount(values: int[]): int {
+  return runLengths(values).length / 2;
+}

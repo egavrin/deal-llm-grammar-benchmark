@@ -1,0 +1,12 @@
+import * as strings from "std/string";
+
+export function vowelCount(text: string): int {
+  let vowels: int = 0;
+  for (let i: int = 0; i < strings.length(text); i = i + 1) {
+    let ch: string = strings.substring(text, i, i + 1);
+    if (ch === "a" || ch === "e" || ch === "i" || ch === "o" || ch === "u") {
+      vowels = vowels + 1;
+    }
+  }
+  return vowels;
+}

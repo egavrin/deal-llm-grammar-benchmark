@@ -1,0 +1,8 @@
+{
+  "description": "Same language and prompts, with the grammar as published alongside the raw-vs-GBNF benchmark. It accepts 167/280 valid modules; kept as the A/B counterpart that shows what grammar fidelity buys.",
+  "prompts": "prompts/v12",
+  "primer": "prompts/v12/primer.txt",
+  "grammar": "grammars/deal-v1.2-published.gbnf",
+  "compiler": "${DEAL_COMPILER}",
+  "backend": "luajit"
+}

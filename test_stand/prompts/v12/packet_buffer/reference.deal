@@ -1,0 +1,17 @@
+export class Packet {
+  tag: int = 0;
+  payload: bytes = bytes(0);
+}
+
+export function allocate(size: int): bytes {
+  return bytes(size);
+}
+
+export function makePacket(tag: int, size: int): Packet {
+  let packet: Packet = { tag: tag, payload: bytes(size) };
+  return packet;
+}
+
+export function tagOf(packet: Packet): int {
+  return packet.tag;
+}

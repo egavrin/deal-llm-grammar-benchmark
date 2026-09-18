@@ -1,0 +1,36 @@
+export function isValid(state: string): boolean {
+  return state === "green" || state === "yellow" || state === "red";
+}
+
+export function nextState(state: string): string {
+  if (state === "green") {
+    return "yellow";
+  }
+  if (state === "yellow") {
+    return "red";
+  }
+  return "green";
+}
+
+export function after(state: string, steps: int): string {
+  let current: string = state;
+  let remaining: int = steps;
+  while (remaining > 0) {
+    current = nextState(current);
+    remaining = remaining - 1;
+  }
+  return current;
+}
+
+export function stepsTo(source: string, target: string): int {
+  if (!isValid(source) || !isValid(target)) {
+    return -1;
+  }
+  let steps: int = 0;
+  let current: string = source;
+  while (current !== target) {
+    current = nextState(current);
+    steps = steps + 1;
+  }
+  return steps;
+}

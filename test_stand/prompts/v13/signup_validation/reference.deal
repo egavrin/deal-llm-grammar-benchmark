@@ -1,0 +1,36 @@
+export class Signup {
+  email: string = "";
+  age: int = 0;
+  referral?: string;
+}
+
+export function isAdult(form: Signup): boolean {
+  return form.age >= 18 && form.age <= 120;
+}
+
+export function isReferred(form: Signup): boolean {
+  return has(form.referral);
+}
+
+export function reject(reason: string): null {
+  throw { code: "E_SIGNUP", message: reason };
+}
+
+export function validate(form: Signup): string {
+  if (!isAdult(form)) {
+    reject("age out of range");
+  }
+  if (form.email === "") {
+    reject("email is required");
+  }
+  return "ok";
+}
+
+export function validationCode(form: Signup): string {
+  try {
+    return validate(form);
+  } catch (e) {
+    let failure: Error = e;
+    return failure.code;
+  }
+}
