@@ -1,0 +1,23 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.calculateOp("+", 2, 3) !== oracle.calculateOp("+", 2, 3)) {
+    throw { code: "DIFF", message: "calculateOp" };
+  }
+  if (candidate.calculateOp("-", 2, 5) !== oracle.calculateOp("-", 2, 5)) {
+    throw { code: "DIFF", message: "calculateOp" };
+  }
+  if (candidate.calculateOp("*", -4, 5) !== oracle.calculateOp("*", -4, 5)) {
+    throw { code: "DIFF", message: "calculateOp" };
+  }
+  if (candidate.calculateOp("/", 1, 1) !== oracle.calculateOp("/", 1, 1)) {
+    throw { code: "DIFF", message: "calculateOp" };
+  }
+  if (candidate.calculateOp("", 7, 2) !== oracle.calculateOp("", 7, 2)) {
+    throw { code: "DIFF", message: "calculateOp" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

@@ -1,0 +1,5 @@
+export function greetingWithDefault(name: string, greeting: string | null): string {
+  let prefix: string = "Hello";
+  if (greeting !== null) { prefix = greeting; }
+  return prefix + ", " + name;
+}

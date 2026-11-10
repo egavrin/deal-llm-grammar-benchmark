@@ -1,0 +1,15 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let values: int[] of [[4, 9, 1, 7], [-3], [-9, -1, -4], [2, 2]]) {
+    let mine: candidate.IntExtrema = candidate.arrayExtrema(values);
+    let theirs: oracle.IntExtrema = oracle.arrayExtrema(values);
+    if (mine.min !== theirs.min || mine.max !== theirs.max) {
+      throw { code: "DIFF", message: "arrayExtrema" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

@@ -1,0 +1,15 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let value: int of [21, -1, 0, -2]) {
+    let mine: candidate.SensorDescription = candidate.describeSensor(value);
+    let theirs: oracle.SensorDescription = oracle.describeSensor(value);
+    if (mine.value !== theirs.value || mine.text !== theirs.text) {
+      throw { code: "DIFF", message: "describeSensor" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

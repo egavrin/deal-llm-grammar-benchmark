@@ -1,0 +1,16 @@
+export class IntStack { items: int[] = []; }
+
+export function stackPush(stack: IntStack, value: int): null {
+  stack.items[stack.items.length] = value;
+  return null;
+}
+
+export function stackPop(stack: IntStack): int | null {
+  if (stack.items.length === 0) { return null; }
+  let result: int = stack.items[stack.items.length - 1];
+  let rest: int[] = [];
+  let i: int = 0;
+  while (i < stack.items.length - 1) { rest[rest.length] = stack.items[i]; i = i + 1; }
+  stack.items = rest;
+  return result;
+}

@@ -1,0 +1,26 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let emptyMine: candidate.PricedItem[] = [];
+  let emptyTheirs: oracle.PricedItem[] = [];
+  if (candidate.costliestName(emptyMine) !== oracle.costliestName(emptyTheirs)) {
+    throw { code: "DIFF", message: "costliestName empty" };
+  }
+  for (let prices: int[] of [[150, 1200, 450], [-5, -1, -2], [4, 4, 3]]) {
+    let myPen: candidate.PricedItem = { name: "pen", cents: prices[0] };
+    let myBook: candidate.PricedItem = { name: "book", cents: prices[1] };
+    let myCup: candidate.PricedItem = { name: "cup", cents: prices[2] };
+    let theirPen: oracle.PricedItem = { name: "pen", cents: prices[0] };
+    let theirBook: oracle.PricedItem = { name: "book", cents: prices[1] };
+    let theirCup: oracle.PricedItem = { name: "cup", cents: prices[2] };
+    let mine: candidate.PricedItem[] = [myPen, myBook, myCup];
+    let theirs: oracle.PricedItem[] = [theirPen, theirBook, theirCup];
+    if (candidate.costliestName(mine) !== oracle.costliestName(theirs)) {
+      throw { code: "DIFF", message: "costliestName" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

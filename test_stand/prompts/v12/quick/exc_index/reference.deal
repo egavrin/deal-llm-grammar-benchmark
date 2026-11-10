@@ -1,0 +1,3 @@
+export function caughtElement(values: int[], index: int): int | null {
+  try { return values[index]; } catch (e) { return null; }
+}

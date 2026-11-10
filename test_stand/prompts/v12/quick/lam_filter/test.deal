@@ -1,0 +1,22 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let empty: int[] = [];
+  for (let values: int[] of [empty, [1, 2, 3, 4], [-3, 0, 7]]) {
+    let calls: int = 0;
+    let otherCalls: int = 0;
+    let mine: int = candidate.predicateCount(values, function(value: int): boolean {
+      calls = calls + 1; return value > calls;
+    });
+    let theirs: int = oracle.predicateCount(values, function(value: int): boolean {
+      otherCalls = otherCalls + 1; return value > otherCalls;
+    });
+    if (mine !== theirs || calls !== values.length) {
+      throw { code: "DIFF", message: "predicateCount" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

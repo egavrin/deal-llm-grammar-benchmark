@@ -1,0 +1,26 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let mine: candidate.VisitCounter = {};
+  let theirs: oracle.VisitCounter = {};
+  let other: candidate.VisitCounter = { count: 8 };
+  let i: int = 0;
+  while (i < 4) {
+    if (candidate.visitCount(mine) !== oracle.visitCount(theirs)) {
+      throw { code: "DIFF", message: "visitCount" };
+    }
+    let a: null = candidate.recordVisit(mine);
+    let b: null = oracle.recordVisit(theirs);
+    if (a !== b || mine.count !== theirs.count) {
+      throw { code: "DIFF", message: "recordVisit" };
+    }
+    i = i + 1;
+  }
+  if (candidate.visitCount(other) !== 8 || candidate.visitCount(other) !== 8) {
+    throw { code: "DIFF", message: "visit independence or mutation" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

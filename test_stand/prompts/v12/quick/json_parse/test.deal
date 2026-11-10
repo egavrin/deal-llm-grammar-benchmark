@@ -1,0 +1,13 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let text: string of ["{\"id\":7,\"name\":\"Kim\"}", "{}", "{\"name\":\"\"}", "bad", "null", "{\"name\":7}", "{\"extra\":1}"]) {
+    if (candidate.decodedUserName(text) !== oracle.decodedUserName(text)) {
+      throw { code: "DIFF", message: "decodedUserName" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

@@ -1,0 +1,19 @@
+import * as json from "std/json";
+
+function parsedInteger(text: string): int | null {
+  try {
+    let payload: table = json.parse("{\"value\":" + text + "}");
+    let value: int = payload.value;
+    return value;
+  } catch (e) {
+    return null;
+  }
+}
+
+export function parsedSuccessor(text: string): int | null {
+  let value: int | null = parsedInteger(text);
+  if (value !== null) {
+    try { return value + 1; } catch (e) { return null; }
+  }
+  return null;
+}

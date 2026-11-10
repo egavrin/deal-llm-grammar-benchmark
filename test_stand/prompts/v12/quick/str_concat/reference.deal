@@ -1,0 +1,14 @@
+import * as json from "std/json";
+
+import * as strings from "std/string";
+
+function intText(value: int): string {
+  let encoded: string = json.stringify({ value: value });
+  return strings.substring(encoded, 9, strings.length(encoded) - 1);
+}
+
+export function sumLabel(values: int[]): string {
+  let total: int = 0;
+  for (let value: int of values) { total = total + value; }
+  return "Sum: " + intText(total);
+}

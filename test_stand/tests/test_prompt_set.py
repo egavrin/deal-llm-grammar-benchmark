@@ -5,8 +5,12 @@ import config as cfg
 
 
 def tasks_of(prompts):
-    return [cfg.Task(d.name, d) for d in sorted(prompts.iterdir())
-            if d.is_dir() and (d / "brief.md").exists()]
+    tasks = [cfg.Task(d.name, d) for d in sorted(prompts.iterdir())
+             if d.is_dir() and (d / "brief.md").exists()]
+    tasks += [cfg.Task(d.name, d, "quick")
+              for d in sorted((prompts / cfg.QUICK_DIR).iterdir())
+              if d.is_dir() and (d / "brief.md").exists()]
+    return tasks
 
 
 def test_every_task_has_a_brief_and_a_reference(prompts):

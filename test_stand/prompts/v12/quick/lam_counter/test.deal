@@ -1,0 +1,20 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let mine: () => int = candidate.countingClosure();
+  let theirs: () => int = oracle.countingClosure();
+  let independent: () => int = candidate.countingClosure();
+  let other: () => int = oracle.countingClosure();
+  let i: int = 0;
+  while (i < 5) {
+    if (mine() !== theirs()) { throw { code: "DIFF", message: "countingClosure sequence" }; }
+    i = i + 1;
+  }
+  if (independent() !== other() || mine() !== theirs()) {
+    throw { code: "DIFF", message: "countingClosure independence" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

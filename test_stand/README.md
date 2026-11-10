@@ -87,6 +87,12 @@ Because references are written in the language, a prompt set is tied to a
 dialect: swapping the grammar reuses the same set, while a language branch with
 different syntax needs its own.
 
+The v1.2 quick tier includes 51 tasks adapted from the VERA prompt benchmark,
+after auditing all 62 source tasks against the original 28 quick tasks and
+omitting 11 duplicates. See the [complete audit and adaptation notes](findings/vera-prompt-import.md)
+and [per-source inventory](findings/vera-prompt-import.json). The two async
+additions are explicitly compile-only; the other 49 have hidden functional tests.
+
 ### Grammar — one GBNF file
 
 Checked before any run: it must parse, accept every reference in the prompt set,
@@ -237,11 +243,11 @@ what it always meant. Phase two compiles the hidden test against it, so a module
 that is valid DEAL but exports the wrong thing fails on its own rung instead of
 quietly depressing the compile rate.
 
-A task with no hidden test — currently `fetch_pipeline`, whose exports are all
-`async` and unreachable from a synchronous entry module — is measured up to
-`compiles` and excluded from the last three rungs. It is never counted as a pass
-and never silently dropped from the denominator; `prompts/v12/fetch_pipeline/NO_TEST.md`
-records why.
+A task with no hidden test — currently `fetch_pipeline` and the v1.2 quick
+tasks `async_basic` and `async_sum`, whose exports are all `async` and unreachable
+from a synchronous entry module — is measured up to `compiles` and excluded
+from the last three rungs. It is never counted as a pass and never silently
+dropped from the denominator; each task's `NO_TEST.md` records why.
 
 ## Repair
 

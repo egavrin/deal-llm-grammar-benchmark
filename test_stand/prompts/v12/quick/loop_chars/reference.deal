@@ -1,0 +1,18 @@
+import * as json from "std/json";
+
+import * as strings from "std/string";
+
+function intText(value: int): string {
+  let encoded: string = json.stringify({ value: value });
+  return strings.substring(encoded, 9, strings.length(encoded) - 1);
+}
+
+export function indexedCharacters(text: string): string[] {
+  let result: string[] = [];
+  let i: int = 0;
+  while (i < strings.length(text)) {
+    result[result.length] = intText(i) + ":" + strings.substring(text, i, i + 1);
+    i = i + 1;
+  }
+  return result;
+}

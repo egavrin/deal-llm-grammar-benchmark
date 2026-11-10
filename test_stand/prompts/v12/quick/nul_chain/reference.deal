@@ -1,0 +1,9 @@
+export class CityAddress { city: string = ""; }
+
+export class CityCustomer { address: CityAddress | null = null; }
+
+export function customerCity(customer: CityCustomer): string {
+  let address: CityAddress | null = customer.address;
+  if (address !== null) { return address.city; }
+  return "unknown";
+}

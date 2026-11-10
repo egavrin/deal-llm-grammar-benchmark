@@ -1,0 +1,741 @@
+{
+  "source": "vera-llm-bench/prompts.py",
+  "source_sha256": "9a2ccd76c7f219dfe194e4716ef4c19ed12308e422d387239de87fe45d17c3bd",
+  "references_sha256": "1499d0b63d1fe8c8154efb8195de06ff75d917ceeaa24f316714b9cd128a7ac8",
+  "source_task_count": 62,
+  "original_quick_count": 28,
+  "imported_count": 51,
+  "duplicate_count": 11,
+  "tasks": [
+    {
+      "source_id": "int_avg",
+      "category": "int-vs-number",
+      "focus": [
+        "js_globals"
+      ],
+      "prompt": "Write a function `average(values: int[]): number` that returns the arithmetic mean of the integers. In main, print the average of the array 1, 2, 3, 4.",
+      "disposition": "imported",
+      "task_id": "int_avg",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "int_div",
+      "category": "int-vs-number",
+      "focus": [
+        "js_globals"
+      ],
+      "prompt": "Write a function `half(n: int): int` that returns n divided by 2, rounded toward zero. Print half(7) and half(-7), each on its own line.",
+      "disposition": "duplicate",
+      "task_id": "quotient_or_null",
+      "reason": "Integer truncation is already tested with positive/negative division; fixing the divisor to 2 adds no behavior."
+    },
+    {
+      "source_id": "num_to_int",
+      "category": "int-vs-number",
+      "focus": [
+        "js_globals"
+      ],
+      "prompt": "Convert the temperature 98.6 degrees Fahrenheit (a fractional number) to Celsius using (f - 32) * 5 / 9 and print only the whole-degree part as an integer (discard the fraction).",
+      "disposition": "imported",
+      "task_id": "num_to_int",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "str_concat",
+      "category": "explicit-to-string",
+      "focus": [
+        "js_conversions",
+        "quotes"
+      ],
+      "prompt": "Compute the sum of the integers 3, 5 and 7 stored in an array and print the line `Sum: N`, where N is the sum.",
+      "disposition": "imported",
+      "task_id": "str_concat",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "str_bool",
+      "category": "explicit-to-string",
+      "focus": [
+        "js_conversions",
+        "quotes"
+      ],
+      "prompt": "Write `isEven(n: int): boolean`. For 4 and 7 print lines in the form `4 even: true` and `7 even: false`, using the function result.",
+      "disposition": "imported",
+      "task_id": "str_bool",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "str_number",
+      "category": "explicit-to-string",
+      "focus": [
+        "js_conversions",
+        "quotes",
+        "js_globals"
+      ],
+      "prompt": "Compute the area of a circle with radius 2.0, using 3.14159 for pi, and print `Area: X` where X is the computed number.",
+      "disposition": "imported",
+      "task_id": "str_number",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "opt_find",
+      "category": "optional-and-not-null",
+      "focus": [
+        "optional_param",
+        "undefined_any",
+        "bare_union",
+        "question"
+      ],
+      "prompt": "Write `findFirstNegative(values: int[])` that returns the index of the first negative element, or null if there is none. Print the result for [4, -2, 5] and for [1, 2]; print `none` when the result is null.",
+      "disposition": "imported",
+      "task_id": "opt_find",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "opt_field",
+      "category": "optional-and-not-null",
+      "focus": [
+        "optional_param",
+        "undefined_any",
+        "bare_union",
+        "question"
+      ],
+      "prompt": "Define a record `Person` with a `name` (string) and a `nickname` that may be absent (null). Write `displayName(p: Person): string` that returns the nickname if present, otherwise the name. Print displayName for Alice with nickname Ally, and for Bob without a nickname.",
+      "disposition": "imported",
+      "task_id": "opt_field",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "opt_parse",
+      "category": "optional-and-not-null",
+      "focus": [
+        "js_conversions",
+        "question"
+      ],
+      "prompt": "Parse the string \"42\" as an integer using the standard library. If parsing fails print `invalid`, otherwise print the value plus 1. Then do the same for the string \"abc\".",
+      "disposition": "imported",
+      "task_id": "opt_parse",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "void_greet",
+      "category": "null-not-void",
+      "focus": [
+        "undefined_any"
+      ],
+      "prompt": "Write a procedure `greet(name: string)` that prints `Hello, <name>!` and has no meaningful result. Call it for Ann and then for Ben.",
+      "disposition": "duplicate",
+      "task_id": "greeting_for",
+      "reason": "Same greeting construction; printing it and returning null adds no independently checked behavior to this module task."
+    },
+    {
+      "source_id": "void_range",
+      "category": "null-not-void",
+      "focus": [
+        "undefined_any",
+        "c_for"
+      ],
+      "prompt": "Write a procedure `printRange(from: int, to: int)` that prints all integers from `from` to `to` inclusive, one per line, and returns nothing useful. Call printRange(1, 3).",
+      "disposition": "imported",
+      "task_id": "void_range",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "lam_map",
+      "category": "lambda-syntax",
+      "focus": [
+        "arrow_lambda",
+        "array_methods"
+      ],
+      "prompt": "Write `applyAll(values: int[], f: (x: int) => int): int[]` that returns a new array with f applied to each element. In main, apply a lambda that doubles its argument to [1, 2, 3] and print each element of the result on its own line.",
+      "disposition": "imported",
+      "task_id": "lam_map",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "lam_counter",
+      "category": "lambda-syntax",
+      "focus": [
+        "arrow_lambda",
+        "incdec",
+        "module_state"
+      ],
+      "prompt": "Write `makeCounter()` that returns a function; each call of the returned function returns the next integer, starting from 1. Call it three times and print each result.",
+      "disposition": "imported",
+      "task_id": "lam_counter",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks. Similar module-tier tasks exist, but this audit compares against quick only."
+    },
+    {
+      "source_id": "lam_filter",
+      "category": "lambda-syntax",
+      "focus": [
+        "arrow_lambda",
+        "array_methods"
+      ],
+      "prompt": "Write `countMatching(values: int[], pred: (x: int) => boolean): int`. Call it on [1, 2, 3, 4] with a lambda that tests whether x > 2 and print the count.",
+      "disposition": "imported",
+      "task_id": "lam_filter",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "arr_squares",
+      "category": "array-api",
+      "focus": [
+        "push_scalar",
+        "c_for"
+      ],
+      "prompt": "Build an array containing the squares of 1 to 5 by appending to an empty array in a loop. Print its length, then its last element.",
+      "disposition": "imported",
+      "task_id": "arr_squares",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "arr_evens",
+      "category": "array-api",
+      "focus": [
+        "push_scalar",
+        "array_methods"
+      ],
+      "prompt": "From the array [1, 2, 3, 4, 5, 6] create a new array containing only the even values and print them on one line separated by commas.",
+      "disposition": "imported",
+      "task_id": "arr_evens",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "arr_reverse",
+      "category": "array-api",
+      "focus": [
+        "push_scalar",
+        "array_methods",
+        "c_for"
+      ],
+      "prompt": "Write `reversed(values: int[]): int[]` that returns a new array with the elements in reverse order. Print the result for [1, 2, 3] on one line separated by single spaces.",
+      "disposition": "duplicate",
+      "task_id": "reversed_ints",
+      "reason": "Same fresh reversed integer array and unchanged input."
+    },
+    {
+      "source_id": "std_sqrt",
+      "category": "std-imports",
+      "focus": [
+        "js_globals"
+      ],
+      "prompt": "Compute the hypotenuse of a right triangle with legs 3.0 and 4.0 using a square root and print it.",
+      "disposition": "imported",
+      "task_id": "std_sqrt",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "std_maxabs",
+      "category": "std-imports",
+      "focus": [
+        "js_globals",
+        "question"
+      ],
+      "prompt": "Print the larger of the absolute values of the integers -8 and 5.",
+      "disposition": "imported",
+      "task_id": "std_maxabs",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "std_split",
+      "category": "std-imports",
+      "focus": [
+        "array_methods"
+      ],
+      "prompt": "Split the string \"a,b,c\" by commas. Print the number of parts, then each part on its own line.",
+      "disposition": "imported",
+      "task_id": "std_split",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "let_swap",
+      "category": "typed-let",
+      "focus": [
+        "const_var",
+        "untyped_let",
+        "destructuring"
+      ],
+      "prompt": "Declare integer variables a = 1 and b = 2, swap their values, then print a and then b.",
+      "disposition": "duplicate",
+      "task_id": "swap_pair",
+      "reason": "Same exchange of two integers; locals versus record fields and printing are presentation differences."
+    },
+    {
+      "source_id": "let_fib",
+      "category": "typed-let",
+      "focus": [
+        "const_var",
+        "untyped_let",
+        "c_for"
+      ],
+      "prompt": "Compute the 10th Fibonacci number iteratively, where fib(1) = 1 and fib(2) = 1, and print it.",
+      "disposition": "imported",
+      "task_id": "let_fib",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "cls_point",
+      "category": "record-classes",
+      "focus": [
+        "oop"
+      ],
+      "prompt": "Define a 2D point type with integer x and y. Write a function that returns the Manhattan distance between two points. Print the distance between (1, 2) and (4, 6).",
+      "disposition": "imported",
+      "task_id": "cls_point",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "cls_account",
+      "category": "record-classes",
+      "focus": [
+        "oop"
+      ],
+      "prompt": "Model a bank account with an owner name and an integer balance. Write `deposit(account, amount)` that increases the balance. Create an account for Eve with balance 100, deposit 50 twice, and print the balance.",
+      "disposition": "imported",
+      "task_id": "cls_account",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks. Similar module-tier tasks exist, but this audit compares against quick only."
+    },
+    {
+      "source_id": "cls_items",
+      "category": "record-classes",
+      "focus": [
+        "oop",
+        "array_methods"
+      ],
+      "prompt": "Define an item type with a name and an integer price in cents. Create a list of three items: pen 150, book 1200, cup 450. Print the name of the most expensive item.",
+      "disposition": "imported",
+      "task_id": "cls_items",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "exc_div",
+      "category": "exceptions",
+      "focus": [
+        "throw_finally"
+      ],
+      "prompt": "Write `safeDivide(a: int, b: int): int` that returns a / b, or 0 when the division by zero error occurs; catch the runtime error instead of testing b first. Print safeDivide(10, 2) and safeDivide(1, 0).",
+      "disposition": "imported",
+      "task_id": "exc_div",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "exc_index",
+      "category": "exceptions",
+      "focus": [
+        "throw_finally"
+      ],
+      "prompt": "Inside a try block, read the element at index 5 of the array [1, 2, 3] and print it. If reading fails, print `out of range` instead.",
+      "disposition": "imported",
+      "task_id": "exc_index",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "exc_name",
+      "category": "exceptions",
+      "focus": [
+        "throw_finally"
+      ],
+      "prompt": "Inside a try block multiply the integer 2147483647 by 2. In the catch block print the name of the caught exception.",
+      "disposition": "imported",
+      "task_id": "exc_name",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "async_basic",
+      "category": "async-await",
+      "focus": [
+        "promise"
+      ],
+      "prompt": "Write an async function `fetchValue` that returns the integer 42 (no real I/O). Make main async, await fetchValue() and print the result.",
+      "disposition": "imported",
+      "task_id": "async_basic",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "async_sum",
+      "category": "async-await",
+      "focus": [
+        "promise",
+        "c_for"
+      ],
+      "prompt": "Write an async function `delayedDouble(x: int)` that returns x * 2. In an async main, await it for 1, 2 and 3 one after another, sum the results and print the sum.",
+      "disposition": "imported",
+      "task_id": "async_sum",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "json_parse",
+      "category": "jsonable",
+      "focus": [
+        "js_globals"
+      ],
+      "prompt": "Define a JSON-serializable record `User` with `id` (int) and `name` (string). Decode the JSON text {\"id\":7,\"name\":\"Kim\"} into a User and print its name; print `bad json` if decoding fails.",
+      "disposition": "imported",
+      "task_id": "json_parse",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "json_encode",
+      "category": "jsonable",
+      "focus": [
+        "js_globals"
+      ],
+      "prompt": "Define a JSON-serializable record `Pair` with integer fields `a` and `b`. Create a Pair with a = 1 and b = 2, encode it to a JSON string and print the string.",
+      "disposition": "imported",
+      "task_id": "json_encode",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "str_quote",
+      "category": "string-literals",
+      "focus": [
+        "quotes"
+      ],
+      "prompt": "Print exactly this text, including the apostrophe and the double quotes: It's a \"test\"",
+      "disposition": "imported",
+      "task_id": "str_quote",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "str_vowels",
+      "category": "string-literals",
+      "focus": [
+        "quotes",
+        "array_methods",
+        "incdec"
+      ],
+      "prompt": "Count the vowels (a, e, i, o, u) in the string \"programming language\" and print the count.",
+      "disposition": "duplicate",
+      "task_id": "vowel_count",
+      "reason": "Same lowercase vowel counting, generalized from one fixed string."
+    },
+    {
+      "source_id": "str_reverse",
+      "category": "string-literals",
+      "focus": [
+        "array_methods",
+        "c_for"
+      ],
+      "prompt": "Reverse the string \"hello\" and print the result.",
+      "disposition": "imported",
+      "task_id": "str_reverse",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "loop_sum",
+      "category": "loops",
+      "focus": [
+        "c_for",
+        "incdec"
+      ],
+      "prompt": "Print the sum of the integers from 1 to 100.",
+      "disposition": "imported",
+      "task_id": "loop_sum",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "loop_chars",
+      "category": "loops",
+      "focus": [
+        "c_for",
+        "untyped_for_of",
+        "quotes"
+      ],
+      "prompt": "Print each character of the string \"abc\" on its own line, prefixed by its position starting at 0, like `0:a`.",
+      "disposition": "imported",
+      "task_id": "loop_chars",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "loop_halve",
+      "category": "loops",
+      "focus": [
+        "do_while",
+        "c_for"
+      ],
+      "prompt": "Start with the integer 100. Print the value, then halve it with integer division; repeat until the value becomes 0 (do not print 0).",
+      "disposition": "imported",
+      "task_id": "loop_halve",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "tern_sign",
+      "category": "no-ternary",
+      "focus": [
+        "question"
+      ],
+      "prompt": "Write `sign(n: int): string` that returns \"positive\", \"negative\" or \"zero\". Print sign(-5), sign(0) and sign(3).",
+      "disposition": "duplicate",
+      "task_id": "sign_of",
+      "reason": "Same negative/zero/positive classification; words versus -1/0/1 are output encoding."
+    },
+    {
+      "source_id": "tern_parity",
+      "category": "no-ternary",
+      "focus": [
+        "question"
+      ],
+      "prompt": "For each of the integers 1, 2 and 3 print `even` or `odd`.",
+      "disposition": "duplicate",
+      "task_id": "even_count",
+      "reason": "Same parity predicate already exercised by even counting; printing labels is presentation."
+    },
+    {
+      "source_id": "inc_count",
+      "category": "no-compound-assign",
+      "focus": [
+        "incdec"
+      ],
+      "prompt": "Count how many elements of [5, 3, 8, 1, 9] are greater than 4 and print the count.",
+      "disposition": "imported",
+      "task_id": "inc_count",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "inc_product",
+      "category": "no-compound-assign",
+      "focus": [
+        "incdec"
+      ],
+      "prompt": "Compute the product of the elements of [2, 3, 4] using an accumulator variable and print it.",
+      "disposition": "imported",
+      "task_id": "inc_product",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "nul_default",
+      "category": "no-nullish-ops",
+      "focus": [
+        "question"
+      ],
+      "prompt": "Write `withDefault(value: (string | null), fallback: string): string` that returns value unless it is null, in which case it returns fallback. Print withDefault(null, \"guest\") and withDefault(\"amy\", \"guest\").",
+      "disposition": "duplicate",
+      "task_id": "or_default",
+      "reason": "Same null-or-fallback behavior; string versus int changes only the value type."
+    },
+    {
+      "source_id": "nul_chain",
+      "category": "no-nullish-ops",
+      "focus": [
+        "question"
+      ],
+      "prompt": "Define `Address` with a `city` string and `Customer` with an `address` that may be null. Write `cityOf(c: Customer): string` that returns the city, or \"unknown\" when there is no address. Print cityOf for a customer living in Paris and for a customer without an address.",
+      "disposition": "imported",
+      "task_id": "nul_chain",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "sw_day",
+      "category": "no-switch",
+      "focus": [
+        "switch"
+      ],
+      "prompt": "Write `dayName(n: int): string` that maps 1 to \"Mon\", 2 to \"Tue\", 3 to \"Wed\" and any other value to \"?\". Print dayName(2) and dayName(9).",
+      "disposition": "duplicate",
+      "task_id": "day_label",
+      "reason": "Same integer-to-day-name lookup and unknown fallback, differing only in index origin/case/range."
+    },
+    {
+      "source_id": "sw_calc",
+      "category": "no-switch",
+      "focus": [
+        "switch"
+      ],
+      "prompt": "Write `calc(op: string, a: int, b: int): int` supporting the operators \"+\", \"-\" and \"*\" and returning 0 for any other operator. Print calc(\"+\", 2, 3), calc(\"*\", 4, 5) and calc(\"/\", 1, 1).",
+      "disposition": "imported",
+      "task_id": "sw_calc",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "gen_stack",
+      "category": "no-type-abstractions",
+      "focus": [
+        "type_abstractions",
+        "oop"
+      ],
+      "prompt": "Implement an integer stack with push and pop operations, where pop returns null when the stack is empty. Push 1, 2 and 3, then pop twice and print each popped value.",
+      "disposition": "imported",
+      "task_id": "gen_stack",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "gen_enum",
+      "category": "no-type-abstractions",
+      "focus": [
+        "type_abstractions",
+        "switch"
+      ],
+      "prompt": "Represent a traffic light color (red, yellow, green) and write `next(color)` that cycles red -> green -> yellow -> red. Print the name of the color that follows red, then the one that follows yellow.",
+      "disposition": "imported",
+      "task_id": "gen_enum",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks. Similar module-tier tasks exist, but this audit compares against quick only."
+    },
+    {
+      "source_id": "gen_shape",
+      "category": "no-type-abstractions",
+      "focus": [
+        "type_abstractions",
+        "oop"
+      ],
+      "prompt": "Define a shape type for rectangles with integer width and height and a function that computes the area. Print the area of a 3 by 4 rectangle.",
+      "disposition": "imported",
+      "task_id": "gen_shape",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks. Similar module-tier tasks exist, but this audit compares against quick only."
+    },
+    {
+      "source_id": "uni_age",
+      "category": "no-unions",
+      "focus": [
+        "union",
+        "type_abstractions",
+        "js_conversions"
+      ],
+      "prompt": "Write `parseAge(s: string)` that returns either the parsed integer age or an error message string `invalid age: <s>`. Print the outcome for \"30\" and for \"x\".",
+      "disposition": "imported",
+      "task_id": "uni_age",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "uni_sensor",
+      "category": "no-unions",
+      "focus": [
+        "union",
+        "type_abstractions"
+      ],
+      "prompt": "Write `describe(reading: int)` that returns either the integer reading itself or the text \"sensor error\" when the reading is -1. Print the outcome for 21 and for -1.",
+      "disposition": "imported",
+      "task_id": "uni_sensor",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "ds_default",
+      "category": "no-destructuring",
+      "focus": [
+        "default_param",
+        "optional_param"
+      ],
+      "prompt": "Write `greet(name, greeting)` where greeting defaults to \"Hello\" when the caller does not supply it, and returns `<greeting>, <name>`. Print the greeting for Ann using the default and for Bob with greeting \"Hi\".",
+      "disposition": "imported",
+      "task_id": "ds_default",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "ds_concat",
+      "category": "no-destructuring",
+      "focus": [
+        "destructuring",
+        "array_methods"
+      ],
+      "prompt": "Combine the arrays [1, 2] and [3, 4] into a new array and print its elements on one line separated by single spaces.",
+      "disposition": "imported",
+      "task_id": "ds_concat",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "ds_minmax",
+      "category": "no-destructuring",
+      "focus": [
+        "destructuring",
+        "js_globals"
+      ],
+      "prompt": "Write one function that returns both the minimum and the maximum of an integer array. Use it on [4, 9, 1, 7] and print `min=1 max=9` using the returned values.",
+      "disposition": "imported",
+      "task_id": "ds_minmax",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "bit_pow",
+      "category": "no-bitwise-pow",
+      "focus": [
+        "bitwise_pow",
+        "js_globals"
+      ],
+      "prompt": "Print 2 raised to the power 10 as an integer.",
+      "disposition": "imported",
+      "task_id": "bit_pow",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "bit_odd",
+      "category": "no-bitwise-pow",
+      "focus": [
+        "bitwise_pow"
+      ],
+      "prompt": "Print how many numbers in [1, 2, 3, 4, 5, 6, 7] are odd.",
+      "disposition": "duplicate",
+      "task_id": "even_count",
+      "reason": "Complement of the same parity-counting predicate; no distinct control flow or API."
+    },
+    {
+      "source_id": "top_const",
+      "category": "no-module-state",
+      "focus": [
+        "module_state"
+      ],
+      "prompt": "Use a named constant TAX_RATE_PERCENT = 20 shared by the program. Write `withTax(cents: int): int` that returns cents plus the tax, using integer arithmetic. Print withTax(1000).",
+      "disposition": "imported",
+      "task_id": "top_const",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "top_visits",
+      "category": "no-module-state",
+      "focus": [
+        "module_state",
+        "incdec"
+      ],
+      "prompt": "Write a function `addVisit` that records one visit and a function `visits` that returns the number of visits recorded so far. Record 3 visits, then print the count.",
+      "disposition": "imported",
+      "task_id": "top_visits",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "nest_square",
+      "category": "no-nested-functions",
+      "focus": [
+        "nested_function",
+        "arrow_lambda"
+      ],
+      "prompt": "Inside main, define a local helper function that squares an integer and use it to print the squares of 3 and 4.",
+      "disposition": "imported",
+      "task_id": "nest_square",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "nest_digits",
+      "category": "no-nested-functions",
+      "focus": [
+        "nested_function",
+        "arrow_lambda"
+      ],
+      "prompt": "Write `sumDigits(n: int): int` that sums the decimal digits of n using a recursive helper defined inside sumDigits. Print sumDigits(1234).",
+      "disposition": "duplicate",
+      "task_id": "digit_sum",
+      "reason": "Same decimal digit sum; source reference already hoists its recursive helper rather than using the impossible nested recursion requested."
+    },
+    {
+      "source_id": "eq_zero",
+      "category": "no-loose-equality",
+      "focus": [
+        "loose_eq"
+      ],
+      "prompt": "Write `isZero(n: int): boolean`. Print its result for 0 and for 5 as `true` or `false`.",
+      "disposition": "imported",
+      "task_id": "eq_zero",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    },
+    {
+      "source_id": "eq_str",
+      "category": "no-loose-equality",
+      "focus": [
+        "loose_eq",
+        "question"
+      ],
+      "prompt": "Compare the strings \"abc\" and \"abd\"; print `same` if they are equal, otherwise print `different`.",
+      "disposition": "imported",
+      "task_id": "eq_str",
+      "reason": "Distinct behavior or interface not present in the original 28 quick tasks."
+    }
+  ]
+}

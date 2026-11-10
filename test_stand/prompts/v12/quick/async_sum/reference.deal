@@ -1,0 +1,10 @@
+export async function doubleAsync(value: int): int { return value * 2; }
+
+export async function sumAwaitedDoubles(values: int[]): int {
+  let total: int = 0;
+  for (let value: int of values) {
+    let doubled: int = await doubleAsync(value);
+    total = total + doubled;
+  }
+  return total;
+}

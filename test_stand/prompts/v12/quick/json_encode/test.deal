@@ -1,0 +1,21 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+import * as json from "std/json";
+import * as tables from "std/table";
+
+export function main(): null {
+  for (let row: int[] of [[1, 2], [0, 0], [-3, 9]]) {
+    let mine: candidate.EncodedPair = { a: row[0], b: row[1] };
+    let theirs: oracle.EncodedPair = { a: row[0], b: row[1] };
+    let a: table = json.parse(candidate.encodeIntPair(mine));
+    let b: table = json.parse(oracle.encodeIntPair(theirs));
+    let aFirst: int = a.a; let bFirst: int = b.a;
+    let aSecond: int = a.b; let bSecond: int = b.b;
+    if (aFirst !== bFirst || aSecond !== bSecond || tables.keys(a).length !== 2) {
+      throw { code: "DIFF", message: "encodeIntPair" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

@@ -1,0 +1,23 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.firstNegativeIndex([]) !== oracle.firstNegativeIndex([])) {
+    throw { code: "DIFF", message: "firstNegativeIndex" };
+  }
+  if (candidate.firstNegativeIndex([4, -2, 5]) !== oracle.firstNegativeIndex([4, -2, 5])) {
+    throw { code: "DIFF", message: "firstNegativeIndex" };
+  }
+  if (candidate.firstNegativeIndex([1, 2]) !== oracle.firstNegativeIndex([1, 2])) {
+    throw { code: "DIFF", message: "firstNegativeIndex" };
+  }
+  if (candidate.firstNegativeIndex([-1, -2]) !== oracle.firstNegativeIndex([-1, -2])) {
+    throw { code: "DIFF", message: "firstNegativeIndex" };
+  }
+  if (candidate.firstNegativeIndex([0, 0, -1]) !== oracle.firstNegativeIndex([0, 0, -1])) {
+    throw { code: "DIFF", message: "firstNegativeIndex" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

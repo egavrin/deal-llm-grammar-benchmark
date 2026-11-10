@@ -1,0 +1,19 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let nicknames: (string | null)[] = [];
+  nicknames[0] = null;
+  nicknames[1] = "Ally";
+  nicknames[2] = "";
+  for (let nickname: string | null of nicknames) {
+    let mine: candidate.NamedPerson = { name: "Alice", nickname: nickname };
+    let theirs: oracle.NamedPerson = { name: "Alice", nickname: nickname };
+    if (candidate.preferredName(mine) !== oracle.preferredName(theirs)) {
+      throw { code: "DIFF", message: "preferredName" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

@@ -1,0 +1,6 @@
+export function concatenateInts(a: int[], b: int[]): int[] {
+  let result: int[] = [];
+  for (let value: int of a) { result[result.length] = value; }
+  for (let value: int of b) { result[result.length] = value; }
+  return result;
+}

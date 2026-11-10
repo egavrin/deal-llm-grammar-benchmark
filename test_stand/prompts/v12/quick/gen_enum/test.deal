@@ -1,0 +1,17 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.nextTrafficColor("red") !== oracle.nextTrafficColor("red")) {
+    throw { code: "DIFF", message: "nextTrafficColor" };
+  }
+  if (candidate.nextTrafficColor("green") !== oracle.nextTrafficColor("green")) {
+    throw { code: "DIFF", message: "nextTrafficColor" };
+  }
+  if (candidate.nextTrafficColor("yellow") !== oracle.nextTrafficColor("yellow")) {
+    throw { code: "DIFF", message: "nextTrafficColor" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

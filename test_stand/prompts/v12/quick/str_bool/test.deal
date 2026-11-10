@@ -1,0 +1,23 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.evenLabel(4) !== oracle.evenLabel(4)) {
+    throw { code: "DIFF", message: "evenLabel" };
+  }
+  if (candidate.evenLabel(7) !== oracle.evenLabel(7)) {
+    throw { code: "DIFF", message: "evenLabel" };
+  }
+  if (candidate.evenLabel(0) !== oracle.evenLabel(0)) {
+    throw { code: "DIFF", message: "evenLabel" };
+  }
+  if (candidate.evenLabel(-3) !== oracle.evenLabel(-3)) {
+    throw { code: "DIFF", message: "evenLabel" };
+  }
+  if (candidate.evenLabel(-2) !== oracle.evenLabel(-2)) {
+    throw { code: "DIFF", message: "evenLabel" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

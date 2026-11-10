@@ -1,0 +1,6 @@
+export function squaredByLocalHelper(values: int[]): int[] {
+  let square: (value: int) => int = function(value: int): int { return value * value; };
+  let result: int[] = [];
+  for (let value: int of values) { result[result.length] = square(value); }
+  return result;
+}

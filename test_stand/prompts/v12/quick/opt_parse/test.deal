@@ -1,0 +1,29 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.parsedSuccessor("42") !== oracle.parsedSuccessor("42")) {
+    throw { code: "DIFF", message: "parsedSuccessor" };
+  }
+  if (candidate.parsedSuccessor("abc") !== oracle.parsedSuccessor("abc")) {
+    throw { code: "DIFF", message: "parsedSuccessor" };
+  }
+  if (candidate.parsedSuccessor("-2") !== oracle.parsedSuccessor("-2")) {
+    throw { code: "DIFF", message: "parsedSuccessor" };
+  }
+  if (candidate.parsedSuccessor("0") !== oracle.parsedSuccessor("0")) {
+    throw { code: "DIFF", message: "parsedSuccessor" };
+  }
+  if (candidate.parsedSuccessor("null") !== oracle.parsedSuccessor("null")) {
+    throw { code: "DIFF", message: "parsedSuccessor" };
+  }
+  if (candidate.parsedSuccessor("1.5") !== oracle.parsedSuccessor("1.5")) {
+    throw { code: "DIFF", message: "parsedSuccessor" };
+  }
+  if (candidate.parsedSuccessor("2147483647") !== oracle.parsedSuccessor("2147483647")) {
+    throw { code: "DIFF", message: "parsedSuccessor" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

@@ -1,0 +1,18 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let text: string of ["a,b,c", "", ",", "a,,b,", "plain"]) {
+    let mine: string[] = candidate.commaParts(text);
+    let theirs: string[] = oracle.commaParts(text);
+    if (mine.length !== theirs.length) { throw { code: "DIFF", message: "commaParts length" }; }
+    let i: int = 0;
+    while (i < mine.length) {
+      if (mine[i] !== theirs[i]) { throw { code: "DIFF", message: "commaParts element" }; }
+      i = i + 1;
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

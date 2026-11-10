@@ -1,0 +1,18 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let n: int of [-1, 0, 1, 2, 7, 100]) {
+    let mine: int[] = candidate.halvingSequence(n);
+    let theirs: int[] = oracle.halvingSequence(n);
+    if (mine.length !== theirs.length) { throw { code: "DIFF", message: "halvingSequence length" }; }
+    let i: int = 0;
+    while (i < mine.length) {
+      if (mine[i] !== theirs[i]) { throw { code: "DIFF", message: "halvingSequence element" }; }
+      i = i + 1;
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

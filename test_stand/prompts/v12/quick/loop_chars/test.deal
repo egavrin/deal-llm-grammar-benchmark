@@ -1,0 +1,18 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let text: string of ["", "abc", "x y", "abcdefghijkl"]) {
+    let mine: string[] = candidate.indexedCharacters(text);
+    let theirs: string[] = oracle.indexedCharacters(text);
+    if (mine.length !== theirs.length) { throw { code: "DIFF", message: "indexedCharacters length" }; }
+    let i: int = 0;
+    while (i < mine.length) {
+      if (mine[i] !== theirs[i]) { throw { code: "DIFF", message: "indexedCharacters element" }; }
+      i = i + 1;
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

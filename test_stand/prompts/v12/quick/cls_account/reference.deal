@@ -1,0 +1,9 @@
+export class DepositAccount {
+  owner: string = "";
+  balance: int = 0;
+}
+
+export function addDeposit(account: DepositAccount, amount: int): null {
+  account.balance = account.balance + amount;
+  return null;
+}

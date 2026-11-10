@@ -1,0 +1,5 @@
+export function transformInts(values: int[], transform: (value: int) => int): int[] {
+  let result: int[] = [];
+  for (let value: int of values) { result[result.length] = transform(value); }
+  return result;
+}

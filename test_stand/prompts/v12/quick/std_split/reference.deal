@@ -1,0 +1,5 @@
+import * as strings from "std/string";
+
+export function commaParts(text: string): string[] {
+  return strings.split(text, ",");
+}

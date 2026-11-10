@@ -1,0 +1,6 @@
+export class SensorDescription { value: int | null = null; text: string | null = null; }
+
+export function describeSensor(reading: int): SensorDescription {
+  if (reading === -1) { return { value: null, text: "sensor error" }; }
+  return { value: reading, text: null };
+}

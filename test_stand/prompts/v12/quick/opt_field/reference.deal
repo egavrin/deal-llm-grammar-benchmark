@@ -1,0 +1,10 @@
+export class NamedPerson {
+  name: string = "";
+  nickname: string | null = null;
+}
+
+export function preferredName(person: NamedPerson): string {
+  let nickname: string | null = person.nickname;
+  if (nickname !== null) { return nickname; }
+  return person.name;
+}

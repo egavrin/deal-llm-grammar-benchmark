@@ -1,0 +1,23 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.arrayProduct([]) !== oracle.arrayProduct([])) {
+    throw { code: "DIFF", message: "arrayProduct" };
+  }
+  if (candidate.arrayProduct([2, 3, 4]) !== oracle.arrayProduct([2, 3, 4])) {
+    throw { code: "DIFF", message: "arrayProduct" };
+  }
+  if (candidate.arrayProduct([-2, 3]) !== oracle.arrayProduct([-2, 3])) {
+    throw { code: "DIFF", message: "arrayProduct" };
+  }
+  if (candidate.arrayProduct([1, 0, 9]) !== oracle.arrayProduct([1, 0, 9])) {
+    throw { code: "DIFF", message: "arrayProduct" };
+  }
+  if (candidate.arrayProduct([-2, -3]) !== oracle.arrayProduct([-2, -3])) {
+    throw { code: "DIFF", message: "arrayProduct" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

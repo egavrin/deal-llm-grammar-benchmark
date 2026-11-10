@@ -1,0 +1,10 @@
+import * as math from "std/math";
+
+export class GridPoint {
+  x: int = 0;
+  y: int = 0;
+}
+
+export function manhattanDistance(a: GridPoint, b: GridPoint): int {
+  return math.absInt(a.x - b.x) + math.absInt(a.y - b.y);
+}

@@ -1,0 +1,6 @@
+export function integerAverage(values: int[]): number {
+  if (values.length === 0) { return 0.0; }
+  let total: int = 0;
+  for (let value: int of values) { total = total + value; }
+  return number(total) / number(values.length);
+}

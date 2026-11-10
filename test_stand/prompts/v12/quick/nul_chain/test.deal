@@ -1,0 +1,22 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let mine: candidate.CityCustomer = { address: null };
+  let theirs: oracle.CityCustomer = { address: null };
+  if (candidate.customerCity(mine) !== oracle.customerCity(theirs)) {
+    throw { code: "DIFF", message: "customerCity absent" };
+  }
+  for (let city: string of ["Paris", "", "unknown"]) {
+    let myAddress: candidate.CityAddress = { city: city };
+    let theirAddress: oracle.CityAddress = { city: city };
+    let a: candidate.CityCustomer = { address: myAddress };
+    let b: oracle.CityCustomer = { address: theirAddress };
+    if (candidate.customerCity(a) !== oracle.customerCity(b)) {
+      throw { code: "DIFF", message: "customerCity present" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

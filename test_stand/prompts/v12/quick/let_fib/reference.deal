@@ -1,0 +1,11 @@
+export function fibonacciAt(n: int): int {
+  if (n === 0) { return 0; }
+  let previous: int = 0;
+  let current: int = 1;
+  let index: int = 1;
+  while (index < n) {
+    let next: int = previous + current;
+    previous = current; current = next; index = index + 1;
+  }
+  return current;
+}

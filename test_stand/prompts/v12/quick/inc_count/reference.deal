@@ -1,0 +1,5 @@
+export function countAbove(values: int[], threshold: int): int {
+  let count: int = 0;
+  for (let value: int of values) { if (value > threshold) { count = count + 1; } }
+  return count;
+}

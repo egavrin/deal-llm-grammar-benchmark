@@ -1,0 +1,11 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.quotedMessage() !== oracle.quotedMessage()) {
+    throw { code: "DIFF", message: "quotedMessage" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

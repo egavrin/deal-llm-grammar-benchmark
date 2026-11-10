@@ -1,0 +1,20 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.multiplicationError(2147483647, 2) !== oracle.multiplicationError(2147483647, 2)) {
+    throw { code: "DIFF", message: "multiplicationError" };
+  }
+  if (candidate.multiplicationError(-2147483647, 2) !== oracle.multiplicationError(-2147483647, 2)) {
+    throw { code: "DIFF", message: "multiplicationError" };
+  }
+  if (candidate.multiplicationError(3, 4) !== oracle.multiplicationError(3, 4)) {
+    throw { code: "DIFF", message: "multiplicationError" };
+  }
+  if (candidate.multiplicationError(0, 2147483647) !== oracle.multiplicationError(0, 2147483647)) {
+    throw { code: "DIFF", message: "multiplicationError" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

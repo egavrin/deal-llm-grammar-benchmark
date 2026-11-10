@@ -1,0 +1,20 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.equalsZero(0) !== oracle.equalsZero(0)) {
+    throw { code: "DIFF", message: "equalsZero" };
+  }
+  if (candidate.equalsZero(5) !== oracle.equalsZero(5)) {
+    throw { code: "DIFF", message: "equalsZero" };
+  }
+  if (candidate.equalsZero(-1) !== oracle.equalsZero(-1)) {
+    throw { code: "DIFF", message: "equalsZero" };
+  }
+  if (candidate.equalsZero(2147483647) !== oracle.equalsZero(2147483647)) {
+    throw { code: "DIFF", message: "equalsZero" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

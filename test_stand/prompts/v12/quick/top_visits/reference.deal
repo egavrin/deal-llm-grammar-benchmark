@@ -1,0 +1,8 @@
+export class VisitCounter { count: int = 0; }
+
+export function recordVisit(counter: VisitCounter): null {
+  counter.count = counter.count + 1;
+  return null;
+}
+
+export function visitCount(counter: VisitCounter): int { return counter.count; }

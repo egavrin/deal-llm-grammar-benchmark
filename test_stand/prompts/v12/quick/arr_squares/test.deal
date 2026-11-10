@@ -1,0 +1,18 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let n: int of [-1, 0, 1, 5, 10]) {
+    let mine: int[] = candidate.squaresThrough(n);
+    let theirs: int[] = oracle.squaresThrough(n);
+    if (mine.length !== theirs.length) { throw { code: "DIFF", message: "squaresThrough length" }; }
+    let i: int = 0;
+    while (i < mine.length) {
+      if (mine[i] !== theirs[i]) { throw { code: "DIFF", message: "squaresThrough element" }; }
+      i = i + 1;
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

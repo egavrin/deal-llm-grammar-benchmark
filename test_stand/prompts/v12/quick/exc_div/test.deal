@@ -1,0 +1,23 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.caughtQuotient(10, 2) !== oracle.caughtQuotient(10, 2)) {
+    throw { code: "DIFF", message: "caughtQuotient" };
+  }
+  if (candidate.caughtQuotient(1, 0) !== oracle.caughtQuotient(1, 0)) {
+    throw { code: "DIFF", message: "caughtQuotient" };
+  }
+  if (candidate.caughtQuotient(-7, 2) !== oracle.caughtQuotient(-7, 2)) {
+    throw { code: "DIFF", message: "caughtQuotient" };
+  }
+  if (candidate.caughtQuotient(0, 0) !== oracle.caughtQuotient(0, 0)) {
+    throw { code: "DIFF", message: "caughtQuotient" };
+  }
+  if (candidate.caughtQuotient(9, -2) !== oracle.caughtQuotient(9, -2)) {
+    throw { code: "DIFF", message: "caughtQuotient" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

@@ -1,0 +1,5 @@
+export class RectangleSize { width: int = 0; height: int = 0; }
+
+export function rectangleArea(rectangle: RectangleSize): int {
+  return rectangle.width * rectangle.height;
+}

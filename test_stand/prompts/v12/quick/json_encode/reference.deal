@@ -1,0 +1,9 @@
+// @jsonable
+export class EncodedPair {
+  a: int = 0;
+  b: int = 0;
+}
+
+export function encodeIntPair(pair: EncodedPair): string {
+  return EncodedPair$toJson(pair);
+}
