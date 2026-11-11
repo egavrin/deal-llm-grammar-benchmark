@@ -1,0 +1,19 @@
+import * as json from "std/json";
+
+import * as strings from "std/string";
+
+function intText(value: int): string {
+  let encoded: string = json.stringify({ value: value });
+  return strings.substring(encoded, 9, strings.length(encoded) - 1);
+}
+
+export function commaSeparatedEvens(values: int[]): string {
+  let result: string = "";
+  for (let value: int of values) {
+    if (value % 2 === 0) {
+      if (result !== "") { result = result + ","; }
+      result = result + intText(value);
+    }
+  }
+  return result;
+}

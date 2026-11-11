@@ -1,0 +1,15 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let row: int[] of [[3, 4], [0, 9], [7, 1], [5, 5]]) {
+    let mine: candidate.RectangleSize = { width: row[0], height: row[1] };
+    let theirs: oracle.RectangleSize = { width: row[0], height: row[1] };
+    if (candidate.rectangleArea(mine) !== oracle.rectangleArea(theirs)) {
+      throw { code: "DIFF", message: "rectangleArea" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

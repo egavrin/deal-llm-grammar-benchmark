@@ -1,0 +1,6 @@
+export function halvingSequence(n: int): int[] {
+  let result: int[] = [];
+  let value: int = n;
+  while (value > 0) { result[result.length] = value; value = value / 2; }
+  return result;
+}

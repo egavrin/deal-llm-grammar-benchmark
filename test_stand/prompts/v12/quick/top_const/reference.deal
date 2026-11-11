@@ -1,0 +1,5 @@
+export function taxRatePercent(): int { return 20; }
+
+export function priceWithTax(cents: int): int {
+  return cents + cents * taxRatePercent() / 100;
+}

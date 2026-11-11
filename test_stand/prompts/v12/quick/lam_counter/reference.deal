@@ -1,0 +1,4 @@
+export function countingClosure(): () => int {
+  let value: int = 0;
+  return function(): int { value = value + 1; return value; };
+}

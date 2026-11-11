@@ -1,0 +1,20 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.sumLabel([]) !== oracle.sumLabel([])) {
+    throw { code: "DIFF", message: "sumLabel" };
+  }
+  if (candidate.sumLabel([3, 5, 7]) !== oracle.sumLabel([3, 5, 7])) {
+    throw { code: "DIFF", message: "sumLabel" };
+  }
+  if (candidate.sumLabel([-8, 2]) !== oracle.sumLabel([-8, 2])) {
+    throw { code: "DIFF", message: "sumLabel" };
+  }
+  if (candidate.sumLabel([0]) !== oracle.sumLabel([0])) {
+    throw { code: "DIFF", message: "sumLabel" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

@@ -1,0 +1,20 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.integerAverage([]) !== oracle.integerAverage([])) {
+    throw { code: "DIFF", message: "integerAverage" };
+  }
+  if (candidate.integerAverage([1, 2, 3, 4]) !== oracle.integerAverage([1, 2, 3, 4])) {
+    throw { code: "DIFF", message: "integerAverage" };
+  }
+  if (candidate.integerAverage([-3, 0, 2]) !== oracle.integerAverage([-3, 0, 2])) {
+    throw { code: "DIFF", message: "integerAverage" };
+  }
+  if (candidate.integerAverage([7]) !== oracle.integerAverage([7])) {
+    throw { code: "DIFF", message: "integerAverage" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

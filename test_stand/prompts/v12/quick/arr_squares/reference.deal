@@ -1,0 +1,6 @@
+export function squaresThrough(n: int): int[] {
+  let result: int[] = [];
+  let value: int = 1;
+  while (value <= n) { result[result.length] = value * value; value = value + 1; }
+  return result;
+}

@@ -1,0 +1,8 @@
+export function firstNegativeIndex(values: int[]): int | null {
+  let index: int = 0;
+  while (index < values.length) {
+    if (values[index] < 0) { return index; }
+    index = index + 1;
+  }
+  return null;
+}

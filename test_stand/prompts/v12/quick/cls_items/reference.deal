@@ -1,0 +1,11 @@
+export class PricedItem {
+  name: string = "";
+  cents: int = 0;
+}
+
+export function costliestName(items: PricedItem[]): string | null {
+  if (items.length === 0) { return null; }
+  let best: PricedItem = items[0];
+  for (let item: PricedItem of items) { if (item.cents > best.cents) { best = item; } }
+  return best.name;
+}

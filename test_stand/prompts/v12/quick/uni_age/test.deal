@@ -1,0 +1,15 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let text: string of ["30", "x", "0", "-2", "null", "1.5", "2147483648"]) {
+    let mine: candidate.ParsedAge = candidate.parseAgeResult(text);
+    let theirs: oracle.ParsedAge = oracle.parseAgeResult(text);
+    if (mine.age !== theirs.age || mine.error !== theirs.error) {
+      throw { code: "DIFF", message: "parseAgeResult" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

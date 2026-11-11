@@ -1,0 +1,4 @@
+export function multiplicationError(a: int, b: int): string {
+  try { let product: int = a * b; return ""; }
+  catch (e) { return e.code; }
+}

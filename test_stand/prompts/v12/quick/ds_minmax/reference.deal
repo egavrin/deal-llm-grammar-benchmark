@@ -1,0 +1,10 @@
+export class IntExtrema { min: int = 0; max: int = 0; }
+
+export function arrayExtrema(values: int[]): IntExtrema {
+  let result: IntExtrema = { min: values[0], max: values[0] };
+  for (let value: int of values) {
+    if (value < result.min) { result.min = value; }
+    if (value > result.max) { result.max = value; }
+  }
+  return result;
+}

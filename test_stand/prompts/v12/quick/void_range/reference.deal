@@ -1,0 +1,8 @@
+export function emitRange(first: int, last: int, emit: (value: int) => null): null {
+  let value: int = first;
+  while (value <= last) {
+    emit(value);
+    value = value + 1;
+  }
+  return null;
+}

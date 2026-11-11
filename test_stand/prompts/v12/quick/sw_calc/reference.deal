@@ -1,0 +1,6 @@
+export function calculateOp(op: string, a: int, b: int): int {
+  if (op === "+") { return a + b; }
+  if (op === "-") { return a - b; }
+  if (op === "*") { return a * b; }
+  return 0;
+}

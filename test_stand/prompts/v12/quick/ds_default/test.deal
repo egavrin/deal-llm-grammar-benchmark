@@ -1,0 +1,20 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.greetingWithDefault("Ann", null) !== oracle.greetingWithDefault("Ann", null)) {
+    throw { code: "DIFF", message: "greetingWithDefault" };
+  }
+  if (candidate.greetingWithDefault("Bob", "Hi") !== oracle.greetingWithDefault("Bob", "Hi")) {
+    throw { code: "DIFF", message: "greetingWithDefault" };
+  }
+  if (candidate.greetingWithDefault("", "") !== oracle.greetingWithDefault("", "")) {
+    throw { code: "DIFF", message: "greetingWithDefault" };
+  }
+  if (candidate.greetingWithDefault("Amy", "Welcome") !== oracle.greetingWithDefault("Amy", "Welcome")) {
+    throw { code: "DIFF", message: "greetingWithDefault" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

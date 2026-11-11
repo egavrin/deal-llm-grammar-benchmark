@@ -1,0 +1,9 @@
+import * as json from "std/json";
+
+import * as strings from "std/string";
+
+export function circleAreaLabel(radius: number): string {
+  let area: number = 3.14159 * radius * radius;
+  let encoded: string = json.stringify({ value: area });
+  return "Area: " + strings.substring(encoded, 9, strings.length(encoded) - 1);
+}

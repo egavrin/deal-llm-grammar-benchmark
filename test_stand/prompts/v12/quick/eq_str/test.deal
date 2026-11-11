@@ -1,0 +1,20 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.equalityLabel("abc", "abd") !== oracle.equalityLabel("abc", "abd")) {
+    throw { code: "DIFF", message: "equalityLabel" };
+  }
+  if (candidate.equalityLabel("abc", "abc") !== oracle.equalityLabel("abc", "abc")) {
+    throw { code: "DIFF", message: "equalityLabel" };
+  }
+  if (candidate.equalityLabel("", "") !== oracle.equalityLabel("", "")) {
+    throw { code: "DIFF", message: "equalityLabel" };
+  }
+  if (candidate.equalityLabel("a", "A") !== oracle.equalityLabel("a", "A")) {
+    throw { code: "DIFF", message: "equalityLabel" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

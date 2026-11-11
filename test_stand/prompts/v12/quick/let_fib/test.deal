@@ -1,0 +1,26 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.fibonacciAt(0) !== oracle.fibonacciAt(0)) {
+    throw { code: "DIFF", message: "fibonacciAt" };
+  }
+  if (candidate.fibonacciAt(1) !== oracle.fibonacciAt(1)) {
+    throw { code: "DIFF", message: "fibonacciAt" };
+  }
+  if (candidate.fibonacciAt(2) !== oracle.fibonacciAt(2)) {
+    throw { code: "DIFF", message: "fibonacciAt" };
+  }
+  if (candidate.fibonacciAt(3) !== oracle.fibonacciAt(3)) {
+    throw { code: "DIFF", message: "fibonacciAt" };
+  }
+  if (candidate.fibonacciAt(10) !== oracle.fibonacciAt(10)) {
+    throw { code: "DIFF", message: "fibonacciAt" };
+  }
+  if (candidate.fibonacciAt(20) !== oracle.fibonacciAt(20)) {
+    throw { code: "DIFF", message: "fibonacciAt" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

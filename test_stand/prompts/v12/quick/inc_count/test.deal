@@ -1,0 +1,20 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.countAbove([], 4) !== oracle.countAbove([], 4)) {
+    throw { code: "DIFF", message: "countAbove" };
+  }
+  if (candidate.countAbove([5, 3, 8, 1, 9], 4) !== oracle.countAbove([5, 3, 8, 1, 9], 4)) {
+    throw { code: "DIFF", message: "countAbove" };
+  }
+  if (candidate.countAbove([4, 4], 4) !== oracle.countAbove([4, 4], 4)) {
+    throw { code: "DIFF", message: "countAbove" };
+  }
+  if (candidate.countAbove([-3, 0, 2], -1) !== oracle.countAbove([-3, 0, 2], -1)) {
+    throw { code: "DIFF", message: "countAbove" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

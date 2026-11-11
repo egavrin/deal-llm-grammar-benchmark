@@ -1,0 +1,11 @@
+// @jsonable
+export class DecodedUser {
+  id: int = 0;
+  name: string = "";
+}
+
+export function decodedUserName(text: string): string | null {
+  let user: DecodedUser | null = DecodedUser$fromJson(text);
+  if (user !== null) { return user.name; }
+  return null;
+}

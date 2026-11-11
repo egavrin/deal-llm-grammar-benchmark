@@ -1,0 +1,23 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.reverseText("hello") !== oracle.reverseText("hello")) {
+    throw { code: "DIFF", message: "reverseText" };
+  }
+  if (candidate.reverseText("") !== oracle.reverseText("")) {
+    throw { code: "DIFF", message: "reverseText" };
+  }
+  if (candidate.reverseText("a") !== oracle.reverseText("a")) {
+    throw { code: "DIFF", message: "reverseText" };
+  }
+  if (candidate.reverseText("ab cd") !== oracle.reverseText("ab cd")) {
+    throw { code: "DIFF", message: "reverseText" };
+  }
+  if (candidate.reverseText("abba") !== oracle.reverseText("abba")) {
+    throw { code: "DIFF", message: "reverseText" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

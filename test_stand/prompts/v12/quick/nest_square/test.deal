@@ -1,0 +1,19 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let empty: int[] = [];
+  for (let values: int[] of [empty, [3, 4], [-2, 0, 5]]) {
+    let mine: int[] = candidate.squaredByLocalHelper(values);
+    let theirs: int[] = oracle.squaredByLocalHelper(values);
+    if (mine.length !== theirs.length) { throw { code: "DIFF", message: "squaredByLocalHelper length" }; }
+    let i: int = 0;
+    while (i < mine.length) {
+      if (mine[i] !== theirs[i]) { throw { code: "DIFF", message: "squaredByLocalHelper element" }; }
+      i = i + 1;
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

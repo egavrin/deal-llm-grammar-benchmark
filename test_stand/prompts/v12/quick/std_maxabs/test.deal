@@ -1,0 +1,20 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.largerMagnitude(-8, 5) !== oracle.largerMagnitude(-8, 5)) {
+    throw { code: "DIFF", message: "largerMagnitude" };
+  }
+  if (candidate.largerMagnitude(0, 0) !== oracle.largerMagnitude(0, 0)) {
+    throw { code: "DIFF", message: "largerMagnitude" };
+  }
+  if (candidate.largerMagnitude(2, -9) !== oracle.largerMagnitude(2, -9)) {
+    throw { code: "DIFF", message: "largerMagnitude" };
+  }
+  if (candidate.largerMagnitude(-4, -4) !== oracle.largerMagnitude(-4, -4)) {
+    throw { code: "DIFF", message: "largerMagnitude" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

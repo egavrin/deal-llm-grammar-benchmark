@@ -1,0 +1,45 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let empty: int[] = [];
+  for (let left: int[] of [empty, [1, 2]]) {
+    for (let right: int[] of [empty, [3, 4]]) {
+      let expectedLeft: int[] = [];
+      let expectedRight: int[] = [];
+      for (let value: int of left) { expectedLeft[expectedLeft.length] = value; }
+      for (let value: int of right) { expectedRight[expectedRight.length] = value; }
+      let mine: int[] = candidate.concatenateInts(left, right);
+      let theirs: int[] = oracle.concatenateInts(expectedLeft, expectedRight);
+      if (left.length !== expectedLeft.length || right.length !== expectedRight.length) {
+        throw { code: "DIFF", message: "concatenateInts mutated input length" };
+      }
+      let check: int = 0;
+      while (check < left.length) {
+        if (left[check] !== expectedLeft[check]) { throw { code: "DIFF", message: "concatenateInts mutated left" }; }
+        check = check + 1;
+      }
+      check = 0;
+      while (check < right.length) {
+        if (right[check] !== expectedRight[check]) { throw { code: "DIFF", message: "concatenateInts mutated right" }; }
+        check = check + 1;
+      }
+      if (mine.length !== theirs.length) { throw { code: "DIFF", message: "concatenateInts length" }; }
+      let i: int = 0;
+      while (i < mine.length) {
+        if (mine[i] !== theirs[i]) { throw { code: "DIFF", message: "concatenateInts element" }; }
+        i = i + 1;
+      }
+      if (mine.length > 0) {
+        let saved: int = mine[0]; mine[0] = 99;
+        if ((left.length > 0 && left[0] === 99) || (right.length > 0 && right[0] === 99)) {
+          throw { code: "DIFF", message: "concatenateInts alias" };
+        }
+        mine[0] = saved;
+      }
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

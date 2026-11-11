@@ -1,0 +1,19 @@
+import * as json from "std/json";
+
+function parsedInteger(text: string): int | null {
+  try {
+    let payload: table = json.parse("{\"value\":" + text + "}");
+    let value: int = payload.value;
+    return value;
+  } catch (e) {
+    return null;
+  }
+}
+
+export class ParsedAge { age: int | null = null; error: string | null = null; }
+
+export function parseAgeResult(text: string): ParsedAge {
+  let value: int | null = parsedInteger(text);
+  if (value === null) { return { age: null, error: "invalid age: " + text }; }
+  return { age: value, error: null };
+}

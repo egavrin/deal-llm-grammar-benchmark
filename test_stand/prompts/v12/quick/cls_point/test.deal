@@ -1,0 +1,21 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  for (let row: int[] of [[1, 2, 4, 6], [0, 0, 0, 0], [-3, 4, 2, -1]]) {
+    let a: candidate.GridPoint = { x: row[0], y: row[1] };
+    let b: candidate.GridPoint = { x: row[2], y: row[3] };
+    let c: oracle.GridPoint = { x: row[0], y: row[1] };
+    let d: oracle.GridPoint = { x: row[2], y: row[3] };
+    let distance: int = candidate.manhattanDistance(a, b);
+    if (a.x !== row[0] || a.y !== row[1] || b.x !== row[2] || b.y !== row[3]) {
+      throw { code: "DIFF", message: "manhattanDistance mutated points" };
+    }
+    if (distance !== oracle.manhattanDistance(c, d)) {
+      throw { code: "DIFF", message: "manhattanDistance" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

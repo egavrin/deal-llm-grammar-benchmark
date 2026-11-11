@@ -1,0 +1,43 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let empty: int[] = [];
+  for (let values: int[] of [empty, [1, 2, 3], [-2, 0, 5]]) {
+    let original: int[] = [];
+    for (let value: int of values) { original[original.length] = value; }
+    let index: int = 0;
+    let mine: int[] = candidate.transformInts(values, function(value: int): int {
+      index = index + 1; return value * 2 + index;
+    });
+    let unchanged: int = 0;
+    while (unchanged < original.length) {
+      if (values[unchanged] !== original[unchanged]) {
+        throw { code: "DIFF", message: "transformInts mutated input" };
+      }
+      unchanged = unchanged + 1;
+    }
+    if (values.length !== original.length) {
+      throw { code: "DIFF", message: "transformInts mutated input length" };
+    }
+    let otherIndex: int = 0;
+    let theirs: int[] = oracle.transformInts(values, function(value: int): int {
+      otherIndex = otherIndex + 1; return value * 2 + otherIndex;
+    });
+    if (index !== values.length || mine.length !== theirs.length) {
+      throw { code: "DIFF", message: "transformInts calls or length" };
+    }
+    let i: int = 0;
+    while (i < mine.length) {
+      if (mine[i] !== theirs[i]) { throw { code: "DIFF", message: "transformInts element" }; }
+      i = i + 1;
+    }
+    if (mine.length > 0) {
+      let saved: int = values[0]; mine[0] = 99;
+      if (values[0] !== saved) { throw { code: "DIFF", message: "transformInts alias" }; }
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

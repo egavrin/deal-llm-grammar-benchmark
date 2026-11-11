@@ -1,0 +1,5 @@
+export function arrayProduct(values: int[]): int {
+  let product: int = 1;
+  for (let value: int of values) { product = product * value; }
+  return product;
+}

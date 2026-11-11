@@ -1,0 +1,16 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.taxRatePercent() !== oracle.taxRatePercent()) {
+    throw { code: "DIFF", message: "taxRatePercent" };
+  }
+  for (let cents: int of [0, 1, 99, 100, 1000]) {
+    if (candidate.priceWithTax(cents) !== oracle.priceWithTax(cents)) {
+      throw { code: "DIFF", message: "priceWithTax" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

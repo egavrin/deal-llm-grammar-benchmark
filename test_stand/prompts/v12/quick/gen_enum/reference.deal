@@ -1,0 +1,5 @@
+export function nextTrafficColor(color: string): string {
+  if (color === "red") { return "green"; }
+  if (color === "green") { return "yellow"; }
+  return "red";
+}

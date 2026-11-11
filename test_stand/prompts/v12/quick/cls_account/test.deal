@@ -1,0 +1,17 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  let mine: candidate.DepositAccount = { owner: "Eve", balance: 100 };
+  let theirs: oracle.DepositAccount = { owner: "Eve", balance: 100 };
+  for (let amount: int of [50, 50, 0, -125]) {
+    let a: null = candidate.addDeposit(mine, amount);
+    let b: null = oracle.addDeposit(theirs, amount);
+    if (a !== b || mine.balance !== theirs.balance || mine.owner !== theirs.owner) {
+      throw { code: "DIFF", message: "addDeposit" };
+    }
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}

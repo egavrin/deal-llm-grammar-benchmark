@@ -1,0 +1,23 @@
+import * as candidate from "./solution";
+import * as oracle from "./reference";
+import * as console from "std/console";
+
+export function main(): null {
+  if (candidate.caughtElement([1, 2, 3], 5) !== oracle.caughtElement([1, 2, 3], 5)) {
+    throw { code: "DIFF", message: "caughtElement" };
+  }
+  if (candidate.caughtElement([1, 2, 3], 0) !== oracle.caughtElement([1, 2, 3], 0)) {
+    throw { code: "DIFF", message: "caughtElement" };
+  }
+  if (candidate.caughtElement([], 0) !== oracle.caughtElement([], 0)) {
+    throw { code: "DIFF", message: "caughtElement" };
+  }
+  if (candidate.caughtElement([7], -1) !== oracle.caughtElement([7], -1)) {
+    throw { code: "DIFF", message: "caughtElement" };
+  }
+  if (candidate.caughtElement([7], 1) !== oracle.caughtElement([7], 1)) {
+    throw { code: "DIFF", message: "caughtElement" };
+  }
+  console.log("__DEAL_BENCH_PASS__");
+  return null;
+}
